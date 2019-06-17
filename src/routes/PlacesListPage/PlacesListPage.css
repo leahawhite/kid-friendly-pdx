@@ -1,0 +1,16 @@
+.places-list {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.places-header {
+  background-color: white;
+  align-self: space-between;
+}
+
+.sort-select {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
