@@ -5,10 +5,18 @@ import './ReviewPage.css';
 
 export default class ReviewPage extends Component {
   render() {
+    const { place } = this.props.location.state
     return (
       <>
-        <h2 class="form-header">Write a Review of <Link to='/places/:placeId'>This Place</Link></h2>
-        <ReviewForm />
+        <h2 className="form-header">Write a Review of{' '}
+          <Link to={{
+                    pathname: `/places/${place.id}`,
+                    state: { place: place }
+                    }}>
+            {place.name}
+          </Link>
+        </h2>
+        <ReviewForm place={place} />
       </>
     )
   }

@@ -5,12 +5,25 @@
 }
 
 .places-header {
+  display: flex;
   background-color: white;
-  align-self: space-between;
+  justify-content: space-between;
+  align-content: center;
+  height: 5vh;
+  margin: 20px;
+}
+
+.sort-results-form {
+  margin: 0;
+}
+
+.sort-results {
+  margin-right: 10px;
 }
 
 .sort-select {
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 16px;
 }

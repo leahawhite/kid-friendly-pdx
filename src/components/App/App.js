@@ -2,87 +2,82 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Header from '../Header/Header';
 // import SearchLayout from '../SearchLayout/SearchLayout';
+// import PrivateRoute from '../Utils/PrivateRoute'
+// import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 import Footer from '../Footer/Footer';
+import ErrorBoundary from '../ErrorBoundary';
 import HomePage from '../../routes/HomePage/HomePage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import PlacesListPage from '../../routes/PlacesListPage/PlacesListPage';
-// import PlacePage from '../../routes/PlacePage/PlacePage';
-// import ReviewPage from '../../routes/ReviewPage/ReviewPage';
+import PlacePage from '../../routes/PlacePage/PlacePage';
+import ReviewPage from '../../routes/ReviewPage/ReviewPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
-import SearchContext from '../../contexts/SearchContext';
+import TokenService from '../../services/token-service'
 import './App.css';
 
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
+    this.state = {
       hasError: false,
-      places: [],
-      searchTerm: '',
-      category: 'all',
-      neighborhood: 'SE',
-      handleSubmit: this.handleSubmit,
-      handleSearchChange: this.handleSearchChange,
-      handleCategoryChange: this.handleCategoryChange,
-      handleNeighborhoodChange: this.handleNeighborhoodChange,
-      fireRedirect: false,
+      loggedIn: false,
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({ fireRedirect: true })
-  }  
-    
-  handleSearchChange = event => {
-    this.setState({
-      searchTerm: event.target.value
-    })
+  handleLogin = () => {
+    this.setState({ loggedIn: true })
   }
 
-  handleCategoryChange = event => {
-    this.setState({
-      category: event.target.value
-    })
+  handleLogout = () => {
+    TokenService.clearAuthToken()
+    this.setState({ loggedIn: false })
   }
-
-  handleNeighborhoodChange = event => {
-    this.setState({
-      neighborhood: event.target.value
-    })
-  }
-
+  
   render() {
-    const value = {
-      places: this.state.places,
-      searchTerm: this.state.searchTerm,
-      category: this.state.category,
-      neighborhood: this.state.neighborhood,
-      handleSubmit: this.state.handleSubmit,
-      handleSearchChange: this.state.handleSearchChange,
-      handleCategoryChange: this.state.handleCategoryChange,
-      handleNeighborhoodChange: this.state.handleNeighborhoodChange,
-      fireRedirect: this.state.fireRedirect
-    }
-
     return (
         <div className="App">
-          <Header />
-          <SearchContext.Provider value={value}>
+          <Header loggedIn={this.state.loggedIn} onLogout={this.handleLogout}/>
             <main className="App__main">
               {this.state.hasError && <p className='red'>Sorry, there was an error. Please try again.</p>}
               <Switch>
-                <Route exact path={'/'} component={HomePage} /> 
-                <Route path={'/login'} component={LoginPage} />
-                <Route path={'/signup'} component={SignupPage} />
-                <Route path={'/places'} component={PlacesListPage} /> 
-                {/* <Route path={'/places/:placeId'} component={PlacePage} /> */}
-                {/* <Route path={'/places/:placeId/reviews'} component={ReviewPage} /> */}
-                <Route component={NotFoundPage} />
+                <Route exact path={'/'} render={props =>
+                  <ErrorBoundary>
+                    <HomePage {...props}/>
+                  </ErrorBoundary>
+                }/>  
+                <Route path={'/login'} render={props =>
+                  <ErrorBoundary>
+                    <LoginPage  loggedIn={this.state.loggedIn} onLogin={this.handleLogin} {...props}/>
+                  </ErrorBoundary>
+                }/>  
+                <Route path={'/signup'} render={props =>
+                  <ErrorBoundary>
+                    <SignupPage {...props}/>
+                  </ErrorBoundary>
+                }/>  
+                <Route exact path={'/places'} render={props =>
+                  <ErrorBoundary>
+                    <PlacesListPage {...props}/>
+                  </ErrorBoundary>
+                }/>  
+                <Route exact path={'/places/:placeId'} render={props =>
+                  <ErrorBoundary>
+                    <PlacePage {...props}/>
+                  </ErrorBoundary>
+                }/>  
+                <Route path={'/places/:placeId/reviews'} render={props =>
+                  <ErrorBoundary>
+                    <ReviewPage {...props}/>
+                  </ErrorBoundary>
+                }/>  
+                <Route render={props =>
+                  <ErrorBoundary>
+                    <NotFoundPage {...props}/>
+                  </ErrorBoundary>
+                }/>  
               </Switch>
             </main>
-          </SearchContext.Provider>
           <footer className="Footer" role="contentinfo">
             <Footer />
           </footer>

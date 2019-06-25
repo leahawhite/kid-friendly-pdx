@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
-import SearchContext from '../../contexts/SearchContext';
+// import MapContainer from '../../components/MapContainer/MapContainer';
 import data from '../../data';
 import './PlacesListPage.css';
 
@@ -11,34 +10,30 @@ export default class PlacesListPage extends Component {
     super(props)
     this.state = {
       places: [],
-      users: [],
-      reviews: [],
     }
   }
-
-  static contextType = SearchContext
 
   componentDidMount() {
     // fetch will happen here
     this.setState(data);
-    }
+  }
 
   renderPlaces() {
-    const { places = [], searchTerm, category, neighborhood } = this.context
+    const { places } = this.state
+    const { searchTerm, category, neighborhood } = this.props.location.state
     console.log('places', places)
     console.log('searchTerm', searchTerm)
-    let results
-    if(searchTerm) {
-      results = places.filter(place => place.name.toLowerCase().includes(searchTerm.toLowerCase())
-      || place.descriptors.includes(searchTerm.toLowerCase()))
-    } else {
-      results = places
-    }
+    const results = places.filter(place => (place.name.toLowerCase().includes(searchTerm.toLowerCase())
+      || place.descriptors.includes(searchTerm.toLowerCase())) 
+      && (category === place.category || category === 'all') && (neighborhood === place.neighborhood || neighborhood === 'All Portland'))
     console.log('results', results)
+    
+    // how to also return the map with results array as prop?
     return (
-      results.map(place => 
-        <PlacesListItem key={place.id} place={place} />
-      )
+      results.length ?
+        results.map(place => 
+        <PlacesListItem key={place.id} place={place} /> ) 
+        : <p>Sorry, your search returned no results. Please try again.</p>
     )
   }
   
@@ -49,8 +44,6 @@ export default class PlacesListPage extends Component {
   }*/
   
   render() {
-    console.log('this.props')
-    
     return (
       <>
         <SearchBar />
@@ -66,7 +59,7 @@ export default class PlacesListPage extends Component {
                 /*value=""
                 /* onChange={e => this.handleUpdateSort(e.target.value)}*/>
                   <option value="distance">distance</option>
-                  <option value="rating">rating</option>*/
+                  <option value="rating">rating</option>
               </select>
             </form>
           </header>

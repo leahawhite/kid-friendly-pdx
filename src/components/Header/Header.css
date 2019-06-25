@@ -7,18 +7,28 @@
   background-color: #aaa;
 }
 
-h1 {
+.hidden {
+  visibility: hidden;  
+}
+
+.show {
+  display: inline;
+}
+
+.Header h1 {
   font-size: 24px;
-  padding: 10px 0 0 20px;
-  margin: 0;
+  padding: 10px 0 0 0;
 }
 
 a {
   text-decoration: none;
-  margin: 0 20px;
   cursor: pointer;
 }
 
-.login {
-  float: right;
+.Header a {
+  margin: 0 20px;
+}
+
+nav {
+  padding-top: 15px;
 }

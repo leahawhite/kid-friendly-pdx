@@ -1,0 +1,17 @@
+.map-container {
+  height: 200px;
+  width: 200px;
+  margin: 10px 20px;
+}
+
+.bg-danger,
+.bg-info {
+  margin-bottom: 5px;
+}
+
+.map {
+  height: 100%;
+  width: auto;
+  border: 1px solid black;
+  padding: 10px;
+}

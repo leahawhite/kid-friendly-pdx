@@ -1,13 +1,46 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import data from '../../data';
 import './ReviewForm.css';
 
+
 export default class ReviewForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      reviews: data.reviews,
+      fireRedirect: false,
+    }
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { place } = this.props
+    const newId = this.state.reviews.slice(-1)[0].id + 1
+    const newReview = {
+      id: newId,
+      star_rating: Number(e.target.rating.value),
+      text: e.target.text.value,
+      date_created: new Date(),
+      place_id: place.id,
+      // user_id: "2",
+    }
+    console.log('newReview', newReview)
+    
+    this.setState({
+      reviews: { ...this.state.reviews, ...newReview },
+      fireRedirect: true,
+    })
+  }
+
   render() {
+    const { place } = this.props
     return (
-      <form class="review-form">
-        <div class="select">
-          <label for="rating">Your rating: </label>
-          <select id="rating">
+      <>
+      <form className="review-form" onSubmit={this.handleSubmit}>
+        <div className="select">
+          <label htmlFor="rating">Your rating: </label>
+          <select name="rating" >
             <option value="1">1 Star</option>
             <option value="2">2 Stars</option>
             <option value="3">3 Stars</option>
@@ -15,12 +48,19 @@ export default class ReviewForm extends Component {
             <option value="5">5 Stars</option>
           </select>
         </div>
-        <div class="text">
-          <textarea placeholder="Share your experience with others."id="text"></textarea>
+        <div className="text">
+          <textarea placeholder="Share your experience with others." name="text"></textarea>
         </div>
         {/* add section for uploading images? */}
-        <button type="submit" class="review-btn">Post Review</button>
+        <button type="submit" className="review-btn">Post Review</button>
       </form>
+      {this.state.fireRedirect && (
+            <Redirect to={{
+              pathname: `/places/${place.id}`,
+              state: { place: place }}}
+            />
+      )}
+      </>
     )
   }
 }

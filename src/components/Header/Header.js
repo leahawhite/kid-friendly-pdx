@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 
 export default class Header extends Component {
-  handleLogoutClick = () => {
-    // write service for clearing auth token
-  }
-  
+
   renderLogoutLink() {
+    const { onLogout } = this.props
     return (
       <nav className="Header__nav-logged-in" role="navigation">
-        {/* Will logout go to homepage or previous page? */}
         <Link 
-          onClick={this.handleLogoutClick}
-          // or just to='/' 
-          to={this.props.history.goBack()}>
+          onClick={onLogout}
+          to='/'>
           Logout
         </Link>
       </nav>
@@ -37,15 +33,17 @@ export default class Header extends Component {
   }
   
   render() {
+    const { loggedIn } = this.props
     return (
       <header className="Header" role="banner">
-        {/* need to write function for nav h1 not showing up on HomePage */}
         <h1 className="Header__title">
-          <Link to='/'>
+          <NavLink exact to='/' activeClassName="hidden">
             Kid-Friendly PDX
-          </Link>
+          </NavLink>
         </h1>
-        {this.renderLoginLink()}
+        {loggedIn
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
       </header>    
     )
   }

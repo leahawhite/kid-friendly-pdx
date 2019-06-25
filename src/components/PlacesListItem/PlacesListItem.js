@@ -1,19 +1,46 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { StarRating } from '../StarRating/StarRating';
+import { readableReviewCount } from '../../helpers/helpers';
 import './PlacesListItem.css';
 
 export default class PlacesListItem extends Component {
+  
   render() {
     const { place } = this.props
+    const descriptorsList = place.descriptors.map((descriptor, index) =>
+      <p className="place-descriptor" key={index}>{descriptor}</p>
+    )
+    console.log(place.images[0]) 
+    
     return (
       <div className="place-item">
-          <div className="place-thumbnail">
-            <Link to='/places/{place.id}'><img alt="placeholder"></img></Link>
+          <div className="place-image-container">
+          <Link to={{
+                  pathname: `/places/${place.id}`,
+                  state: { place: place }
+                }}>
+            {place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
+            : <img className="place-image" src="https://via.placeholder.com/150" alt="placeholder"></img>}
+            
+          </Link>
           </div>
           <div className="place-info">
-            <h3 className="place-name"><Link to='/places/{place.id}'>{place.name}</Link></h3>
-            <p className="place-rating">{place.average_review_rating}</p>
-            <p className="place-tags">Descriptor tags</p>
+            <h3 className="place-name">
+              <Link to={{
+                  pathname: `/places/${place.id}`,
+                  state: { place: place }
+                }}>
+                {place.name}
+              </Link>
+            </h3>
+            <div className="place-info-reviews">
+              <div className="star-rating">
+                <StarRating rating={place.average_review_rating} />
+              </div>
+              <span>{readableReviewCount(place.number_of_reviews)}</span>
+            </div>
+            {descriptorsList}
           </div>
       </div>
     )
