@@ -10,10 +10,25 @@
 .image-slide {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .image-item {
-  object-fit: cover;
+  width: 100%;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+}
+
+.image-caption h3 {
+  padding: 0;
+  margin: 0;
 }
 
 .slide-arrow {
@@ -30,3 +45,12 @@
 .slide-arrow.left {
 	left: 1rem;
 }
+
+@media only screen and (min-width: 600px) {
+  .image-slide {
+    max-height: 500px;
+    width: 500px;
+    position: relative;
+  }
+}
+

@@ -2,7 +2,6 @@
   display: flex;
   align-content: row;
   border-top: 1px solid gray;
-  padding: 30px;
 }
 
 .place-name {
@@ -13,27 +12,31 @@
   float: left;
   width: 30%;
   height: auto;
-  margin: 10px 20px;
+  margin: 20px 10px 0 0;
 }
 
 .place-image-container a {
-  max-width: 100%;
-  max-height: 100%;
+  min-width: 100%;
+  max-height: 200px;
+  
 }
 
 .place-image {
   max-width: 100%;
   max-height: 100%;
+  text-align: left;
+  padding: 10px 0 20px 0;
 }
 
 .place-info {
   text-align: left;
-  margin: 10px 20px;
+  margin: 20px 10px;
   width: 67%;
+  padding-top: 5px;
  }
 
 .place-info h3, p {
-  margin: 5px;
+  margin: 0;
 }
 
 .place-info-reviews {
@@ -46,7 +49,6 @@
 
 .place-info-reviews span {
   opacity: 0.5;
-  margin-left: 10px;
   font-size: 14px;
 }
 

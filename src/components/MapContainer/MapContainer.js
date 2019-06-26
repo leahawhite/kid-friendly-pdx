@@ -9,7 +9,7 @@ const INITIAL_LOCATION = {
   }
 }
 
-const INITIAL_MAP_ZOOM_LEVEL = 11;
+const INITIAL_MAP_ZOOM_LEVEL = 13;
 
 export default class MapContainer extends Component {
   constructor(props) {

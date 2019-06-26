@@ -17,6 +17,9 @@ import {
   faClock,
   faDirections,
   faPhone,
+  faPen,
+  faChild,
+  faCamera,
   faGlobe,
   faConciergeBell
 } from '@fortawesome/free-solid-svg-icons'
@@ -31,6 +34,9 @@ library.add(
   faDirections,
   faClock,
   faPhone,
+  faCamera,
+  faPen,
+  faChild,
   faGlobe,
   faConciergeBell
 )

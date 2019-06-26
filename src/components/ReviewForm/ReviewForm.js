@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 import data from '../../data';
 import './ReviewForm.css';
 
@@ -33,12 +35,17 @@ export default class ReviewForm extends Component {
     })
   }
 
+  uploadPhotos = e => {
+    console.log('go to photo form')
+  }
+
   render() {
     const { place } = this.props
     return (
       <>
       <form className="review-form" onSubmit={this.handleSubmit}>
         <div className="select">
+          {/* see if i can find a good star rating tool for this */}
           <label htmlFor="rating">Your rating: </label>
           <select name="rating" >
             <option value="1">1 Star</option>
@@ -53,6 +60,10 @@ export default class ReviewForm extends Component {
         </div>
         {/* add section for uploading images? */}
         <button type="submit" className="review-btn">Post Review</button>
+        <button type="button" className="photo-upload-btn" onClick={this.uploadPhotos}>
+          <FontAwesomeIcon icon="camera" size="sm" />
+          <span>Upload a Photo</span>
+        </button>
       </form>
       {this.state.fireRedirect && (
             <Redirect to={{

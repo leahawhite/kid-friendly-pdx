@@ -44,12 +44,14 @@ export default class Carousel extends Component {
     const { users, activeIndex } = this.state
     const image = images[activeIndex]
     let username
-    if (image.userId) {
+    if (image.user_id) {
       const userId = image.user_id
+      console.log('userId', userId)
       const imageUser = users.find(user => user.id === userId)
       username = imageUser.display_name
+    } else {
+      username = 'provided by business'
     }
-    username = "photo provided by business"
     
     return (
       <div className="carousel">
@@ -70,12 +72,6 @@ export default class Carousel extends Component {
 }
 
 const ImageSlide = ({ image, username }) => {
-  /*const styles = {
-		backgroundImage: `url(${image.src})`,
-		backgroundSize: 'cover',
-		backgroundPosition: 'center'
-  };*/
-  
   return (
     <div className="image-slide">
       <img className="image-item" src={image.src} alt={image.title}></img>

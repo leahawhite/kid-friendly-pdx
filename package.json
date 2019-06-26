@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "classnames": "^2.2.6",
+    "cloudinary-react": "^1.1.1",
     "google-maps-react": "^2.0.2",
     "moment": "^2.24.0",
     "react": "^16.8.6",
@@ -16,7 +17,8 @@
     "react-geocode": "^0.1.2",
     "react-image-lightbox": "^5.1.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-star-rating-component": "^1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -15,6 +15,7 @@ export default class PlacePage extends Component {
   static defaultProps = {
     match: { params: {} },
     images: [],
+    places: []
   }
 
   constructor(props) {
@@ -30,27 +31,34 @@ export default class PlacePage extends Component {
   }
 
   renderReviews() {
-    const { reviews, users } = this.state.data
+    // cheated here with images -- something is broken in image org; couldn't map images by review
+    const { reviews, users, places } = this.state.data
     const { placeId } = this.props.match.params
-    const reviewsList = reviews.filter(review => review.place_id === placeId)
+    const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
+    const place = places.filter(place => place.id.toString() === placeId)
+    console.log('place', place)
     return (
       <ul className="places-item-reviews">
         {reviewsList.map(review => {
           const userId = review.user_id
-          const user = users.find(user => user.id.toString() === userId)
-          const username = user.display_name
+          const username = users.find(user => user.id === userId).display_name
           return (
             <li className="places-item-review" key={review.id}>
               <p className="username">{username}</p>
-              <div>
+              <div className="places-item-review-star-rating">
+                <div className="star-rating">
                 <StarRating rating={review.star_rating} />
+                </div>
                 <span>{moment(review.date_created).format('MM/DD/YYYY')}</span>
               </div>
-              <p>{review.text}</p>
-              {/* write function for image mapping here*/}
+              <p className="review-text">{review.text}</p>
+              <div className="review-image-container">
+                {review.images.map(image =>  
+                  <img className="review-image" key={image.id} src={image.src} alt={image.alt}></img>
+                )}  
+              </div>
             </li>
-          )
-        })}
+        )})}
       </ul>
     )
   }
@@ -127,39 +135,45 @@ export default class PlacePage extends Component {
           </div>   
         </section>
         <section className="place-addl-info">
+          <div className="place-map">
+            <div className="place-map-icon">
+              <FontAwesomeIcon icon="map-marker-alt" size="lg" />
+            </div>
+            <div className="place-map-content">
+              <div className="place-address">
+                <p>{place.address}</p>
+              </div>
+              <div className="place-map-container">  
+                <MapContainer name={place.name} address={place.address}/>
+              </div>
+            </div>
+          </div>
           <div className="place-hours">
             <div className="place-hours-icon">
               <FontAwesomeIcon icon="clock" size="lg" />
             </div>
             <div className="place-hours-content">
-              <h2>Hours</h2>
               {hoursArr}
-            </div>
-          </div>
-          <div className="place-map">
-            <div className="place-map-icon">
-              <FontAwesomeIcon icon="map-marker-alt" size="lg" />
-            </div>
-            <div className="place-address">
-              <p>{place.address}</p>
-            </div>
-            <div>  
-              <MapContainer name={place.name} address={place.address}/>
             </div>
           </div>
           <PlaceFeatures place={place} />
           <div className="place-reviews">
-            <h2>Reviews</h2>
-            {this.renderReviews()}
+            <h2 className="place-reviews-header">Reviews</h2>
+            <div className="place-reviews-content">
+              {this.renderReviews()}
+            </div>
           </div>
-          <button className="review-btn">
+          <div className="review-btn-container">
+            <button className="review-btn">
               <Link to={{
                 pathname: `/places/${place.id}/reviews`,
                 state: { place: place }
               }}>
-                Review this place
+                <FontAwesomeIcon icon="pen" size="sm" />
+                <span>Write a review</span>
               </Link>
             </button>
+          </div>
         </section>
       </>
     )
@@ -172,11 +186,16 @@ function PlaceFeatures({place}) {
     
   return (
     <div className="place-features">
+      <div className="place-features-icon">
+        <FontAwesomeIcon icon="child" size="lg"/>
+      </div>
+      <div className="place-features-content">
         <h2>Kid-friendly features</h2>
         <div className="features-list">
           {filteredFeatures.map((feature, index) =>
             <p className="place-feature" key={index}>{feature}</p>
           )}
+        </div>
       </div>
     </div>
   )
