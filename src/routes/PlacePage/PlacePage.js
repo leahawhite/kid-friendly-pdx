@@ -34,6 +34,7 @@ export default class PlacePage extends Component {
     // cheated here with images -- something is broken in image org; couldn't map images by review
     const { reviews, users, places } = this.state.data
     const { placeId } = this.props.match.params
+    // also filter for reviews that have text? why show reviews with just star rating? make text req?
     const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
     const place = places.filter(place => place.id.toString() === placeId)
     console.log('place', place)

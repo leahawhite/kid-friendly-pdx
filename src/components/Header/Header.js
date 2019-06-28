@@ -22,10 +22,10 @@ export default class Header extends Component {
       <nav className="Header__nav-not-logged-in" role="navigation">
         <div className="Header__nav-not-logged-in-links">
           <Link to='/login'>
-            Log in
+            LOG IN
           </Link>
           <Link to='/signup'>
-            Sign up
+            SIGN UP
           </Link>
         </div>
       </nav>
@@ -38,7 +38,7 @@ export default class Header extends Component {
       <header className="Header" role="banner">
         <h1 className="Header__title">
           <NavLink exact to='/' activeClassName="hidden">
-            Kid-Friendly PDX
+            KID-FRIENDLY PDX
           </NavLink>
         </h1>
         {loggedIn

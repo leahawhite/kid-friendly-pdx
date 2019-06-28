@@ -22,7 +22,7 @@ export default class SignupPage extends Component {
       <section className="SignupPage">
         <h2>Sign Up</h2>
         <SignupForm onSignUpSuccess={this.handleSignUpSuccess} />
-        <div className="login-reminder">Already have an account?{' '}
+        <div className="signup-reminder">Already have an account?{' '}
           <Link to='/login'>
             Log in.
           </Link>

@@ -1,10 +1,10 @@
 .login-form {
-  padding: 40px 20px;
+  padding: 20px 0;
   text-align: left;
 }
 
 .login-form input {
-  border: 1px solid #ddd;
+  border: 1px solid #aaa;
   display: block;
   font-size: 1.1em;
   margin-bottom: 10px;
@@ -14,12 +14,17 @@
   border-radius: 4px;
 }
 
+.login-form label {
+  font-size: 18px;
+}
+
 .login-btn {
   order: 1px solid #aaa;
   background-color: #eee;
-  font-size: 1.1em;
+  font-size: 18px;
   border-radius: 4px;
   padding: 8px 12px;
+  margin-top: 5px;
 }
 
 h2 {

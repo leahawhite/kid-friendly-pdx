@@ -12,6 +12,7 @@ import SignupPage from '../../routes/SignupPage/SignupPage';
 import PlacesListPage from '../../routes/PlacesListPage/PlacesListPage';
 import PlacePage from '../../routes/PlacePage/PlacePage';
 import ReviewPage from '../../routes/ReviewPage/ReviewPage';
+import PhotoUploadPage from '../../routes/PhotoUploadPage/PhotoUploadPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import TokenService from '../../services/token-service'
 import './App.css';
@@ -70,7 +71,12 @@ export default class App extends Component {
                   <ErrorBoundary>
                     <ReviewPage {...props}/>
                   </ErrorBoundary>
-                }/>  
+                }/>
+                <Route path={'/image-upload'} render={props =>
+                  <ErrorBoundary>
+                    <PhotoUploadPage {...props}/>
+                  </ErrorBoundary>
+                }/>    
                 <Route render={props =>
                   <ErrorBoundary>
                     <NotFoundPage {...props}/>

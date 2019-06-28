@@ -1,10 +1,10 @@
 .signup-form {
-  padding: 40px 20px;
+  padding: 20px 0;
   text-align: left;
 }
 
 .signup-form input {
-  border: 1px solid #ddd;
+  border: 1px solid #aaa;
   display: block;
   font-size: 1.1em;
   margin-bottom: 10px;
@@ -14,20 +14,22 @@
   border-radius: 4px;
 }
 
+.signup__hint {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.password input {
+  margin-bottom: 5px;
+}
+
 .signup-btn {
-  order: 1px solid #aaa;
+  border: 1px solid #aaa;
   background-color: #eee;
   font-size: 1.1em;
   border-radius: 4px;
   padding: 8px 12px;
-}
-
-input:invalid {
-  box-shadow: 0 0 5px 1px red;
-}
-
-input:focus:invalid {
-  box-shadow: none;
+  margin-top: 10px;
 }
 
 input[defaultValue] {

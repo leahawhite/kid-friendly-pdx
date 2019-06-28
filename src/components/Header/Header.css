@@ -4,7 +4,8 @@
   padding-top: 5px;
   height: 10vh;
   margin: 0;
-  background-color: #aaa;
+  background-color: #00b8e6;
+  font-family: 'Fredoka One', cursive;
 }
 
 .hidden {
@@ -16,7 +17,7 @@
 }
 
 .Header h1 {
-  font-size: 24px;
+  font-size: 28px;
   padding: 10px 0 0 0;
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
-// import MapContainer from '../../components/MapContainer/MapContainer';
+import MapContainer2 from '../../components/MapContainer2';
 import data from '../../data';
 import './PlacesListPage.css';
 
@@ -36,6 +36,22 @@ export default class PlacesListPage extends Component {
         : <p>Sorry, your search returned no results. Please try again.</p>
     )
   }
+
+  renderMap() {
+    const { places } = this.state
+    const { searchTerm, category, neighborhood } = this.props.location.state
+    const results = places.filter(place => (place.name.toLowerCase().includes(searchTerm.toLowerCase())
+      || place.descriptors.includes(searchTerm.toLowerCase())) 
+      && (category === place.category || category === 'all') && (neighborhood === place.neighborhood || neighborhood === 'All Portland'))
+    console.log('map', results)  
+    return (
+      results.length ?
+      <section className="places-map">
+        {/* <MapContainer2 places={results}/> */}
+      </section> 
+        : null
+    )
+  }
   
   /*handleUpdateSort(sort) {
       this.setState({
@@ -44,6 +60,7 @@ export default class PlacesListPage extends Component {
   }*/
   
   render() {
+   
     return (
       <>
         <SearchBar />
@@ -64,6 +81,7 @@ export default class PlacesListPage extends Component {
             </form>
           </header>
           {this.renderPlaces()}
+          {this.renderMap()}
         </section>
       </>
     )

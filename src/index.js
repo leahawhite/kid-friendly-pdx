@@ -19,9 +19,12 @@ import {
   faPhone,
   faPen,
   faChild,
+  faCircle,
   faCamera,
   faGlobe,
-  faConciergeBell
+  faConciergeBell,
+  faBan,
+  faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -35,10 +38,13 @@ library.add(
   faClock,
   faPhone,
   faCamera,
+  faCircle,
   faPen,
   faChild,
   faGlobe,
-  faConciergeBell
+  faConciergeBell,
+  faBan,
+  faPlusCircle
 )
 
 ReactDOM.render(

@@ -57,10 +57,9 @@ class SearchBar extends Component {
               <FontAwesomeIcon icon="search"/>
             </button>
             <fieldset className="filters">
-              <div className="filter-left">
-                <label className="form-label" htmlFor="category">Category</label>
-                <div className="select-wrapper">
-                  <select 
+              <div className="filter-category">
+                <label className="form-label" htmlFor="category">Category:</label>
+                <select 
                     className="form-select" 
                     type="text" 
                     id="category"
@@ -74,9 +73,8 @@ class SearchBar extends Component {
                       <option value="indoor play">indoor play</option>
                   </select>
                 </div>
-              </div>
-              <div className="filter-right">
-                <label className="form-label" htmlFor="neighborhood">Neighborhood</label>
+              <div className="filter-neighborhood">
+                <label className="form-label" htmlFor="neighborhood">Neighborhood:</label>
                 <select 
                   className="form-select" 
                   type="text" 
