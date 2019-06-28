@@ -28,7 +28,6 @@ export default class PlacesListPage extends Component {
       && (category === place.category || category === 'all') && (neighborhood === place.neighborhood || neighborhood === 'All Portland'))
     console.log('results', results)
     
-    // how to also return the map with results array as prop?
     return (
       results.length ?
         results.map(place => 
@@ -38,6 +37,7 @@ export default class PlacesListPage extends Component {
   }
 
   renderMap() {
+    // repeats the same stuff as renderPlaces -- combine? But map is result array and place is result list.
     const { places } = this.state
     const { searchTerm, category, neighborhood } = this.props.location.state
     const results = places.filter(place => (place.name.toLowerCase().includes(searchTerm.toLowerCase())

@@ -7,7 +7,6 @@
 
 .places-header {
   display: flex;
-  background-color: white;
   justify-content: space-between;
   align-content: center;
   height: 5vh;
@@ -20,11 +19,13 @@
 
 .sort-results {
   margin-right: 10px;
+  font-size: 18px;
 }
 
 .sort-select {
   padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #00b8e6;
+  border-radius: 8px;
   font-size: 16px;
+  font-family: 'Source Sans Pro';
 }

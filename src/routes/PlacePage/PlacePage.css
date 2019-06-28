@@ -1,11 +1,11 @@
-.image-container {
+.place-images-container {
   text-align: center;
-  margin: 20px;
+  margin: 10px;
 }
 
 .place-header-basicinfo {
   text-align: left;
-  margin: 20px;
+  margin: 10px;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
 }
@@ -28,14 +28,14 @@
   flex-direction: row;
   justify-content: space-around;
   border-bottom: 1px solid gray;
-  margin: 0 20px;
+  margin: 0 10px;
   padding-bottom: 20px;
 }
 
 .place-hours {
   display: flex;
   justify-content: left;
-  margin: 20px;
+  margin: 10px;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
 }
@@ -65,7 +65,7 @@
 
 .place-map {
   display: flex;
-  margin: 20px;
+  margin: 10px;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
 }
@@ -92,7 +92,7 @@
 
 .place-features {
   display: flex;
-  margin: 20px 20px 0 20px;
+  margin: 20px 10px 0 10px;
   border-bottom: 1px solid gray;
   padding-bottom: 20px;
 }
@@ -121,7 +121,9 @@
 .features-list > p {
   margin: 5px 15px 5px 0;
   padding: 5px 8px; 
-  border: 1px solid gray;
+  border: 1px solid  #00b8e6;
+  background-color:  #00b8e6;
+  color: white;
   border-radius: 15px;
 }
 
@@ -132,7 +134,7 @@
 
 .place-reviews {
   text-align: left;
-  margin: 0 20px 0 20px;
+  margin: 0 10px 0 10px;
 }
 
 .place-reviews-header {
@@ -180,22 +182,33 @@
   margin: 0 5px 0 0;
 }
 
-.review-btn-container {
+.write-review-btn-container {
   text-align: left;
-  margin: 20px;
+  margin: 10px;
   padding-bottom: 15px;
 }
 
-.review-btn {
-  padding: 5px;
+.write-review-btn {
+  border: 1px solid #00b8e6;
+  background-color:  #00b8e6;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px;
   border: 1px solid #ddd;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px 12px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  margin: 0 auto;
 }
 
-.review-btn span {
+.write-review-btn span {
   margin-left: 10px;
+  color: white;
+}
+
+.write-review-btn svg {
+  color: white;
 }

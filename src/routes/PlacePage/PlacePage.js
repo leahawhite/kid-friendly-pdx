@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import SearchContext from '../../contexts/SearchContext'
 import MapContainer from '../../components/MapContainer/MapContainer';
 import Carousel from '../../components/Carousel/Carousel';
 import CarouselLB from '../../components/CarouselLB/CarouselLB';
@@ -12,6 +13,8 @@ import data from '../../data';
 import './PlacePage.css';
 
 export default class PlacePage extends Component {
+  static contextType = SearchContext
+
   static defaultProps = {
     match: { params: {} },
     images: [],
@@ -90,9 +93,9 @@ export default class PlacePage extends Component {
     return (
       <>
         <SearchBar />
-        <div className="image-container">
+        <section className="place-images-container">
           {placeImages}
-        </div>
+        </section>
         <section className="place-header">
           <div className="place-header-basicinfo">
             <h2 className="place-header-name">{place.name}</h2>
@@ -164,8 +167,8 @@ export default class PlacePage extends Component {
               {this.renderReviews()}
             </div>
           </div>
-          <div className="review-btn-container">
-            <button className="review-btn">
+          <div className="write-review-btn-container">
+            <button className="write-review-btn">
               <Link to={{
                 pathname: `/places/${place.id}/reviews`,
                 state: { place: place }

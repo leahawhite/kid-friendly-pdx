@@ -8,7 +8,7 @@ export default class ReviewPage extends Component {
     const { place } = this.props.location.state
     return (
       <>
-        <h2 className="form-header">Write a Review of{' '}
+        <h2 className="review-form-header">Write a Review of{' '}
           <Link to={{
                     pathname: `/places/${place.id}`,
                     state: { place: place }

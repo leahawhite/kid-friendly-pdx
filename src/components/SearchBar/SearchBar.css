@@ -17,11 +17,30 @@
   margin-bottom: 10px;
   padding: 5px 8px;
   text-align: left;
-  width: 93%;
+  width: 90%;
   border: 3px solid #00b8e6;
   border-radius: 8px 0 0 8px;
   font-weight: bold;
   font-family: 'Source Sans Pro';
+}
+
+.search-btn {
+  font-weight: bold;
+  font-family: "Source Sans Pro";
+  color: white;
+  float: left;
+  width: 10%;
+  padding: 5px;
+  background-color: #00b8e6;
+  border: 3px solid #00b8e6;
+  border-left: none;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .filters {
@@ -36,7 +55,6 @@
   border: 3px solid #00b8e6;
   background-color: white;
   font-size: 16px;
-  margin-bottom: 10px;
 }
 
 .form-label {
@@ -51,6 +69,10 @@
   border-left: none;
   color: #444;
   font-family: 'Source Sans Pro';
+}
+
+.filter-category {
+  margin-bottom: 10px;
 }
 
 .filter-category label, .filter-neighborhood label {
@@ -86,23 +108,6 @@ input, option, button {
   font-size: 16px;
 }
 
-.search-btn {
-  font-weight: bold;
-  font-family: "Source Sans Pro";
-  float: left;
-  width: 7%;
-  padding: 5px;
-  background-color: white;
-  border: 3px solid #00b8e6;
-  border-left: none;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-}
 
 @media only screen and (min-width: 950px) {
   .searchbar {

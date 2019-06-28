@@ -14,6 +14,7 @@ import PlacePage from '../../routes/PlacePage/PlacePage';
 import ReviewPage from '../../routes/ReviewPage/ReviewPage';
 import PhotoUploadPage from '../../routes/PhotoUploadPage/PhotoUploadPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
+import SearchContext from '../../contexts/SearchContext';
 import TokenService from '../../services/token-service'
 import './App.css';
 
@@ -56,7 +57,8 @@ export default class App extends Component {
                   <ErrorBoundary>
                     <SignupPage {...props}/>
                   </ErrorBoundary>
-                }/>  
+                }/>
+                <SearchContext.Provider>  
                 <Route exact path={'/places'} render={props =>
                   <ErrorBoundary>
                     <PlacesListPage {...props}/>
@@ -67,6 +69,7 @@ export default class App extends Component {
                     <PlacePage {...props}/>
                   </ErrorBoundary>
                 }/>  
+                </SearchContext.Provider>
                 <Route path={'/places/:placeId/reviews'} render={props =>
                   <ErrorBoundary>
                     <ReviewPage {...props}/>

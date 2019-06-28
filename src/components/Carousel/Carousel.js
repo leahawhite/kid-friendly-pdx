@@ -76,8 +76,7 @@ const ImageSlide = ({ image, username }) => {
     <div className="image-slide">
       <img className="image-item" src={image.src} alt={image.title}></img>
       <div className="image-caption">
-        <h3>{image.title}</h3>
-        <p>{'- '}{username}</p>
+        <h3>{image.title}{'- '}{username}</h3>
       </div>
     </div>
   )

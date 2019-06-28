@@ -1,23 +1,11 @@
-.form-header {
-  text-align: left;
-  font-size: 22px;
-  font-weight: bold;
-  margin: 40px 20px 0 20px;
-}
-
 .review-form {
-  padding: 20px;
-  text-align: left;
-  margin-bottom: 20px;
+  padding: 0 20px;
+  text-align: center;
+  margin: 0 auto 20px auto;
 }
 
 .star-rating-select label {
   font-size: 20px;
-}
-
-.dv-star-rating-input i {
-  width: 2em;
-  height: 2em;
 }
 
 .review-form textarea {
@@ -30,6 +18,10 @@
   width: 100%;
   min-height: 258px;
   border-radius: 4px;
+}
+
+.error {
+  color: red;
 }
 
 .review-btn, .photo-upload-btn {
@@ -48,7 +40,24 @@
   margin-left: 10px;
 }
 
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 h2 {
   font-size: 20px;
   margin: 0;
+}
+
+@media only screen and (min-width: 950px) {
+  .review-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .searchbar {
+    width: 70%;
+  }
 }

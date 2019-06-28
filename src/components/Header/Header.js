@@ -24,7 +24,7 @@ export default class Header extends Component {
           <Link to='/login'>
             LOG IN
           </Link>
-          <Link to='/signup'>
+          <Link className="navlink-right" to='/signup'>
             SIGN UP
           </Link>
         </div>
