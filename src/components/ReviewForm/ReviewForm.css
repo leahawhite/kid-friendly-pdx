@@ -4,6 +4,10 @@
   margin: 0 auto 20px auto;
 }
 
+.star-rating-select {
+  max-height: 50px !important;
+}
+
 .star-rating-select label {
   font-size: 20px;
 }
@@ -36,6 +40,10 @@
   width: 200px;
 }
 
+.photo-upload-btn {
+  margin: 10px 0 0 0;
+}
+
 .photo-upload-btn span {
   margin-left: 10px;
 }
@@ -56,8 +64,3 @@ h2 {
   }
 }
 
-@media only screen and (min-width: 1200px) {
-  .searchbar {
-    width: 70%;
-  }
-}

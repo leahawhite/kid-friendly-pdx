@@ -18,16 +18,25 @@ export default class LightboxExample extends Component {
       isOpen: false,
     };
   }
+
+  handleImageClick(index, event) {
+    this.setState({ photoIndex: index })
+    this.setState({ isOpen: true })
+  }
  
   render() {
     const { photoIndex, isOpen } = this.state;
     const { images } = this.props;
+    const imageList = images.slice(0, 3).map((image, index) => (
+      <div className="image-item" key={index} onClick={this.handleImageClick.bind(this, index)}>
+        <img src={image.src} alt={image.title}/>
+        <div className="overlay">{image.title}</div>
+      </div>
+    ), this)
     
     return (
-      <div>
-        <button type="button" onClick={() => this.setState({ isOpen: true })}>
-          Open Lightbox
-        </button>
+      <div className="image-row">
+        {imageList}
  
         {isOpen && (
           <Lightbox

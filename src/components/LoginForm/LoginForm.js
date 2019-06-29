@@ -13,7 +13,7 @@ export default class LoginForm extends Component {
       error: null,
     }
   }
-  
+
   handleSubmit = event => {
     event.preventDefault()
     this.setState({ error: null })

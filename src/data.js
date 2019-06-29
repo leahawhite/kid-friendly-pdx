@@ -7,16 +7,7 @@ const data = {
       neighborhood: "SE",
       phone: "503-232-3004",
       website: "http://atlaspizzapdx.com",
-      hours: {
-        "Monday": "12:00 pm - 11:00 pm",
-        "Tuesday": "12:00 pm - 11:00 pm",
-        "Wednesday": "12:00 pm - 11:00 pm",
-        "Thursday": "12:00 pm - 11:00 pm",
-        "Friday": "12:00 pm - 12:00 am",
-        "Saturday": "12:00 pm - 12:00 am",
-        "Sunday": "12:00 pm - 11:00 pm",
-      },
-      hours2: [
+      hours: [
         {
           "dayOfWeek": "Monday",
           "opens": "12:00 pm",
@@ -87,6 +78,22 @@ const data = {
           user_id: 1,
           review_id: 2,
         },
+        {
+          id: 3,
+          src: 'https://lh3.googleusercontent.com/2-dLhEkgnU4-n62Nq4X1X2u5FjGRp5Hb5Wkwq1m1cuHbAqdJmrhih2MKdggGIncaWTMf3STdOGZgOMwaYa3nx1k6j2dA6Fs6kyys-i1yW2kw1jxG-Q9EmijXM0EosofSIpsTyoAdJns=w2400',
+          title: 'Fresh loaf!',
+          place_id: 2,
+          user_id: 3,
+          review_id: 3,
+        },
+        {
+          id: 4,
+          src: 'https://lh3.googleusercontent.com/HDU-n0GE-3Glgn8o1WEDaRsUzhuA5qvLqoZjZzQCx1LwtOucN9zmWZ3YX_Lnce4_kp-sBcB8-6wXjiq9NjacD27tysnJt6eITsmlWGHj1WIRiCpLIzme95n-vK3ydgNBizXtHXTrkMY=w2400',
+          title: 'A box of assorted pastries',
+          place_id: 2,
+          user_id: 3,
+          review_id: 3,
+        },
       ],
       number_of_reviews: 2,
       average_review_rating: 4.5,
@@ -98,16 +105,7 @@ const data = {
       neighborhood: "SE",
       phone: "503-953-1250",
       website: "https://www.grandcentralbakery.com/find-us/portland/woodstock/",
-      hours: {
-        "Monday": "7:00 am - 6:00 pm",
-        "Tuesday": "7:00 am - 6:00 pm",
-        "Wednesday": "7:00 am - 6:00 pm",
-        "Thursday": "7:00 am - 6:00 pm",
-        "Friday": "7:00 am - 6:00 pm",
-        "Saturday": "7:00 am - 6:00 pm",
-        "Sunday": "7:00 am - 6:00 pm",
-      },
-      hours2: [
+      hours: [
         {
           "dayOfWeek": "Monday",
           "opens": "7:00 am",
@@ -189,16 +187,7 @@ const data = {
       neighborhood: "SE",
       phone: "503-232-4677",
       website: "https://hopworksbeer.com/eat/powell/",
-      hours: {
-        "Monday": "11:00 am - 11:00 pm",
-        "Tuesday": "11:00 am - 11:00 pm",
-        "Wednesday": "11:00 am - 11:00 pm",
-        "Thursday": "11:00 am - 11:00 pm",
-        "Friday": "11:00 am - 12:00 am",
-        "Saturday": "11:00 am - 12:00 am",
-        "Sunday": "11:00 am - 11:00 pm",
-      },
-      hours2: [
+      hours: [
         {
           "dayOfWeek": "Monday",
           "opens": "11:00 am",

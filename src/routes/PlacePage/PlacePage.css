@@ -1,11 +1,12 @@
 .place-images-container {
-  text-align: center;
-  margin: 10px;
+  height: 100%;
+  width: 100%;
+  /* margin: 10px auto; */
 }
 
 .place-header-basicinfo {
   text-align: left;
-  margin: 10px;
+  margin: 20px 10px;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
 }
@@ -28,29 +29,31 @@
   flex-direction: row;
   justify-content: space-around;
   border-bottom: 1px solid gray;
-  margin: 0 10px;
+  margin: 20px 10px;
   padding-bottom: 20px;
 }
 
 .place-hours {
   display: flex;
   justify-content: left;
-  margin: 10px;
+  margin: 20px 10px 20px 0;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
 }
 
 .place-hours-icon {
   display: flex;
-  width: 15%;
-  justify-content: left;
+  width: 10%;
+  justify-content: center;
   align-self: center;
   margin-left: 5%;
+  margin-right: 5%;
+  padding: 0;
 } 
 
 .place-hours-content {
   text-align: left;
-  width: 84%;
+  width: 89%;
 }
 
 .place-hours-table {
@@ -65,24 +68,25 @@
 
 .place-map {
   display: flex;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
 }
 
 .place-map-icon {
   display: flex;
-  width: 15%;
-  justify-content: left;
+  width: 10%;
+  justify-content: center;
   align-self: center;
   margin-left: 5%;
+  margin-right: 5%;
 }
 
 .place-map-content {
   display: flex;
   justify-content: space-between;
   text-align: left;
-  width: 84%;
+  width: 89%;
 }
 
 .place-address {
@@ -92,21 +96,22 @@
 
 .place-features {
   display: flex;
-  margin: 20px 10px 0 10px;
+  margin: 20px 10px 0 0;
   border-bottom: 1px solid gray;
   padding-bottom: 20px;
 }
 
 .place-features-icon {
   display: flex;
-  width: 15%;
-  justify-content: left;
+  width: 10%;
+  justify-content: center;
   align-self: center;
   margin-left: 5%;
+  margin-right: 5%;
 }
 
 .place-features-content {
-  width: 84%;
+  width: 89%;
   text-align: left;
 }
 
@@ -185,7 +190,7 @@
 .write-review-btn-container {
   text-align: left;
   margin: 10px;
-  padding-bottom: 15px;
+  padding: 15px 0;
 }
 
 .write-review-btn {
@@ -211,4 +216,11 @@
 
 .write-review-btn svg {
   color: white;
+}
+
+@media only screen and (min-width: 950px) {
+  .place-page {
+    width: 70%;
+    margin: 0 auto;
+  }
 }
