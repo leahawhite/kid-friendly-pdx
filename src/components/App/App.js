@@ -47,7 +47,7 @@ export default class App extends Component {
                   <HomePage {...props}/>
                 </ErrorBoundary>
               }/>  
-              <Route path={'/login'} render={props =>
+              <PublicOnlyRoute path={'/login'} render={props =>
                 <ErrorBoundary>
                   <LoginPage  loggedIn={this.state.loggedIn} onLogin={this.handleLogin} {...props}/>
                 </ErrorBoundary>
