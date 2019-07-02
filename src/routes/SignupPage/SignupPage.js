@@ -20,12 +20,14 @@ export default class SignupPage extends Component {
   render() {
     return (
       <section className="SignupPage">
-        <h2>Sign Up</h2>
-        <SignupForm onSignUpSuccess={this.handleSignUpSuccess} />
-        <div className="signup-reminder">Already have an account?{' '}
-          <Link to='/login'>
-            Log in.
-          </Link>
+        <div className="SignupPage-container">
+          <h2>Sign Up</h2>
+          <SignupForm onSignUpSuccess={this.handleSignUpSuccess} />
+          <div className="signup-reminder">Already have an account?{' '}
+            <Link to='/login'>
+              Log in.
+            </Link>
+          </div>
         </div>
       </section>
     )

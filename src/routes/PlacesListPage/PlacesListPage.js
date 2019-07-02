@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
-import MapContainer2 from '../../components/MapContainer2';
+import Map from '../../components/MapContainer/Map';
 import data from '../../data';
 import './PlacesListPage.css';
 
@@ -47,7 +47,7 @@ export default class PlacesListPage extends Component {
     return (
       results.length ?
       <section className="places-map">
-        {/* <MapContainer2 places={results}/> */}
+        <Map places={results}/>
       </section> 
         : null
     )

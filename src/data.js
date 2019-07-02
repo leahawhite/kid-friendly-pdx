@@ -3,7 +3,15 @@ const data = {
     {
       id: 1,
       name: "Atlas Pizza",
-      address: "6529 SE Foster Rd, Portland, OR 97206",
+      address1: "6529 SE Foster Rd",
+      address2: "",
+      city: "Portland",
+      state: "OR",
+      zipcode: "97206",
+      coordinates: {
+        lat: 45.489200,
+        lng: -122.595070
+      },
       neighborhood: "SE",
       phone: "503-232-3004",
       website: "http://atlaspizzapdx.com",
@@ -101,7 +109,15 @@ const data = {
     {
       id: 2,
       name: "Grand Central Bakery",
-      address: "4412 SE Woodstock Blvd, Portland, OR 97206",
+      address1: "4412 SE Woodstock Blvd",
+      address2: "",
+      city: "Portland",
+      state: "OR",
+      zipcode: "97206",
+      coordinates: {
+        lat: 45.479040,
+        lng: -122.616120
+      },
       neighborhood: "SE",
       phone: "503-953-1250",
       website: "https://www.grandcentralbakery.com/find-us/portland/woodstock/",
@@ -183,7 +199,15 @@ const data = {
     {
       id: 3,
       name: "Hopworks Urban Brewery: Powell",
-      address: "2944 SE Powell Blvd, Portland, OR 97202",
+      address1: "2944 SE Powell Blvd",
+      address2: "",
+      city: "Portland",
+      state: "OR",
+      zipcode: "97206",
+      coordinates: {
+        lat: 45.497010,
+        lng: -122.635210
+      },
       neighborhood: "SE",
       phone: "503-232-4677",
       website: "https://hopworksbeer.com/eat/powell/",

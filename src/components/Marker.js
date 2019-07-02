@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { camelize } from './helpers'
 
 export class Marker extends React.Component {
   componentDidUpdate(prevProps) {
@@ -27,13 +28,13 @@ export class Marker extends React.Component {
     evtNames.forEach(e => {
       this.marker.addListener(e, this.handleEvent(e));
     })
+  }
 
-    handleEvent(evtName) {
-      return (e) => {
-        const evtName = `on${camelize(evt)}`
-        if (this.props[evtName]) {
-          this.props[evtName](this.props, this.marker, e);
-        }
+  handleEvent(evtName) {
+    return (e) => {
+      const evtName = `on${camelize(evt)}`
+      if (this.props[evtName]) {
+        this.props[evtName](this.props, this.marker, e);
       }
     }
   }

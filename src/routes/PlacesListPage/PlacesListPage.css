@@ -30,6 +30,11 @@
   font-family: 'Source Sans Pro';
 }
 
+.places-map {
+  height: 400px;
+  width: auto;
+}
+
 @media only screen and (min-width: 950px) {
   .places-list {
     width: 70%;

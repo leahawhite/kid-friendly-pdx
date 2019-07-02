@@ -21,14 +21,16 @@ export default class LoginPage extends Component {
     const { onLogin } = this.props
     return (
       <section className="LoginPage">
-        <h2>Log In</h2>
-        <LoginForm
-          onLogin={onLogin}
-          onLoginSuccess={this.handleLoginSuccess} />
-        <div className="login-reminder">New around here?{' '}
-          <Link to='/signup'>
-            Sign up.
-          </Link>
+        <div className="LoginPage-container">
+          <h2>Log In</h2>
+          <LoginForm
+            onLogin={onLogin}
+            onLoginSuccess={this.handleLoginSuccess} />
+          <div className="login-reminder">New around here?{' '}
+            <Link to='/signup'>
+              Sign up.
+            </Link>
+          </div>
         </div>
       </section>
     )

@@ -16,11 +16,13 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-geocode": "^0.1.2",
+    "react-google-maps": "^9.4.5",
     "react-image-lightbox": "^5.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-slick": "^0.24.0",
     "react-star-rating-component": "^1.4.1",
+    "recompose": "^0.30.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {

@@ -1,15 +1,6 @@
 import React from 'react';
 // import config from '../config';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import { GeocodeAddress } from './Geocode'
-
-const INITIAL_LOCATION = {
-  address: 'Portland, Oregon',
-  position: {
-    latitude: 45.5155, 
-    longitude: -122.6793
-  }
-}
 
 export class MapContainer2 extends React.Component {
   constructor(props) {
@@ -18,38 +9,14 @@ export class MapContainer2 extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      isGeocodingError: false,
       markers: []
     }
   }
 
   componentDidMount() {
-    this.geocoder = new window.google.maps.Geocoder();
-    this.geocodeAddress()
+ 
   }
 
-  geocodeAddress() {
-    const locationsArr = []
-    const { places } = this.props
-    places.map((place, i) => {
-      this.geocoder.geocode({ 'address': place.address }, function handleResults(results, status) {
-        if (status === window.google.maps.GeocoderStatus.OK) {
-          this.setState({
-            isGeocodingError: false
-          })
-          locationsArr.push({
-            position: {
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-            },
-            key: i,
-            defaultAnimation: 2,
-          })
-        }
-      }.bind(this))
-    })
-  }
-  
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
@@ -75,19 +42,21 @@ export class MapContainer2 extends React.Component {
   }
 
   render() {
+    if (!this.props.google) {
+      return <div>Loading...</div>
+    }
+    const style = {
+      width: '400px',
+      height: '400px'
+    }
+    const pos = {lat: 37.759703, lng: -122.428093}
     const { places } = this.props
     console.log(places)
     
-    
-    var points = GeocodeAddress(places.a)
-    var bounds = new this.props.google.maps.LatLngBounds();
-    for (var i = 0; i < points.length; i++) {
-      bounds.extend(points[i]);
-    }
     return (
       <div 
         className="map-container"
-        style={{ position: "relative", height: "400px", width: "400px" }}
+        style={style}
       >
         <Map
           google={this.props.google}
@@ -96,24 +65,30 @@ export class MapContainer2 extends React.Component {
           initialCenter={{
             lat: 45.5155, lng: -122.6793
           }}
-          onClick={this.onMapClicked}
-          bounds={bounds}
+          onClick={this.onMapClick}
           draggable={true}
         >
-          {places}
-          <Marker 
-            onClick={this.onMarkerClick}
-            name={'Current location'} 
-          />
-          <InfoWindow 
-            onClose={this.onInfoWindowClose}
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-          >
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-          </InfoWindow>
+          {places.map((place, index) => (
+          <>
+            <Marker 
+              key={index}
+              onClick={this.onMarkerClick}
+              name={place.name}
+              position={place.coordinates} 
+            />
+            <InfoWindow 
+              key={index}
+              onClose={this.onInfoWindowClose}
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+            >
+              <div className="infowindow">
+                <h1>{this.state.selectedPlace.name}</h1>
+                <h2>{place.name}</h2>
+              </div>
+            </InfoWindow>
+          </>
+          ))}
         </Map>
       </div>
     )

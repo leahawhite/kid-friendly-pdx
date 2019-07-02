@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { camelize } from './helpers'
 
 export class Map extends React.Component {
@@ -13,6 +14,7 @@ export class Map extends React.Component {
       }
     }
   }
+  
 
   componentDidMount() {
     if (this.props.centerAroundCurrentLocation) {
@@ -57,7 +59,7 @@ export class Map extends React.Component {
         zoom: zoom
       })
       this.map = new maps.Map(node, mapConfig);
-
+    
       const evtNames = ['ready', 'click', 'dragend'];
       evtNames.forEach(e => {
         this.map.addListener(e, this.handleEvent(e));
@@ -65,8 +67,8 @@ export class Map extends React.Component {
 
       maps.event.trigger(this.map, 'ready');
       let centerChangedTimeout;
-    }
   }
+  
 
   handleEvent(evtName) {
     let timeout;
@@ -93,8 +95,8 @@ export class Map extends React.Component {
     const maps = google.maps;
 
     if (map) {
-      let center = new maps.LatLng(curr.lat, curr.lng)
-      map.panTo(center)
+      let center = new maps.LatLng(curr.lat, curr.lng);
+      map.panTo(center);
     }
   }
 
@@ -138,6 +140,7 @@ Map.defaultProps = {
     lat: 37.774929,
     lng: -122.419416
   },
+  centerAroundCurrentLocation: false,
   onMove: function() {} // default prop
   
 }

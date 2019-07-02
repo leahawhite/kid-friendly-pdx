@@ -21,31 +21,31 @@ export default class MapContainer extends Component {
     }
     this.state = {
      address: this.props.address,
-     isGeocodingError: false,
+    //  isGeocodingError: false,
     }
   }
 
   componentDidMount() {
     // get map from google
     this.map = new window.google.maps.Map(this.mapElement, {
-      zoom: INITIAL_MAP_ZOOM_LEVEL,
+      zoom: 13,
       center: {
-        lat: INITIAL_LOCATION.position.latitude, 
-        lng: INITIAL_LOCATION.position.longitude
+        lat: this.props.coordinates.lat, 
+        lng: this.props.coordinates.lng
       }
     });
     this.marker = new window.google.maps.Marker({
       map: this.map,
       position: {
-        lat: INITIAL_LOCATION.position.latitude, 
-        lng: INITIAL_LOCATION.position.longitude 
+        lat: this.props.coordinates.lat, 
+        lng: this.props.coordinates.lng
       }
     });
-    this.geocoder = new window.google.maps.Geocoder();
-    this.geocodeAddress()
+    // this.geocoder = new window.google.maps.Geocoder();
+    // this.geocodeAddress()
   }
   
-  geocodeAddress() {
+  /*geocodeAddress() {
     this.geocoder.geocode({ 'address': this.props.address }, function handleResults(results, status) {
       if (status === window.google.maps.GeocoderStatus.OK) {
         this.setState({
@@ -69,7 +69,7 @@ export default class MapContainer extends Component {
         });
       }
     }.bind(this))
-  }
+  }*/
 
   render() {
     return (

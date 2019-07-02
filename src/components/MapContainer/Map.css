@@ -1,0 +1,28 @@
+.infowindow {
+  font-size: 14px;
+  text-align: left;
+  overflow: hidden;
+  width: 250px;
+}
+
+.infowindow-content {
+  text-align: left;
+}
+
+.infowindow place-name {
+  font-size: 16px;
+}
+
+.infowindow-image-container {
+  height: 50px;
+  width: 50px; 
+  float: right;
+}
+
+.infowindow-place-image {
+  height: 100%;
+}
+
+.infowindow-address {
+  font-size: 14px;
+}

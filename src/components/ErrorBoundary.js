@@ -9,11 +9,13 @@ export default class ErrorBoundary extends Component {
   }
 
   static getDerivedStateFromError(error) {
+    console.log(error)
     return { hasError: true }
   }
 
   render() {
     if (this.state.hasError) {
+      
       return (
         <h2>Uh-oh, something went wrong.</h2> 
       )

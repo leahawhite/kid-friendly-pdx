@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import MapContainer from '../../components/MapContainer/MapContainer';
-// import CarouselTrial from '../../components/Carousel/CarouselTrial';
 import CarouselLB from '../../components/CarouselLB/CarouselLB';
-// import CarouselMulti from '../../components/Carousel/CarouselMulti';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StarRating } from '../../components/StarRating/StarRating';
 import { readableReviewCount } from '../../helpers/helpers';
@@ -144,10 +142,10 @@ export default class PlacePage extends Component {
               </div>
               <div className="place-map-content">
                 <div className="place-address">
-                  <p>{place.address}</p>
+                  <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
                 </div>
                 <div className="place-map-container">  
-                  <MapContainer name={place.name} address={place.address}/>
+                  <MapContainer name={place.name} coordinates={place.coordinates}/>
                 </div>
               </div>
             </div>

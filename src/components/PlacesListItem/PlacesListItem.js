@@ -21,8 +21,7 @@ export default class PlacesListItem extends Component {
                   state: { place: place }
                 }}>
             {place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
-            : <img className="place-image" src="https://via.placeholder.com/150" alt="placeholder"></img>}
-            
+            : null}
           </Link>
           </div>
           <div className="place-info">
