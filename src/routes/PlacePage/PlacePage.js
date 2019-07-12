@@ -15,6 +15,7 @@ export default class PlacePage extends Component {
     match: { params: {} },
     images: [],
     places: [],
+    reviews: [],
   }
 
   constructor(props) {
@@ -30,16 +31,15 @@ export default class PlacePage extends Component {
   }
 
   renderReviews() {
-    // cheated here with images -- something is broken in image org; couldn't map images by review
-    const { reviews, users, places } = this.state.data
+    const { reviews, users } = this.state.data
     const { placeId } = this.props.match.params
     // also filter for reviews that have text? why show reviews with just star rating? make text req?
     const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
-    const place = places.filter(place => place.id.toString() === placeId)
-    console.log('place', place)
+    
     return (
       <ul className="places-item-reviews">
-        {reviewsList.map(review => {
+        {reviews.length ? 
+          reviewsList.map(review => {
           const userId = review.user_id
           const username = users.find(user => user.id === userId).display_name
           return (
@@ -53,14 +53,32 @@ export default class PlacePage extends Component {
               </div>
               <p className="review-text">{review.text}</p>
               <div className="review-image-container">
-                {review.images.length ? review.images.map(image =>   
-                    <img className="review-image" key={image.id} src={image.src} alt={image.alt}/>)
-                    : null }  
+                {review.images.length ?    
+                  <CarouselLB images={review.images} imagesClass='review-image'/>
+                : null}  
               </div>
             </li>
-        )})}
+        )})
+      : null}
       </ul>
     )
+  }
+  
+  renderImages() {
+    const { place } = this.props.location.state
+    const placeImages = place.images
+    const { reviews } = this.state.data
+    const { placeId } = this.props.match.params
+    // also filter for reviews that have text? why show reviews with just star rating? make text req?
+    const reviewsList = reviews.length ? reviews.filter(review => review.place_id.toString() === placeId) : null
+    const reviewsImagesArrays = reviewsList.map(review => review.images)
+    if (!placeImages.length && !reviewsImagesArrays.length) {
+      return null;
+    } else if (placeImages.length && !reviewsImagesArrays.length) {
+      return placeImages;
+    } else {
+      return [...placeImages, ...reviewsImagesArrays[0]];
+    }
   }
 
   getStdTime(hours) {
@@ -82,16 +100,13 @@ export default class PlacePage extends Component {
         </tbody>
       </table>  
     );
-    const placeImages = place.images.length
-      ? <CarouselLB images={place.images}/>
-      : <p>No photos available.</p>
 
     return (
       <>
         <SearchBar />
         <div className="place-page">
           <section className="place-images-container">
-            {placeImages}
+            <CarouselLB images={this.renderImages()} imagesClass='image-item'/>
           </section>
           <section className="place-header">
             <div className="place-header-basicinfo">
@@ -113,8 +128,7 @@ export default class PlacePage extends Component {
               <p>Call</p>
             </div>
             <div className="place-directions">
-              {/* need to make this link to a new Google Maps Directions route? */}
-              <a href={place.address}>
+              <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
                 <FontAwesomeIcon icon="directions" size="lg"/>
               </a>
               <p>Directions</p>    
@@ -144,9 +158,11 @@ export default class PlacePage extends Component {
                 <div className="place-address">
                   <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
                 </div>
-                <div className="place-map-container">  
-                  <MapContainer name={place.name} coordinates={place.coordinates}/>
-                </div>
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
+                  <div className="place-map-container">  
+                    <MapContainer name={place.name} coordinates={place.coordinates}/>
+                  </div>
+                </a>
               </div>
             </div>
             <div className="place-hours">

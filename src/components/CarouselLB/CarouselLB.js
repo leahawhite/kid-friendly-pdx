@@ -11,7 +11,6 @@ export default class LightboxExample extends Component {
   
   constructor(props) {
     super(props);
- 
     this.state = {
       users: data.users,
       photoIndex: 0,
@@ -26,9 +25,27 @@ export default class LightboxExample extends Component {
  
   render() {
     const { photoIndex, isOpen } = this.state;
-    const { images } = this.props;
-    const imageList = images.slice(0, 3).map((image, index) => (
-      <div className="image-item" key={index} onClick={this.handleImageClick.bind(this, index)}>
+    const { images, imagesClass } = this.props;
+    const imageList1 = images.slice(0, 1).map((image, index) => (
+      <div id='image-1' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
+        <img src={image.src} alt={image.title}/>
+        <div className="overlay">{image.title}</div>
+      </div>
+    ), this)
+    const imageList2 = images.slice(0, 2).map((image, index) => (
+      <div id='image-2' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
+        <img src={image.src} alt={image.title}/>
+        <div className="overlay">{image.title}</div>
+      </div>
+    ), this)
+    const imageList3 = images.slice(0, 3).map((image, index) => (
+      <div id='image-3' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
+        <img src={image.src} alt={image.title}/>
+        <div className="overlay">{image.title}</div>
+      </div>
+    ), this)
+    const imageList4 = images.slice(0, 4).map((image, index) => (
+      <div id='image-4' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
         <img src={image.src} alt={image.title}/>
         <div className="overlay">{image.title}</div>
       </div>
@@ -36,7 +53,10 @@ export default class LightboxExample extends Component {
     
     return (
       <div className="image-row">
-        {imageList}
+        {imageList1}
+        {imageList2}
+        {imageList3}
+        {imageList4}
  
         {isOpen && (
           <Lightbox

@@ -46,7 +46,6 @@ export default class Carousel extends Component {
     let username
     if (image.user_id) {
       const userId = image.user_id
-      console.log('userId', userId)
       const imageUser = users.find(user => user.id === userId)
       username = imageUser.display_name
     } else {

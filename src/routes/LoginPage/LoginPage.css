@@ -1,9 +1,14 @@
+.App {
+  padding-bottom: 0;
+}
+
 .LoginPage {
+  display: flex;
+  align-items: center;
   text-align: left;
-  font-size: 18px;
   font-weight: bold;
   margin: 0 auto;
-  padding: 10vh 5vh;
+  padding: 5%;
 }
 
 .LoginPage h2 {
@@ -12,8 +17,9 @@
 }
 
 .LoginPage-container {
+  justify-content: center;
   margin: 0 auto;
-  padding: 10% 5%;
+  padding: 5%;
   max-width: 500px;
   background-color: white;
   border: 3px solid #00b8e6;
@@ -21,7 +27,7 @@
 }
 
 .login-reminder {
-  font-size: 18px;
+  text-align: center;
 }
 
 @media only screen and (min-width: 950px) {

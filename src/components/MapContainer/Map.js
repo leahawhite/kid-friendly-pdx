@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import { StarRating } from '../StarRating/StarRating';
 import { readableReviewCount } from '../../helpers/helpers';
+import config from '../../config';
 import './Map.css'
 
 const MapWithAMarker = compose(withScriptjs, withGoogleMap)(props => {
@@ -83,7 +84,7 @@ export default class Map extends Component {
         places={this.state.places}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDsdDZ5P1zY_soUX1qBLCTrVuN7HENqhjs&libraries=places`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.GAPI_KEY}&libraries=places`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}

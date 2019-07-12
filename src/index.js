@@ -22,7 +22,6 @@ import {
   faCircle,
   faCamera,
   faGlobe,
-  faConciergeBell,
   faBan,
   faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
@@ -42,7 +41,6 @@ library.add(
   faPen,
   faChild,
   faGlobe,
-  faConciergeBell,
   faBan,
   faPlusCircle
 )

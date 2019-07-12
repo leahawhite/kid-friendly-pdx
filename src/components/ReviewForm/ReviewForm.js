@@ -35,7 +35,7 @@ export default class ReviewForm extends Component {
       // how to capture userId here through auth?
       // user_id: "2",
     }
-    console.log('newReview', newReview)
+
     
     this.setState({
       reviews: { ...this.state.reviews, ...newReview },

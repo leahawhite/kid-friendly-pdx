@@ -21,7 +21,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       hasError: false,
-      loggedIn: false,
+      loggedIn: TokenService.getAuthToken(),
     }
   }
 
@@ -47,12 +47,14 @@ export default class App extends Component {
                   <HomePage {...props}/>
                 </ErrorBoundary>
               }/>  
-              <PublicOnlyRoute path={'/login'} render={props =>
+              <PublicOnlyRoute 
+                path={'/login'} 
+                component={props =>
                 <ErrorBoundary>
                   <LoginPage  loggedIn={this.state.loggedIn} onLogin={this.handleLogin} {...props}/>
                 </ErrorBoundary>
               }/>  
-              <PublicOnlyRoute path={'/signup'} render={props =>
+              <PublicOnlyRoute path={'/signup'} component={props =>
                 <ErrorBoundary>
                   <SignupPage {...props}/>
                 </ErrorBoundary>
@@ -67,11 +69,9 @@ export default class App extends Component {
                   <PlacePage {...props}/>
                 </ErrorBoundary>
               }/>  
-              <PrivateRoute path={'/places/:placeId/reviews'} render={props =>
-                <ErrorBoundary>
-                  <ReviewPage {...props}/>
-                </ErrorBoundary>
-              }/>
+              <PrivateRoute 
+                path={'/places/:placeId/reviews'} 
+                component={ReviewPage}/>
               <Route path={'/image-upload'} render={props =>
                 <ErrorBoundary>
                   <PhotoUploadPage {...props}/>

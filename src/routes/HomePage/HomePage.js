@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import pinwheel from '../../images/pinwheel.svg';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './HomePage.css';
 

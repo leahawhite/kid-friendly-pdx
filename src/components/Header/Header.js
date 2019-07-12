@@ -8,10 +8,11 @@ export default class Header extends Component {
     const { onLogout } = this.props
     return (
       <nav className="Header__nav-logged-in" role="navigation">
-        <Link 
+        <Link
+          className="navlink-right" 
           onClick={onLogout}
           to='/'>
-          Logout
+          LOGOUT
         </Link>
       </nav>
     )
