@@ -2,17 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import LoginForm from './LoginForm';
+import StarRating from './StarRating';
 
-describe('LoginForm component', () => {
+describe('StarRating component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<LoginForm />, div);
+    ReactDOM.render(<StarRating />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<LoginForm />)
+    const wrapper = shallow(<StarRating rating='4.5'/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
-})
-  
+});

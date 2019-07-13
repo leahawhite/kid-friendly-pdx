@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import MapContainer from '../../components/MapContainer/MapContainer';
+import Map from '../../components/Map/Map';
 import CarouselLB from '../../components/CarouselLB/CarouselLB';
+import Review from '../../components/Review/Review';
+import Action from '../../components/Action/Action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StarRating } from '../../components/StarRating/StarRating';
 import { readableReviewCount } from '../../helpers/helpers';
@@ -12,6 +14,7 @@ import './PlacePage.css';
 
 export default class PlacePage extends Component {
   static defaultProps = {
+    location: { state: {} },
     match: { params: {} },
     images: [],
     places: [],
@@ -33,33 +36,14 @@ export default class PlacePage extends Component {
   renderReviews() {
     const { reviews, users } = this.state.data
     const { placeId } = this.props.match.params
-    // also filter for reviews that have text? why show reviews with just star rating? make text req?
     const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
     
     return (
       <ul className="places-item-reviews">
         {reviews.length ? 
-          reviewsList.map(review => {
-          const userId = review.user_id
-          const username = users.find(user => user.id === userId).display_name
-          return (
-            <li className="places-item-review" key={review.id}>
-              <p className="username">{username}</p>
-              <div className="places-item-review-star-rating">
-                <div className="star-rating">
-                <StarRating rating={review.star_rating} />
-                </div>
-                <span>{moment(review.date_created).format('MM/DD/YYYY')}</span>
-              </div>
-              <p className="review-text">{review.text}</p>
-              <div className="review-image-container">
-                {review.images.length ?    
-                  <CarouselLB images={review.images} imagesClass='review-image'/>
-                : null}  
-              </div>
-            </li>
-        )})
-      : null}
+          reviewsList.map(review =>
+            <Review key={review.id} review={review} users={users} />)
+          : null}
       </ul>
     )
   }
@@ -69,7 +53,6 @@ export default class PlacePage extends Component {
     const placeImages = place.images
     const { reviews } = this.state.data
     const { placeId } = this.props.match.params
-    // also filter for reviews that have text? why show reviews with just star rating? make text req?
     const reviewsList = reviews.length ? reviews.filter(review => review.place_id.toString() === placeId) : null
     const reviewsImagesArrays = reviewsList.map(review => review.images)
     if (!placeImages.length && !reviewsImagesArrays.length) {
@@ -87,9 +70,9 @@ export default class PlacePage extends Component {
 
   render() {
     const { place } = this.props.location.state
-    const descriptorsList = place.descriptors.map((descriptor, index) =>
-      <p className="place-descriptor" key={index}>{descriptor}</p>
-      )
+    const placeArray = [ this.props.location.state.place ]
+    const descriptorsList = place.descriptors.length && place.descriptors.map((descriptor, index) =>
+      <p className="place-descriptor" key={index}>{descriptor}</p>)
     const hoursArr = place.hours.map((item, index) =>
       <table className="place-hours-table" key={index}>
         <tbody>
@@ -121,33 +104,23 @@ export default class PlacePage extends Component {
             </div> 
           </section>
           <section className="place-actions">
-            <div className="place-phone">
-              <a href={`tel:+1-${place.phone}`}>
-                <FontAwesomeIcon icon="phone" size="lg" />
-              </a>
-              <p>Call</p>
-            </div>
-            <div className="place-directions">
-              <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
-                <FontAwesomeIcon icon="directions" size="lg"/>
-              </a>
-              <p>Directions</p>    
-            </div>
-            <div className="place-website">
-              <a href={place.website}>
-                <FontAwesomeIcon icon="globe" size="lg"/>
-              </a>
-              <p>Website</p>
-            </div>
+            <Action name="phone" link={`tel:+1-${place.phone}`} icon="phone" text="Call" />
+            <Action 
+              name="directions" 
+              link={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`} 
+              icon="directions"
+              text="Directions"
+            />
+            <Action name="website" link={place.website} icon="globe" text="Website" />
             <div className="place-write-review">
               <Link to={{
                   pathname: `/places/${place.id}/reviews`,
                   state: { place: place }
-                }}>
+                  }}>
                   <FontAwesomeIcon icon="star" size="lg"/> 
+                  <p>Review</p>
               </Link>
-              <p>Review</p>
-            </div>   
+            </div>
           </section>
           <section className="place-addl-info">
             <div className="place-map">
@@ -160,7 +133,12 @@ export default class PlacePage extends Component {
                 </div>
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
                   <div className="place-map-container">  
-                    <MapContainer name={place.name} coordinates={place.coordinates}/>
+                    <Map 
+                      places={placeArray} 
+                      zoom={14} 
+                      center={place.coordinates}
+                      infoClass="infowindow-hidden"
+                    />
                   </div>
                 </a>
               </div>
@@ -218,5 +196,3 @@ function PlaceFeatures({place}) {
     </div>
   )
 }
-
-

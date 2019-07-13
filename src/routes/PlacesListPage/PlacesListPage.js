@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
-import Map from '../../components/MapContainer/Map';
+import Map from '../../components/Map/Map';
 import data from '../../data';
 import './PlacesListPage.css';
 import haversine from 'haversine'
-import pinwheel from '../../images/pinwheel.svg';
+// import pinwheel from '../../images/pinwheel.svg';
 
 export default class PlacesListPage extends Component {
+  static defaultProps = {
+    location: { state: {} },
+    places: [],
+  }
+  
   constructor(props) {
     super(props)
     this.select = React.createRef()
@@ -81,7 +86,7 @@ export default class PlacesListPage extends Component {
       : <p>Sorry, your search returned no results. Please try again.</p>
     const mapResults = results.length 
       ? <section className="places-map">
-          <Map places={results}/>
+          <Map places={results} zoom={11} center={{lat: 45.5155, lng: -122.6793}} infoClass="infowindow" />
         </section> 
       : null
     

@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewForm component renders UI as expected 1`] = `
+<Fragment>
+  <form
+    className="review-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="star-rating-select"
+    >
+      <label
+        htmlFor="rating"
+      >
+        Your rating: 
+      </label>
+      <div
+        className="star-container"
+        style={
+          Object {
+            "display": "inline",
+            "fontSize": "34px",
+            "height": "100%",
+            "margin": "-1px 0 0 0",
+            "padding": "0 0 0 10px",
+            "verticalAlign": "middle",
+          }
+        }
+      >
+        <StarRatingComponent
+          editing={true}
+          emptyStarColor="#333"
+          name="rating"
+          onStarClick={[Function]}
+          starColor="#ffb400"
+          starCount={5}
+          value={0}
+        />
+      </div>
+    </div>
+    <ValidationError
+      hasError={true}
+      message=""
+    />
+    <div
+      className="text"
+    >
+      <textarea
+        name="text"
+        placeholder="Share your experience with others. How kid-friendly is this place?"
+      />
+    </div>
+    <div
+      className="button-container"
+    >
+      <button
+        className="review-btn"
+        disabled={true}
+        type="submit"
+      >
+        Post Review
+      </button>
+      <Link
+        to="/image-upload"
+      >
+        <button
+          className="photo-upload-btn"
+          type="button"
+        >
+          <FontAwesomeIcon
+            border={false}
+            className=""
+            fixedWidth={false}
+            flip={null}
+            icon="camera"
+            inverse={false}
+            listItem={false}
+            mask={null}
+            pull={null}
+            pulse={false}
+            rotation={null}
+            size="sm"
+            spin={false}
+            symbol={false}
+            title=""
+            transform={null}
+          />
+          <span>
+            Upload a Photo
+          </span>
+        </button>
+      </Link>
+    </div>
+  </form>
+</Fragment>
+`;

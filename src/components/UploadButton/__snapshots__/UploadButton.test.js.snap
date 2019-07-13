@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadButton component renders UI as expected 1`] = `
+<div
+  className="buttons fadein"
+>
+  <div
+    className="button"
+  >
+    <label
+      className="upload-btn"
+      htmlFor="multi"
+    >
+      <FontAwesomeIcon
+        border={false}
+        className=""
+        fixedWidth={false}
+        flip={null}
+        icon="camera"
+        inverse={false}
+        listItem={false}
+        mask={null}
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size="10x"
+        spin={false}
+        symbol={false}
+        title=""
+        transform={null}
+      />
+      <span>
+        Browse Files
+      </span>
+    </label>
+    <input
+      id="multi"
+      multiple={true}
+      type="file"
+    />
+  </div>
+</div>
+`;

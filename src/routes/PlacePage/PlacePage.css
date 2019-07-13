@@ -94,6 +94,11 @@
   margin-right: 20px;
 }
 
+.place-map-container {
+  height: 250px;
+  width: 250px;
+}
+
 .place-features {
   display: flex;
   margin: 20px 10px 0 0;
@@ -150,35 +155,6 @@
   padding: 0;
 }
 
-.places-item-review {
-  padding: 10px 0;
-  border-bottom: 1px solid gray;
-  list-style: none;
-}
-
-.places-item-review-star-rating {
-  float: left;
-}
-
-.places-item-review-star-rating span {
-  opacity: 0.7;
-}
-
-.username {
-  font-weight: bold;
-}
-
-.review-text {
-  clear: both;
-  margin: 15px 0;
-}
-
-.review-image-container {
-  width: auto;
-  display: flex;
-  margin: 10px 0;
-}
-
 .write-review-btn-container {
   text-align: left;
   margin: 10px;
@@ -192,7 +168,6 @@
   font-weight: bold;
   font-size: 18px;
   padding: 8px;
-  border: 1px solid #ddd;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px 12px;
@@ -215,4 +190,5 @@
     width: 70%;
     margin: 0 auto;
   }
+ 
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import StarRatingComponent from 'react-star-rating-component'
-import ValidationError from '../ValidationError'
+import ValidationError from '../ValidationError/ValidationError'
 import data from '../../data';
 import './ReviewForm.css';
 
@@ -35,8 +35,6 @@ export default class ReviewForm extends Component {
       // how to capture userId here through auth?
       // user_id: "2",
     }
-
-    
     this.setState({
       reviews: { ...this.state.reviews, ...newReview },
       fireRedirect: true,
@@ -45,9 +43,11 @@ export default class ReviewForm extends Component {
 
   updateRating = (rating) => {
     this.setState({rating}, () => {this.validateRating(rating)})
+    console.log(rating)
   }
 
   validateRating(fieldValue) {
+    console.log('validate rating has run')
     const fieldErrors = {...this.state.validationMessages}
     let hasError = false;
     if(fieldValue.length === 0) {
@@ -97,9 +97,9 @@ export default class ReviewForm extends Component {
               starCount={5}
               value={rating}
               onStarClick={this.updateRating}/>
-            <ValidationError hasError={!this.state.ratingValid} message={this.state.validationMessages.rating}/>
           </div>
         </div>
+        <ValidationError hasError={!this.state.ratingValid} message={this.state.validationMessages.rating}/>
         <div className="text">
           <textarea placeholder="Share your experience with others. How kid-friendly is this place?" name="text"></textarea>
         </div>

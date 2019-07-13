@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import LoginPage from './LoginPage'
+import PlacePage from './PlacePage'
 
-describe('LoginPage component', () => {
+describe('PlacePage component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <BrowserRouter>
-        <LoginPage />
+        <PlacePage />
       </BrowserRouter>, 
       div
     );
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<LoginPage />)
+    const wrapper = shallow(<PlacePage />)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

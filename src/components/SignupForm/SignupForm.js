@@ -39,6 +39,8 @@ export default class SignupForm extends Component {
                 name="display_name"
                 type="text"
                 id="display_name"
+                aria-label="display name"
+                aria-required="true"
                 placeholder="Mr. Mister"
                 ref={this.nameInput}
                 required
@@ -52,7 +54,9 @@ export default class SignupForm extends Component {
               <input
                 name="email"
                 type="email"
-                id="email" 
+                id="email"
+                aria-label="email address"
+                aria-required="true" 
                 placeholder="mrmr@mister.com"
                 required
                 ref={this.emailInput}
@@ -66,13 +70,16 @@ export default class SignupForm extends Component {
                 name="password"
                 type="password"
                 id="password"
+                aria-label="password"
+                aria-required="true"
+                aria-describedby="signup__hint"
                 minLength="6"
                 maxLength="72"
                 pattern=".*[0-9]" 
                 required
                 ref={this.passwordInput}
               />
-              <div className="signup__hint">6 to 72 characters, must include a number</div>
+              <div className="signup__hint" id="signup__hint">6 to 72 characters, must include a number</div>
             </div>
             <button type="submit" className="signup-btn" >
               Sign Up

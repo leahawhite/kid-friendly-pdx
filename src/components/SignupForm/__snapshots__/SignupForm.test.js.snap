@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapContainer component renders UI as expected 1`] = `
+<Fragment>
+  <form
+    className="signup-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="display_name"
+    >
+      <label
+        htmlFor="display_name"
+      >
+        Display name
+      </label>
+      <input
+        aria-label="display name"
+        aria-required="true"
+        id="display_name"
+        minLength="3"
+        name="display_name"
+        placeholder="Mr. Mister"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="email"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email address
+      </label>
+      <input
+        aria-label="email address"
+        aria-required="true"
+        id="email"
+        name="email"
+        placeholder="mrmr@mister.com"
+        required={true}
+        type="email"
+      />
+    </div>
+    <div
+      className="password"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        aria-describedby="signup__hint"
+        aria-label="password"
+        aria-required="true"
+        id="password"
+        maxLength="72"
+        minLength="6"
+        name="password"
+        pattern=".*[0-9]"
+        required={true}
+        type="password"
+      />
+      <div
+        className="signup__hint"
+        id="signup__hint"
+      >
+        6 to 72 characters, must include a number
+      </div>
+    </div>
+    <button
+      className="signup-btn"
+      type="submit"
+    >
+      Sign Up
+    </button>
+  </form>
+</Fragment>
+`;

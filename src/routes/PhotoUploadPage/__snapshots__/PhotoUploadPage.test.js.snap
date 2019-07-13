@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhotoUploadPage component renders UI as expected 1`] = `
+<div
+  className="container"
+>
+  <h2
+    className="upload-header"
+  >
+    Upload Photos
+  </h2>
+  <div
+    className="buttons"
+  >
+    <_default />
+  </div>
+  <div
+    className="cancel-container"
+  >
+    <button
+      className="cancel-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;

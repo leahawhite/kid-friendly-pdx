@@ -5,6 +5,7 @@ import { readableReviewCount } from '../../helpers/helpers';
 import './PlacesListItem.css';
 
 export default class PlacesListItem extends Component {
+  static defaultProps = { place: {} }
   
   render() {
     const { place } = this.props

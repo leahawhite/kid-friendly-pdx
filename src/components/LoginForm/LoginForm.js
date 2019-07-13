@@ -33,6 +33,8 @@ export default class LoginForm extends Component {
           <input
             name="email"
             type="text"
+            aria-label="email address"
+            aria-required="true"
             required
             id="email" />
         </div>
@@ -43,6 +45,8 @@ export default class LoginForm extends Component {
           <input
             name="password"
             type="password"
+            aria-label="password"
+            aria-required="true"
             required
             id="password" />
         </div>

@@ -4,6 +4,9 @@ import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import './ReviewPage.css';
 
 export default class ReviewPage extends Component {
+  static defaultProps = {
+    location: { state: {} },
+  }
   render() {
     const { place } = this.props.location.state
     return (
