@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { compose, lifecycle } from "recompose"
+import { compose } from "recompose"
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import { StarRating } from '../StarRating/StarRating';
 import { readableReviewCount } from '../../helpers/helpers';
@@ -28,6 +28,8 @@ const MapWithMarkers = compose(withScriptjs, withGoogleMap,
       {props.places.map(place => {
         const onMouseOver = props.onMouseOver.bind(this, place)
         const onMouseOut = props.onMouseOut.bind(this, place)
+        const onClick = props.onClick.bind(this, place)
+        const onClickClose = props.onClickClose.bind(this, place)
         
         return (
           <Marker
@@ -38,11 +40,14 @@ const MapWithMarkers = compose(withScriptjs, withGoogleMap,
             }}
             onMouseOver={onMouseOver}
             onMouseOut={onMouseOut}
+            onClick={onClick}
+            onClickClose={onClickClose}
             infoClass={props.infoClass}
           >
             {props.selectedPlace === place &&
               <InfoWindow
                 onMouseOut={onMouseOut}
+                onClickClose={onClickClose}
                 infoClass={props.infoClass}
               >
                 <div className="infowindow">
@@ -87,6 +92,14 @@ export default class Map extends Component {
     this.setState({ selectedPlace: null })
   }
 
+  handleClick = (place, event) => {
+    this.setState({ selectedPlace: place })
+  }
+
+  handleClickClose = (place, event) => {
+    this.setState({ selectedPlace: null })
+  }
+
   render() {
     return (
       <MapWithMarkers
@@ -94,6 +107,8 @@ export default class Map extends Component {
         places={this.props.places}
         zoom={this.props.zoom}
         center={this.props.center}
+        onClick={this.handleClick}
+        onClickClose={this.handleClickClose}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
         infoClass={this.props.infoClass}

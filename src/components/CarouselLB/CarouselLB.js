@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Lightbox from 'react-image-lightbox';
-import data from '../../data';
 import 'react-image-lightbox/style.css'; 
 import './CarouselLB.css';
  
@@ -12,7 +11,6 @@ export default class LightboxExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: data.users,
       photoIndex: 0,
       isOpen: false,
     };

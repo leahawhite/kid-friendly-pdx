@@ -7,7 +7,7 @@ import './PlacesListPage.css';
 import haversine from 'haversine'
 // import pinwheel from '../../images/pinwheel.svg';
 
-export default class PlacesListPage extends Component {
+export default class PlacesListPage2 extends Component {
   static defaultProps = {
     location: { state: {} },
     places: [],
@@ -50,14 +50,17 @@ export default class PlacesListPage extends Component {
         results = results.sort((a,b) => (a.average_review_rating < b.average_review_rating) ? 1 : ((b.average_review_rating < a.average_review_rating) ? -1 : 0));
       } else if (sort === 'number of reviews') {
         results = results.sort((a,b) => (a.number_of_reviews < b.number_of_reviews) ? 1 : ((b.number_of_reviews < a.number_of_reviews) ? -1 : 0));
+        console.log('sorted by review', results)
       } else if (sort === 'distance') {
         results = this.sortByDistance(results)
+        console.log('sortedbyDistance', this.sortByDistance(results))
       }
     }
     return results
   }
 
   sortByDistance = results => {
+    console.log('sortbyDistance results', results)
     const resultsDistances = results.map(result => {
       // Haversine formula
       const start = {
@@ -72,6 +75,7 @@ export default class PlacesListPage extends Component {
       return Object.assign(result, { distance });
     });
     const sortedDistances = resultsDistances.sort((a, b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0)); 
+    console.log('sortedDistances', sortedDistances)
     return sortedDistances; 
   }
     

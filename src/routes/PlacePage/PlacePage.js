@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Map from '../../components/Map/Map';
-import CarouselLB from '../../components/CarouselLB/CarouselLB';
+import Carousel from '../../components/Carousel/Carousel';
 import Review from '../../components/Review/Review';
 import Action from '../../components/Action/Action';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -89,7 +89,7 @@ export default class PlacePage extends Component {
         <SearchBar />
         <div className="place-page">
           <section className="place-images-container">
-            <CarouselLB images={this.renderImages()} imagesClass='image-item'/>
+            <Carousel images={this.renderImages()} imagesClass="image-item" />
           </section>
           <section className="place-header">
             <div className="place-header-basicinfo">

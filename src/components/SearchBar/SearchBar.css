@@ -24,6 +24,19 @@
   font-family: 'Source Sans Pro';
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #444;;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #444;;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #444;;
+}
+
 .search-btn {
   font-weight: bold;
   font-family: "Source Sans Pro";
@@ -66,6 +79,7 @@
 }
 
 .form-select {
+  -webkit-appearance:none;
   border-left: none;
   color: #444;
   font-family: 'Source Sans Pro';
@@ -77,6 +91,7 @@
 
 .filter-category label, .filter-neighborhood label {
   border-radius: 8px 0 0 8px;
+  padding: 5px 8px;
 }
 
 .filter-category select, .filter-neighborhood select {
@@ -84,30 +99,29 @@
 }
 
 .filter-category label {
-  width: 75px;
+  width: 85px;
 }
 
 .filter-category select {
-  width: calc(100% - 75px);
-  padding-top: 4.2px;
-  padding-bottom: 4.2px;
+  -webkit-appearance:none;
+  width: calc(100% - 85px);
+  padding: 5px 8px;
 }
 
 .filter-neighborhood label {
-  width: 110px;
+  width: 125px;
 }
 
 .filter-neighborhood select {
-  width: calc(100% - 110px);
-  padding-top: 4.2px;
-  padding-bottom: 4.2px;
+  -webkit-appearance:none;
+  width: calc(100% - 125px);
+  padding: 5px 8px;
 }
 
 input, option, button {
   cursor: pointer;
   font-size: 16px;
 }
-
 
 @media only screen and (min-width: 950px) {
   .searchbar {

@@ -5,7 +5,7 @@ import moment from 'moment';
 import './Review.css';
 
 export default class Review extends Component {
-  static defaultProps = { review: {} }
+  static defaultProps = { review: {}, users: [] }
 
   constructor(props) {
     super(props)
@@ -14,35 +14,44 @@ export default class Review extends Component {
     }
   }
 
-  handleExpandedText = () => {
+  handleExpandText = () => {
     this.setState({
-      expanded: !this.state.expanded
-    })
+      expanded: !this.state.expanded,
+    });
   }
 
-  getMoreText = (review) => {
-    if (this.state.expanded) {
+  getTruncatedText(review, words) {
+    if (!this.state.expanded) {
       return (
         <>
-        {review.text}
-        <button className="read-btn" onClick={this.handleExpandedText}>Read less</button>
+        {words.slice(0, 25).join(' ') + ' ...'}
+        <button className="read-btn" onClick={this.handleExpandText}>Read more</button>
         </>
       )
+      
     } else {
       return (
         <>
-        {truncate(review.text)}
-        <button className="read-btn" onClick={this.handleExpandedText}>Read more</button>
+        {review.text}
+        <button className="read-btn" onClick={this.handleExpandText}>Read less</button>
         </>
       )
+    }
+  }
+  
+  getReviewContent = (review) => {
+    const words = review.text.split(' ')
+    if (words.length < 25) {
+      return review.text
+    } else {
+      return this.getTruncatedText(review, words)
     }
   }
 
   render() {
     const { review, users } = this.props
     const userId = review.user_id
-    const username = users.find(user => user.id === userId).display_name
-    const expandedText = this.getMoreText(review)
+    const username = users.length && users.find(user => user.id === userId).display_name
       return (
         <li className="places-item-review" key={review.id}>
           <p className="username">{username}</p>
@@ -53,7 +62,7 @@ export default class Review extends Component {
             <span>{moment(review.date_created).format('MM/DD/YYYY')}</span>
           </div>
           <div className="review-text">
-            {expandedText}
+            {this.getReviewContent(review)}
           </div>
           <div className="review-image-container">
             {review.images.length ?    
@@ -63,12 +72,4 @@ export default class Review extends Component {
         </li>
       )
   }
-}
-
-function truncate(text) {
-  const words = text.split(' ')
-  if (words.length > 25) {
-    return words.slice(0, 25).join(' ') + ' ...'
-  }
-  return text
 }

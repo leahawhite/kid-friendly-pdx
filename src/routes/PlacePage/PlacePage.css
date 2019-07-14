@@ -1,7 +1,13 @@
+.place-page {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .place-images-container {
   height: 100%;
   width: 100%;
-  /* margin: 10px auto; */
+  margin: 0px auto;
+  padding: 10px;
 }
 
 .place-header-basicinfo {
@@ -187,8 +193,13 @@
 
 @media only screen and (min-width: 950px) {
   .place-page {
-    width: 70%;
-    margin: 0 auto;
+    width: 80%;
   }
- 
 }
+
+@media only screen and (min-width: 1200px) {
+  .place-page {
+    width: 70%;
+  }
+}
+

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import PlacePage from './PlacePage'
 
-describe('PlacePage component', () => {
+describe.skip('PlacePage component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
