@@ -29,3 +29,7 @@ footer {
 }
 
 /* end of keep footer at bottom */
+
+.App__main {
+  position: relative;
+}

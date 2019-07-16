@@ -1,3 +1,7 @@
+.spinner-container {
+  position: relative;
+}
+
 .places-list {
   display: flex;
   flex-direction: column;

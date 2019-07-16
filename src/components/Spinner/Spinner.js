@@ -1,8 +1,12 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIceCream } from '@fortawesome/free-solid-svg-icons'
+import React, { Component } from 'react'
+import './Spinner.css'
 
-export default () => 
-  <div className='spinner fadein'>
-    <FontAwesomeIcon icon={faIceCream} size='5x' color='#3B5998' />
-  </div>
+export default class Pinwheel extends Component {
+  render() {
+    return (
+      <div className="spinner">
+        <img src={require('../../images/pinwheel.svg')} alt="pinwheel spinner" />
+      </div>
+    )
+  }
+}

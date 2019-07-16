@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
-import data from '../../data';
 import './PlacesListPage.css';
 import haversine from 'haversine'
-// import pinwheel from '../../images/pinwheel.svg';
+import Spinner from '../../components/Spinner/Spinner';
 
 export default class PlacesListPage extends Component {
   static defaultProps = {
@@ -17,16 +16,13 @@ export default class PlacesListPage extends Component {
     super(props)
     this.select = React.createRef()
     this.state = {
-      // isLoading: true,
-      places: [],
+      places: this.props.places,
       results: [],
       sort: 'rating',
     }
   }
 
   componentDidMount() {
-    // fetch will happen here -- add loader
-    this.setState(data);
     this.getPosition();
   }
 
@@ -77,23 +73,18 @@ export default class PlacesListPage extends Component {
     
   renderPlaces() {
     const { places } = this.state
-    const { searchTerm, category, neighborhood } = this.props.location.state
-    const results = places.filter(place => (place.name.toLowerCase().includes(searchTerm.toLowerCase())
-      || place.descriptors.includes(searchTerm.toLowerCase()) || place.category.includes(searchTerm.toLowerCase())) 
-      && (place.category.includes(category) || category === 'all') 
-      && (neighborhood === place.neighborhood || neighborhood === 'All Portland'))
-    const placeResults = results.length 
-      ? this.sortResults(results).map(place => 
+    const placeResults = places.length 
+      ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
       : <p>Sorry, your search returned no results. Please try again.</p>
-    const mapResults = results.length 
+    const mapResults = places.length 
       ? <section className="places-map">
-          <Map places={results} zoom={11} center={{lat: 45.5155, lng: -122.6793}} infoClass="infowindow" />
+          <Map places={places} zoom={11} center={{lat: 45.5155, lng: -122.6793}} infoClass="infowindow" />
         </section> 
       : null
-    
     return (
       <>
+        <div className="Places_error">{this.state.error}</div>
         {placeResults}
         {mapResults}
       </>
@@ -105,11 +96,8 @@ export default class PlacesListPage extends Component {
       sort: e.target.value
     })
   }
-  
-  render() {
-    // const { isLoading } = this.state
-    // const showLoading = () => <div className="divLoader">{pinwheel}</div>
 
+  render() {
     return (
       <>
         <SearchBar />
