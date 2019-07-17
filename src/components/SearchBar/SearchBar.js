@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Consumer } from '../../contexts/SearchContext'
 import Spinner from '../../components/Spinner/Spinner';
 import './SearchBar.css';
 
@@ -8,80 +9,13 @@ class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchTerm: '',
-      category: 'all',
-      neighborhood: 'All Portland',
-      places: [],
-      error: null,
-      fireRedirect: false,
+      
     }
   }
 
-  getPlaces = () => {
-    const { searchTerm, category, neighborhood } = this.state
-    const baseUrl = 'http://localhost:8000/places'
-    const params = []
-    if (searchTerm) {
-      params.push(`searchTerm=${encodeURI(searchTerm)}`)
-    }
-    if (category) {
-      params.push(`category=${encodeURI(category)}`)
-    }
-    if (neighborhood) {
-      params.push(`neighborhood=${encodeURI(neighborhood)}`)
-    }
-    const query = params.join('&')
-    const url = `${baseUrl}?${query}`
-    
-    fetch(url)
-      .then(res => {
-        if(!res.ok) {
-          throw new Error(res.statusText)
-        }
-        return res.json()
-      })
-      .then(data => {
-        this.setState({
-          places: data,
-          isLoading: false,
-          error: null,
-          fireRedirect: true,
-        })
-      })
-      .catch(err => {
-        // this makes a duplicate of the message I have in renderPlaces
-        this.setState({
-          error: 'Sorry, could not retrieve any results at this time.'
-        })
-      })
-  }
-  
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({ isLoading: true })
-    this.getPlaces()
-  }  
-
-  handleUpdateSearch = term => {
-    this.setState({
-      searchTerm: term
-    })
-  }
-
-  handleUpdateCategory = option => {
-    this.setState({
-      category: option
-    })
-  }
-
-  handleUpdateNeighborhood = option => {
-    this.setState({
-      neighborhood: option
-    })
-  }
   
   showLoader = () => {
-    const { isLoading } = this.state
+    const { isLoading } = this.props
     if (isLoading) {
       return <FontAwesomeIcon icon="spinner" spin/>
     } else {
@@ -90,19 +24,21 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { searchTerm, category, neighborhood, places, fireRedirect } = this.state
-    
+    // const { searchTerm, category, neighborhood, error, fireRedirect, onSubmit, updateSearch, updateCategory, updateNeighborhood, places } = this.props
+    // console.log(searchTerm, category, neighborhood)
     return (
+      <Consumer>
+        {context => (
       <section className="searchbar">
-        <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
+        <form className="search-form" onSubmit={context.handleSubmit}>
           <label className="search-label" htmlFor="search"></label>
           <input 
             className="search-input" 
             id="search" 
             type="text" 
             placeholder="Search"
-            value={this.props.searchTerm}
-            onChange={e => this.handleUpdateSearch(e.target.value)}/>
+            value={context.searchTerm}
+            onChange={context.handleUpdateSearch}/>
           <button type="submit" className="search-btn">
             {this.showLoader()}
           </button>
@@ -113,8 +49,8 @@ class SearchBar extends Component {
                   className="form-select" 
                   type="text" 
                   id="category"
-                  value={this.props.category}
-                  onChange={e => this.handleUpdateCategory(e.target.value)}>
+                  value={context.category}
+                  onChange={context.handleUpdateCategory}>
                     <option value="all">all</option>
                     <option value="restaurants">restaurants</option>
                     <option value="attractions">attractions</option>
@@ -130,8 +66,8 @@ class SearchBar extends Component {
                 className="form-select" 
                 type="text" 
                 id="neighborhood"
-                value={this.props.neighborhood}
-                onChange={e => this.handleUpdateNeighborhood(e.target.value)}>
+                value={context.neighborhood}
+                onChange={context.handleUpdateNeighborhood}>
                   <option value="All Portland">All Portland</option>
                   <option value="N">N</option>
                   <option value="NE">NE</option>
@@ -147,14 +83,16 @@ class SearchBar extends Component {
             </div>
           </fieldset>
         </form>
-        {fireRedirect &&
+        {context.fireRedirect &&
           <Redirect to={{
             pathname: '/places',
-            state: { searchTerm: searchTerm, category: category, neighborhood: neighborhood, places: places }
+            state: { searchTerm: context.searchTerm, category: context.category, neighborhood: context.neighborhood, places: context.places }
             }}
           />
         }
       </section>
+        )}
+      </Consumer>
     )
   }
   

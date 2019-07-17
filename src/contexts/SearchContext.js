@@ -1,64 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const SearchContext = React.createContext({
   searchTerm: '',
   category: 'all',
   neighborhood: 'All Portland',
+  fireRedirect: '',
+  places: [],
   handleUpdateSearch: () => {},
   handleUpdateNeighborhood: () => {},
   handleUpdateCategory: () => {},
   handleSubmit: () => {},
+  getPlaces: () => {}
 })
 
-export default SearchContext
-
-export class SearchProvider extends Component {
-  state = {
-    searchTerm: '',
-    category: 'all',
-    neighborhood: 'All Portland',
-    error: null,
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({ isLoading: true })
-    this.getPlaces()
-  }  
-
-  handleUpdateSearch = term => {
-    this.setState({
-      searchTerm: term
-    })
-  }
-
-  handleUpdateCategory = option => {
-    this.setState({
-      category: option
-    })
-  }
-
-  handleUpdateNeighborhood = option => {
-    this.setState({
-      neighborhood: option
-    })
-  }
-  
-  render() {
-    const value = {
-      searchTerm: this.state.searchTerm,
-      category: this.state.category,
-      neighborhood: this.state.neighborhood,
-      error: this.state.error,
-      handleSubmit: this.handleSubmit,
-      handleUpdateSearch: this.handleUpdateSearch,
-      handleUpdateCategory: this.handleUpdateCategory,
-      handleUpdateNeighborhood: this.handleUpdateNeighborhood,
-    }
-    return (
-      <SearchContext.Provider value={value}>
-        {this.props.children}
-      </SearchContext.Provider>
-    )
-  }
-}
+export const Provider = SearchContext.Provider;
+export const Consumer = SearchContext.Consumer;

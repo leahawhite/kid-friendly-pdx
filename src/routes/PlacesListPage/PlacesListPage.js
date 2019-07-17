@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
 import './PlacesListPage.css';
-import haversine from 'haversine'
-import Spinner from '../../components/Spinner/Spinner';
+import haversine from 'haversine';
 
 export default class PlacesListPage extends Component {
   static defaultProps = {
@@ -16,7 +14,6 @@ export default class PlacesListPage extends Component {
     super(props)
     this.select = React.createRef()
     this.state = {
-      places: this.props.places,
       results: [],
       sort: 'rating',
     }
@@ -72,7 +69,8 @@ export default class PlacesListPage extends Component {
   }
     
   renderPlaces() {
-    const { places } = this.state
+    const { places } = this.props.location.state
+    console.log('placeslistplaces', places)
     const placeResults = places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
@@ -99,29 +97,26 @@ export default class PlacesListPage extends Component {
 
   render() {
     return (
-      <>
-        <SearchBar />
-        <section className="places-list">
-          <header className="places-header">
-            <h2>Results</h2>
-            <form className="sort-results-form">
-              <label className="sort-results" htmlFor="sort-results">Sort by:</label>
-              <select 
-                className="sort-select" 
-                type="text" 
-                id="sort-results"
-                name="sort" 
-                value={this.state.value}
-                onChange={e => this.handleUpdateSort(e)}>
-                  <option name="sort" value="rating">rating</option>
-                  <option name="sort" value="number of reviews">number of reviews</option>
-                  <option name="sort" value="distance">distance</option>
-              </select>
-            </form>
-          </header>
-          {this.renderPlaces()}
-        </section>
-      </>
+      <section className="places-list">
+        <header className="places-header">
+          <h2>Results</h2>
+          <form className="sort-results-form">
+            <label className="sort-results" htmlFor="sort-results">Sort by:</label>
+            <select 
+              className="sort-select" 
+              type="text" 
+              id="sort-results"
+              name="sort" 
+              value={this.state.value}
+              onChange={e => this.handleUpdateSort(e)}>
+                <option name="sort" value="rating">rating</option>
+                <option name="sort" value="number of reviews">number of reviews</option>
+                <option name="sort" value="distance">distance</option>
+            </select>
+          </form>
+        </header>
+        {this.renderPlaces()}
+      </section>
     )
   }
 }

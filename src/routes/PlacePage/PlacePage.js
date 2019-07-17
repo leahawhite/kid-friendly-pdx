@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import Map from '../../components/Map/Map';
 import Carousel from '../../components/Carousel/Carousel';
 import Review from '../../components/Review/Review';
@@ -51,7 +50,7 @@ export default class PlacePage extends Component {
       .then(data => {
         this.setState({
           place: data,
-          // isLoading: false,
+          isLoading: false,
           error: null,
         })
       })
@@ -119,99 +118,96 @@ export default class PlacePage extends Component {
       return <div className="spinner-container"><Spinner /></div>
     } else {
       return (
-        <>
-          <SearchBar />
-          <div className="place-page">
-            <section className="place-images-container">
-              {/* <Carousel images={this.renderImages()} imagesClass="image-item" /> */}
-            </section>
-            <section className="place-header">
-              <div className="place-header-basicinfo">
-                <h2 className="place-header-name">{place.name}</h2>
-                <div className="place-header-rating">
-                  <div className="star-rating">
-                    <StarRating rating={place.average_review_rating} />
-                  </div>
-                  <span>{readableReviewCount(place.number_of_reviews)}</span>
+        <div className="place-page">
+          <section className="place-images-container">
+            {/* <Carousel images={this.renderImages()} imagesClass="image-item" /> */}
+          </section>
+          <section className="place-header">
+            <div className="place-header-basicinfo">
+              <h2 className="place-header-name">{place.name}</h2>
+              <div className="place-header-rating">
+                <div className="star-rating">
+                  <StarRating rating={place.average_review_rating} />
                 </div>
-                {/* <div className="place-header-tags">{descriptorsList}</div> */}
-              </div> 
-            </section>
-            {/* <section className="place-actions"> 
-              <Action name="phone" link={`tel:+1-${place.phone}`} icon="phone" text="Call" />
-              <Action 
-                name="directions" 
-                link={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`} 
-                icon="directions"
-                text="Directions"
-              />
-              <Action name="website" link={place.website} icon="globe" text="Website" />
-              <div className="place-write-review">
-                <Link to={{
-                    pathname: `/places/${place.id}/reviews`,
-                    state: { place: place }
-                    }}>
-                    <FontAwesomeIcon icon="star" size="lg"/> 
-                    <p>Review</p>
-                </Link>
+                <span>{readableReviewCount(place.number_of_reviews)}</span>
               </div>
-            </section>
-            <section className="place-addl-info">
-              <div className="place-map">
-                <div className="place-map-icon">
-                  <FontAwesomeIcon icon="map-marker-alt" size="lg" />
-                </div>
-                <div className="place-map-content">
-                  <div className="place-address">
-                    <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
-                  </div>
-                  <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
-                    <div className="place-map-container">  
-                      <Map 
-                        places={placeArray} 
-                        zoom={14} 
-                        center={place.coordinates}
-                        infoClass="infowindow-hidden"
-                      />
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="place-hours">
-                <div className="place-hours-icon">
-                  <FontAwesomeIcon icon="clock" size="lg" />
-                </div>
-                <div className="place-hours-content">
-                  {hoursArr}
-                </div>
-              </div>
-              <PlaceFeatures place={place} />
-              <div className="place-reviews">
-                <h2 className="place-reviews-header">Reviews</h2>
-                <div className="place-reviews-content">
-                  {this.renderReviews()}
-                </div>
-              </div>
-              <div className="write-review-btn-container">
-                <button className="write-review-btn">
-                  <Link to={{
-                    pathname: `/places/${place.id}/reviews`,
-                    state: { place: place }
+              {/*<div className="place-header-tags">{descriptorsList}</div>*/}
+            </div> 
+          </section>
+          <section className="place-actions">
+            <Action name="phone" link={`tel:+1-${place.phone}`} icon="phone" text="Call" />
+            <Action 
+              name="directions" 
+              link={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`} 
+              icon="directions"
+              text="Directions"
+            />
+            <Action name="website" link={place.website} icon="globe" text="Website" />
+            <div className="place-write-review">
+              <Link to={{
+                  pathname: `/places/${place.id}/reviews`,
+                  state: { place: place }
                   }}>
-                    <FontAwesomeIcon icon="pen" size="sm" />
-                    <span>Write a review</span>
-                  </Link>
-                </button>
+                  <FontAwesomeIcon icon="star" size="lg"/> 
+                  <p>Review</p>
+              </Link>
+            </div>
+          </section>
+          <section className="place-addl-info">
+            <div className="place-map">
+              <div className="place-map-icon">
+                <FontAwesomeIcon icon="map-marker-alt" size="lg" />
               </div>
-            </section>*/}
-          </div>
-        </>
+              <div className="place-map-content">
+                <div className="place-address">
+                  <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
+                </div>
+                {/*<a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
+                  <div className="place-map-container">  
+                    <Map 
+                      places={placeArray} 
+                      zoom={14} 
+                      center={place.coordinates}
+                      infoClass="infowindow-hidden"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div className="place-hours">
+              <div className="place-hours-icon">
+                <FontAwesomeIcon icon="clock" size="lg" />
+              </div>
+              <div className="place-hours-content">
+                {hoursArr}
+              </div>
+            </div>
+            <PlaceFeatures place={place} />
+            <div className="place-reviews">
+              <h2 className="place-reviews-header">Reviews</h2>
+              <div className="place-reviews-content">
+                {/* {this.renderReviews()} */}
+              </div>
+            </div>
+            <div className="write-review-btn-container">
+              <button className="write-review-btn">
+                <Link to={{
+                  pathname: `/places/${place.id}/reviews`,
+                  state: { place: place }
+                }}>
+                  <FontAwesomeIcon icon="pen" size="sm" />
+                  <span>Write a review</span>
+                </Link>
+              </button>
+            </div>
+          </section>
+        </div>
       )
     }
   }
 }
 
-/*function PlaceFeatures({place}) {
+function PlaceFeatures({place}) {
   const filteredFeatures = Object.keys(place.features)
   .filter(feature => place.features[feature] === true);
     
@@ -230,4 +226,4 @@ export default class PlacePage extends Component {
       </div>
     </div>
   )
-}*/
+}

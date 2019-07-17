@@ -112,7 +112,7 @@ export default class Map extends Component {
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
         infoClass={this.props.infoClass}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.GAPI_KEY}&libraries=places`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDsdDZ5P1zY_soUX1qBLCTrVuN7HENqhjs&libraries=places`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `250px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
