@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import Map from '../../components/Map/Map';
 import Carousel from '../../components/Carousel/Carousel';
 import Review from '../../components/Review/Review';
@@ -34,7 +35,7 @@ export default class PlacePage extends Component {
   componentDidMount() {
     const { placeId } = this.props.match.params
     this.getPlace(placeId)
-    // this.getPlaceReviews()
+    this.getReviews(placeId)
   }
 
   getPlace = placeId => {
@@ -60,25 +61,48 @@ export default class PlacePage extends Component {
         })
       })
   }
-  
 
-  /*renderReviews() {
-    const { reviews, users } = this.state.data
+  getReviews = placeId => {
+    const url = `http://localhost:8000/places/${placeId}/reviews`
+    
+    fetch(url)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          review: data,
+          isLoading: false,
+          error: null,
+        })
+      })
+      .catch(err => {
+        this.setState({
+          error: 'Sorry, this place could not be retrieved.'
+        })
+      })
+  }
+
+  renderReviews() {
+    const { reviews, users } = this.state
     const { placeId } = this.props.match.params
     const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
-    
+    const { place } = this.props.location.state
     return (
       <ul className="places-item-reviews">
         {reviews.length ? 
-          reviewsList.map(review =>
-            <Review key={review.id} review={review} users={users} />)
+          reviews.map(review =>
+            <Review key={review.id} review={review} /*users={users}*/ />)
           : null}
       </ul>
     )
-  }*/
+  }
   
   renderImages() {
-    const { place } = this.state
+    const { place } = this.props.location.state
     const placeImages = place.images
     const { reviews } = this.state
     const { placeId } = this.props.match.params
@@ -98,10 +122,11 @@ export default class PlacePage extends Component {
   }
 
   render() {
-    const { place, isLoading } = this.state
+    const { place, isLoading } = this.props.location.state
     console.log('place', place)
     console.log('isLoading', isLoading)
-    /*const placeArray = [ place ]
+    const placeArray = [ place ]
+    console.log(placeArray)
     const descriptorsList = place.descriptors.length && place.descriptors.map((descriptor, index) =>
       <p className="place-descriptor" key={index}>{descriptor}</p>)
     const hoursArr = place.hours.map((item, index) =>
@@ -113,11 +138,13 @@ export default class PlacePage extends Component {
           </tr>
         </tbody>
       </table>  
-    );*/
+    );
     if (isLoading) {
       return <div className="spinner-container"><Spinner /></div>
     } else {
       return (
+        <>
+        <SearchBar />
         <div className="place-page">
           <section className="place-images-container">
             {/* <Carousel images={this.renderImages()} imagesClass="image-item" /> */}
@@ -131,7 +158,7 @@ export default class PlacePage extends Component {
                 </div>
                 <span>{readableReviewCount(place.number_of_reviews)}</span>
               </div>
-              {/*<div className="place-header-tags">{descriptorsList}</div>*/}
+              <div className="place-header-tags">{descriptorsList}</div>
             </div> 
           </section>
           <section className="place-actions">
@@ -162,12 +189,15 @@ export default class PlacePage extends Component {
                 <div className="place-address">
                   <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
                 </div>
-                {/*<a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
                   <div className="place-map-container">  
                     <Map 
                       places={placeArray} 
                       zoom={14} 
-                      center={place.coordinates}
+                      center={{
+                        lat: place.latitude,
+                        lng: place.longitude
+                      }}
                       infoClass="infowindow-hidden"
                     />
                   </div>
@@ -186,7 +216,7 @@ export default class PlacePage extends Component {
             <div className="place-reviews">
               <h2 className="place-reviews-header">Reviews</h2>
               <div className="place-reviews-content">
-                {/* {this.renderReviews()} */}
+                {this.renderReviews()}
               </div>
             </div>
             <div className="write-review-btn-container">
@@ -202,6 +232,7 @@ export default class PlacePage extends Component {
             </div>
           </section>
         </div>
+        </>
       )
     }
   }
@@ -210,7 +241,6 @@ export default class PlacePage extends Component {
 function PlaceFeatures({place}) {
   const filteredFeatures = Object.keys(place.features)
   .filter(feature => place.features[feature] === true);
-    
   return (
     <div className="place-features">
       <div className="place-features-icon">

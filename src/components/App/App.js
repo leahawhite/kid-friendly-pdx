@@ -4,8 +4,6 @@ import Header from '../Header/Header';
 import PrivateRoute from '../Utils/PrivateRoute'
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 import Footer from '../Footer/Footer';
-import SearchLayout from '../SearchLayout/SearchLayout';
-import SearchLayoutBelow from '../SearchLayout/SearchLayoutBelow';
 import ErrorBoundary from '../ErrorBoundary';
 import HomePage from '../../routes/HomePage/HomePage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
@@ -26,8 +24,8 @@ export default class App extends Component {
       hasError: false,
       loggedIn: TokenService.getAuthToken(),
       searchTerm: '',
-      category: 'all',
-      neighborhood: 'All Portland',
+      category: '',
+      neighborhood: '',
       handleSubmit: this.handleSubmit,
       handleUpdateSearch: this.handleUpdateSearch,
       handleUpdateCategory: this.handleUpdateCategory,
@@ -49,7 +47,6 @@ export default class App extends Component {
 
   getPlaces = () => {
     const { searchTerm, category, neighborhood } = this.state
-    console.log('fetch values', searchTerm, category, neighborhood)
     const baseUrl = 'http://localhost:8000/places'
     const params = []
     if (searchTerm) {
@@ -112,7 +109,6 @@ export default class App extends Component {
   }
   
   render() {
-    // const { searchTerm, category, neighborhood, isLoading, error, fireRedirect, places } = this.state
     
     return (
       <Provider value={this.state} >
@@ -121,22 +117,9 @@ export default class App extends Component {
           <main className="App__main">
             {this.state.hasError && <p className='red'>Sorry, there was an error. Please try again.</p>}
             <Switch>
-              <SearchLayoutBelow exact path={'/'} component={props =>
+              <Route exact path={'/'} render={props =>
                 <ErrorBoundary>
-                  <HomePage 
-                    {...props}
-                    //searchTerm={searchTerm}
-                    //category={category}
-                    //neighborhood={neighborhood}
-                    //isLoading={isLoading}
-                    //error={error}
-                    //fireRedirect={fireRedirect}
-                    //onSubmit={this.handleSubmit}
-                   // updateSearch={this.handleUpdateSearch}
-                    //updateCategory={this.handleUpdateCategory}
-                   // updateNeighborhood={this.handleUpdateNeighborhood}
-                 //places={places} 
-                  />
+                  <HomePage {...props} />
                 </ErrorBoundary>
               }/>  
               <PublicOnlyRoute 
@@ -151,40 +134,14 @@ export default class App extends Component {
                   <SignupPage {...props}/>
                 </ErrorBoundary>
               }/>
-              <SearchLayout exact path={'/places'} component={props =>
+              <Route exact path={'/places'} render={props =>
                 <ErrorBoundary>
-                  <PlacesListPage 
-                    {...props}
-                   // searchTerm={searchTerm}
-                   // category={category}
-                   // neighborhood={neighborhood}
-                   // isLoading={isLoading}
-                    //error={error}
-                    //fireRedirect={fireRedirect}
-                    //onSubmit={this.handleSubmit}
-                    //updateSearch={this.handleUpdateSearch}
-                   // updateCategory={this.handleUpdateCategory}
-                   // updateNeighborhood={this.handleUpdateNeighborhood}
-                   // places={places}
-                  />
+                  <PlacesListPage {...props} />
                 </ErrorBoundary>
               }/>    
-              <SearchLayout exact path={'/places/:placeId'} component={props =>
+              <Route exact path={'/places/:placeId'} render={props =>
                 <ErrorBoundary>
-                  <PlacePage 
-                    {...props}
-                   // searchTerm={searchTerm}
-                   // category={category}
-                   // neighborhood={neighborhood}
-                   // isLoading={isLoading}
-                    //error={error}
-                    //fireRedirect={fireRedirect}
-                    //onSubmit={this.handleSubmit}
-                    //updateSearch={this.handleUpdateSearch}
-                   // updateCategory={this.handleUpdateCategory}
-                   // updateNeighborhood={this.handleUpdateNeighborhood}
-                   // places={places}
-                  />
+                  <PlacePage {...props} />
                 </ErrorBoundary>
               }/>  
               <PrivateRoute 

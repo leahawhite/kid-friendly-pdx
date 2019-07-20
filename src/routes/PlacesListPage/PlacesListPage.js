@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import './PlacesListPage.css';
 import haversine from 'haversine';
 
@@ -58,8 +59,8 @@ export default class PlacesListPage extends Component {
         longitude: this.state.userLng
       }
       const end = {
-        latitude: result.coordinates.lat,
-        longitude: result.coordinates.lng
+        latitude: result.latitude,
+        longitude: result.longitude
       }
       const distance = haversine(start, end)
       return Object.assign(result, { distance });
@@ -70,7 +71,6 @@ export default class PlacesListPage extends Component {
     
   renderPlaces() {
     const { places } = this.props.location.state
-    console.log('placeslistplaces', places)
     const placeResults = places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
@@ -97,6 +97,8 @@ export default class PlacesListPage extends Component {
 
   render() {
     return (
+      <>
+      <SearchBar />
       <section className="places-list">
         <header className="places-header">
           <h2>Results</h2>
@@ -117,6 +119,7 @@ export default class PlacesListPage extends Component {
         </header>
         {this.renderPlaces()}
       </section>
+      </>
     )
   }
 }

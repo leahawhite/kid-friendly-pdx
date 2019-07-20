@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Consumer } from '../../contexts/SearchContext'
-import Spinner from '../../components/Spinner/Spinner';
+// import Spinner from '../../components/Spinner/Spinner';
 import './SearchBar.css';
 
 class SearchBar extends Component {
@@ -24,8 +24,7 @@ class SearchBar extends Component {
   }
 
   render() {
-    // const { searchTerm, category, neighborhood, error, fireRedirect, onSubmit, updateSearch, updateCategory, updateNeighborhood, places } = this.props
-    // console.log(searchTerm, category, neighborhood)
+    
     return (
       <Consumer>
         {context => (
@@ -51,13 +50,13 @@ class SearchBar extends Component {
                   id="category"
                   value={context.category}
                   onChange={context.handleUpdateCategory}>
-                    <option value="all">all</option>
-                    <option value="restaurants">restaurants</option>
-                    <option value="attractions">attractions</option>
-                    <option value="museums">museums</option>
-                    <option value="parks">parks</option>
+                    <option value=""></option>
+                    <option value="restaurant">restaurant</option>
+                    <option value="attraction">attraction</option>
+                    <option value="museum">museum</option>
+                    <option value="park">park</option>
                     <option value="indoor play">indoor play</option>
-                    <option value="toy store">toy stores</option>
+                    <option value="toy store">toy store</option>
                 </select>
               </div>
             <div className="filter-neighborhood">
@@ -68,7 +67,7 @@ class SearchBar extends Component {
                 id="neighborhood"
                 value={context.neighborhood}
                 onChange={context.handleUpdateNeighborhood}>
-                  <option value="All Portland">All Portland</option>
+                  <option value=""></option>
                   <option value="N">N</option>
                   <option value="NE">NE</option>
                   <option value="NW">NW</option>
