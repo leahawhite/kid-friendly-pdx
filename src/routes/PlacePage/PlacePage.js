@@ -35,7 +35,7 @@ export default class PlacePage extends Component {
   componentDidMount() {
     const { placeId } = this.props.match.params
     this.getPlace(placeId)
-    this.getReviews(placeId)
+    this.getPlaceReviews(placeId)
   }
 
   getPlace = placeId => {
@@ -54,6 +54,7 @@ export default class PlacePage extends Component {
           isLoading: false,
           error: null,
         })
+        console.log('getPlaces ran')
       })
       .catch(err => {
         this.setState({
@@ -62,8 +63,9 @@ export default class PlacePage extends Component {
       })
   }
 
-  getReviews = placeId => {
+  getPlaceReviews = placeId => {
     const url = `http://localhost:8000/places/${placeId}/reviews`
+    console.log('url', url)
     
     fetch(url)
       .then(res => {
@@ -74,10 +76,11 @@ export default class PlacePage extends Component {
       })
       .then(data => {
         this.setState({
-          review: data,
+          reviews: data,
           isLoading: false,
           error: null,
         })
+        console.log('getReviews ran', data)
       })
       .catch(err => {
         this.setState({
@@ -90,11 +93,10 @@ export default class PlacePage extends Component {
     const { reviews, users } = this.state
     const { placeId } = this.props.match.params
     const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
-    const { place } = this.props.location.state
     return (
       <ul className="places-item-reviews">
-        {reviews.length ? 
-          reviews.map(review =>
+        {reviewsList.length ? 
+          reviewsList.map(review =>
             <Review key={review.id} review={review} /*users={users}*/ />)
           : null}
       </ul>
@@ -123,10 +125,8 @@ export default class PlacePage extends Component {
 
   render() {
     const { place, isLoading } = this.props.location.state
-    console.log('place', place)
-    console.log('isLoading', isLoading)
     const placeArray = [ place ]
-    console.log(placeArray)
+    console.log('placeArray', placeArray)
     const descriptorsList = place.descriptors.length && place.descriptors.map((descriptor, index) =>
       <p className="place-descriptor" key={index}>{descriptor}</p>)
     const hoursArr = place.hours.map((item, index) =>
@@ -147,7 +147,7 @@ export default class PlacePage extends Component {
         <SearchBar />
         <div className="place-page">
           <section className="place-images-container">
-            {/* <Carousel images={this.renderImages()} imagesClass="image-item" /> */}
+            <Carousel images={this.renderImages()} imagesClass="image-item" />
           </section>
           <section className="place-header">
             <div className="place-header-basicinfo">
