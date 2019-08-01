@@ -13,7 +13,6 @@ class SearchBar extends Component {
     }
   }
 
-  
   showLoader = () => {
     const { isLoading } = this.props
     if (isLoading) {

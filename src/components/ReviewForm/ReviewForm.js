@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import StarRatingComponent from 'react-star-rating-component'
+import TokenService from '../../services/token-service'
+import config from '../../config'
 import ValidationError from '../ValidationError/ValidationError'
-import data from '../../data';
 import './ReviewForm.css';
-
 
 export default class ReviewForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      reviews: data.reviews,
       rating: 0,
       text: "",
       ratingValid: false,
@@ -25,20 +24,33 @@ export default class ReviewForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { place } = this.props
-    const newId = this.state.reviews.slice(-1)[0].id + 1
     const newReview = {
-      id: newId,
-      star_rating: this.state.rating,
+      rating: this.state.rating,
       text: e.target.text.value,
-      date_created: new Date(),
       place_id: place.id,
-      // how to capture userId here through auth?
-      // user_id: "2",
     }
-    this.setState({
-      reviews: { ...this.state.reviews, ...newReview },
-      fireRedirect: true,
-    })
+    fetch(`${config.API_URL}/reviews`, {
+      method: 'POST',
+      headers: {
+        "Authorization": `basic ${TokenService.getAuthToken()}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newReview)
+      })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+        .then(data => {
+          e.target.text.value = ''
+        })
+        .catch(res => {
+          this.setState({ error: res.error })
+        })
+        this.setState({
+          fireRedirect: true,
+        })
   }
 
   updateRating = (rating) => {
@@ -101,11 +113,15 @@ export default class ReviewForm extends Component {
         </div>
         <ValidationError hasError={!this.state.ratingValid} message={this.state.validationMessages.rating}/>
         <div className="text">
-          <textarea placeholder="Share your experience with others. How kid-friendly is this place?" name="text"></textarea>
+          <textarea required placeholder="Share your experience with others. How kid-friendly is this place?" name="text"></textarea>
         </div>
         <div className="button-container">
         <button type="submit" className="review-btn" disabled={!this.state.formValid}>Post Review</button>
-        <Link to='/image-upload'>
+        <Link to={{
+          pathname: '/image-upload',
+          state: {
+            place: place
+          }}}>
           <button type="button" className="photo-upload-btn">
             <FontAwesomeIcon icon="camera" size="sm" />
             <span>Upload a Photo</span>
@@ -114,10 +130,10 @@ export default class ReviewForm extends Component {
         </div>
       </form>
       {this.state.fireRedirect && (
-            <Redirect to={{
-              pathname: `/places/${place.id}`,
-              state: { place: place }}}
-            />
+        <Redirect to={{
+          pathname: `/places/${place.id}`,
+          state: { place: place }}}
+        />
       )}
       </>
     )

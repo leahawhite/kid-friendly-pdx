@@ -20,7 +20,6 @@ export default class PlacePage extends Component {
     place: {},
     reviews: [],
   }
-
   constructor(props) {
     super(props)
     this.state = {
@@ -34,69 +33,39 @@ export default class PlacePage extends Component {
 
   componentDidMount() {
     const { placeId } = this.props.match.params
-    this.getPlace(placeId)
-    this.getPlaceReviews(placeId)
-  }
-
-  getPlace = placeId => {
-    const url = `http://localhost:8000/places/${placeId}`
-    
-    fetch(url)
-      .then(res => {
-        if(!res.ok) {
-          throw new Error(res.statusText)
-        }
-        return res.json()
+    const baseUrl = 'http://localhost:8000'
+    Promise.all([
+      fetch(`${baseUrl}/places/${placeId}`),
+      fetch(`${baseUrl}/places/${placeId}/reviews`)
+    ])
+      .then(([placeRes, reviewsRes]) => {
+        if (!placeRes.ok)
+          return placeRes.json().then(e => Promise.reject(e))
+        if (!reviewsRes.ok)
+          return reviewsRes.json().then(e => Promise.reject(e))
+        return Promise.all([placeRes.json(), reviewsRes.json()])  
       })
-      .then(data => {
+      .then(([place, reviews]) => {
         this.setState({
-          place: data,
+          place: place,
+          reviews: reviews[0],
           isLoading: false,
-          error: null,
+          error: false
         })
-        console.log('getPlaces ran')
+        console.log('fetch place', place)
+        console.log('fetch reviews', reviews)
       })
-      .catch(err => {
-        this.setState({
-          error: 'Sorry, this place could not be retrieved.'
-        })
-      })
-  }
-
-  getPlaceReviews = placeId => {
-    const url = `http://localhost:8000/places/${placeId}/reviews`
-    console.log('url', url)
-    
-    fetch(url)
-      .then(res => {
-        if(!res.ok) {
-          throw new Error(res.statusText)
-        }
-        return res.json()
-      })
-      .then(data => {
-        this.setState({
-          reviews: data,
-          isLoading: false,
-          error: null,
-        })
-        console.log('getReviews ran', data)
-      })
-      .catch(err => {
-        this.setState({
-          error: 'Sorry, this place could not be retrieved.'
-        })
+      .catch(error => {
+        console.error({error});
       })
   }
 
   renderReviews() {
     const { reviews, users } = this.state
-    const { placeId } = this.props.match.params
-    const reviewsList = reviews.filter(review => review.place_id.toString() === placeId)
     return (
       <ul className="places-item-reviews">
-        {reviewsList.length ? 
-          reviewsList.map(review =>
+        {reviews.length ? 
+          reviews.map(review =>
             <Review key={review.id} review={review} /*users={users}*/ />)
           : null}
       </ul>
@@ -104,18 +73,15 @@ export default class PlacePage extends Component {
   }
   
   renderImages() {
-    const { place } = this.props.location.state
+    const { reviews, place } = this.state
     const placeImages = place.images
-    const { reviews } = this.state
-    const { placeId } = this.props.match.params
-    const reviewsList = reviews.length ? reviews.filter(review => review.place_id.toString() === placeId) : null
-    const reviewsImagesArrays = reviewsList.map(review => review.images)
-    if (!placeImages.length && !reviewsImagesArrays.length) {
+    const reviewsImages = reviews.map(review => review.images)
+    if (!placeImages.length && !reviewsImages.length) {
       return null;
-    } else if (placeImages.length && !reviewsImagesArrays.length) {
+    } else if (placeImages.length && !reviewsImages.length) {
       return placeImages;
     } else {
-      return [...placeImages, ...reviewsImagesArrays[0]];
+      return [...placeImages, ...reviewsImages[0]];
     }
   }
 
@@ -124,9 +90,13 @@ export default class PlacePage extends Component {
   }
 
   render() {
-    const { place, isLoading } = this.props.location.state
+    // need to fix spinner alignment
+    const { isLoading, place } = this.state
+    if (isLoading) {
+      return <div className="spinner-container"><Spinner /></div>
+    } else {
+    // is this allowed? push to new array instead?
     const placeArray = [ place ]
-    console.log('placeArray', placeArray)
     const descriptorsList = place.descriptors.length && place.descriptors.map((descriptor, index) =>
       <p className="place-descriptor" key={index}>{descriptor}</p>)
     const hoursArr = place.hours.map((item, index) =>
@@ -139,9 +109,6 @@ export default class PlacePage extends Component {
         </tbody>
       </table>  
     );
-    if (isLoading) {
-      return <div className="spinner-container"><Spinner /></div>
-    } else {
       return (
         <>
         <SearchBar />
@@ -190,7 +157,7 @@ export default class PlacePage extends Component {
                   <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
                 </div>
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
-                  <div className="place-map-container">  
+                  <div className="place-map-container">   
                     <Map 
                       places={placeArray} 
                       zoom={14} 

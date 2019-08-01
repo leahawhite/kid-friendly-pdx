@@ -2,20 +2,18 @@ import React, { Component } from 'react'
 import Spinner from '../../components/Spinner/Spinner'
 import Images from '../../components/Images/Images'
 import UploadButton from '../../components/UploadButton/UploadButton'
-// import { API_URL } from '../../config'
+import Button from '../../components/Button/Button'
+import TokenService from '../../services/token-service'
+import config from '../../config'
 import './PhotoUploadPage.css'
 
 export default class UploadPhotosPage extends Component {
-  static defaultProps = {
-    history: {
-      goBack: () => {},
-    },
-  }
-  
   state = {
     uploading: false,
+    selectedFile: null,
     images: [],
-    error: null
+    error: null,
+    captions: []
   }
 
   handleCancel = () => {
@@ -23,62 +21,44 @@ export default class UploadPhotosPage extends Component {
     history.goBack()
   }
 
-  /*onChange = e => {
-    const files = Array.from(e.target.files)
-
-    if (files.length > 3) {
-      const msg = 'Only 3 images can be uploaded at a time'
-      return this.toast(msg, 'custom', 2000, toastColor)  
-    }
-
-    const formData = new FormData()
-    const types = ['image/png', 'image/jpeg', 'image/gif']
-
-    files.forEach((file, i) => {
-
-      if (types.every(type => file.type !== type)) {
-        errs.push(`'${file.type}' is not a supported format`)
-      }
-
-      if (file.size > 150000) {
-        errs.push(`'${file.name}' is too large, please pick a smaller file`)
-      }
-
-      formData.append(i, file)
+  onChange = e => {
+    this.setState({
+      selectedFile: e.target.files
     })
+  }
 
-    if (errs.length) {
-      return errs.forEach(err => this.toast(err, 'custom', 2000, toastColor))
-    }
-
+  onSubmit = e => {
+    e.preventDefault()
     this.setState({ uploading: true })
-
-    fetch(`${API_URL}/image-upload`, {
+    // this might be screwing up multer
+    // const files = Array.from(e.target.files)
+    
+    const formData = new FormData()
+    for (let i = 0; i < this.state.selectedFile.length; i++) {
+      formData.append('file', this.state.selectedFile[i])
+    }
+    
+    fetch(`${config.API_ENDPOINT}/images/upload`, {
       method: 'POST',
       body: formData
     })
-    .then(res => {
-      if (!res.ok) {
-        throw res
-      }
-      return res.json()
-    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
     .then(images => {
-      this.setState({
-        uploading: false, 
+      console.log('images', images)
+      this.setState({ 
+        uploading: false,
         images
       })
     })
-    .catch(err => {
-      err.json().then(e => {
-        this.setState({ 
-          uploading: false,
-          error: err.message
-        })
-      })
+    .catch(res => {
+      this.setState({ error: res.error })
     })
-  }*/
-
+  }
+    
   filter = id => {
     return this.state.images.filter(image => image.public_id !== id)
   }
@@ -89,45 +69,99 @@ export default class UploadPhotosPage extends Component {
     })
   }
 
+  addCaption = text => {
+    this.setState({
+      captions: [...this.state.captions, text]
+    })
+  }
+
   onError = id => {
-    // this.toast('Oops, something went wrong', 'custom', 2000, toastColor)
     this.setState({ images: this.filter(id) })
   }
+
+  /*submitImagestoDB = (e) => {
+    e.preventDefault()
+    const { images } = this.state
+    const { place } = this.props.location.state
+    // need to deconstruct the images array to get properties
+    images.map(image => {
+      const newImage = {
+      id: image.public_id,
+      src: image.secure_url,
+      place_id: place.id,
+      // caption: how to get this from array in this.state? 
+      // user_id: TBD
+      }
+      return newImage
+    })
+    fetch(`${config.API_URL}/images`, {
+      method: 'POST',
+      headers: {
+        "Authorization": `basic ${TokenService.getAuthToken()}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newImage)
+      })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+        .then(data => {
+          e.target.text.value = ''
+        })
+        .catch(res => {
+          this.setState({ error: res.error })
+        })
+        this.setState({
+          fireRedirect: true,
+        })
+    }*/
   
   render() {
-    const { uploading, images, error } = this.state
+    const { uploading, images } = this.state
 
-    const hasError = error
-    ? <div className="error-message">{error}</div>
-    : "";
-    
     const content = () => {
       switch(true) {
         case uploading:
           return <Spinner />
         case images.length > 0:
-          return <Images 
-                  images={images} 
-                  removeImage={this.removeImage} 
-                  // onError={this.onError}
-                 />
+          return ( 
+                <>
+                  <Images 
+                    images={images} 
+                    removeImage={this.removeImage} 
+                    addCaption={this.addCaption}
+                    onError={this.onError}
+                  />
+                  <div className="btn-container">
+                    <Button btnType="submit" btnText="Finished" />
+                  </div>
+                </>
+                 )
         default:
-          return <UploadButton onChange={this.onChange} />
+          return (
+            <>
+            <UploadButton iconClass="icon" uploadSpan="Browse Files" onChange={this.onChange} />
+            <Button btnType="submit" btnText="Submit"/>
+            </>
+          ) 
       }
     }
+    const hasError = this.state.error && <div className="error">{this.state.error}</div>
 
     return (
-      <div className='container'>
+      <div className='upload-container'>
         <h2 className="upload-header">Upload Photos</h2>
-        {hasError}
-        <div className='buttons'>
-          {content()}
-        </div>
-        <div className="cancel-container">
-          <button className="cancel-btn" type="button" onClick={this.handleCancel}>
-            Cancel
-          </button>
-        </div>
+        <form className="upload-form" onSubmit={this.onSubmit} action="/api/images/upload" method="post" encType="multipart/form-data">
+          <div className='buttons'>
+            {content()}
+          </div>
+          {hasError}
+          <div className="cancel-container">
+            <Button btnText="Cancel" btnType="button" onClick={this.handleCancel} />
+          </div>
+        </form>
       </div>
     )
   }

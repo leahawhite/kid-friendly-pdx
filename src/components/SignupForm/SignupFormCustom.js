@@ -57,7 +57,7 @@ export default class SignupForm extends Component {
       hasError = true;
     } else {
       if (fieldValue.length < 3) {
-        fieldErrors.display_name = 'Dispay name must be at least 3 characters long';
+        fieldErrors.display_name = 'Display name must be at least 3 characters long';
         hasError = true;
       } else {
         // if fieldValue exists in database already

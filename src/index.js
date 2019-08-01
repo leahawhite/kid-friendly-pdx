@@ -24,7 +24,8 @@ import {
   faCamera,
   faGlobe,
   faBan,
-  faPlusCircle
+  faPlusCircle,
+  faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -44,7 +45,8 @@ library.add(
   faChild,
   faGlobe,
   faBan,
-  faPlusCircle
+  faPlusCircle,
+  faTrashAlt
 )
 
 ReactDOM.render(

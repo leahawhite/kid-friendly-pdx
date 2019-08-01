@@ -15,6 +15,7 @@ import PhotoUploadPage from '../../routes/PhotoUploadPage/PhotoUploadPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import TokenService from '../../services/token-service';
 import { Provider } from '../../contexts/SearchContext';
+import config from '../../config';
 import './App.css';
 
 export default class App extends Component {
@@ -47,7 +48,6 @@ export default class App extends Component {
 
   getPlaces = () => {
     const { searchTerm, category, neighborhood } = this.state
-    const baseUrl = 'http://localhost:8000/places'
     const params = []
     if (searchTerm) {
       params.push(`searchTerm=${encodeURI(searchTerm)}`)
@@ -59,7 +59,7 @@ export default class App extends Component {
       params.push(`neighborhood=${encodeURI(neighborhood)}`)
     }
     const query = params.join('&')
-    const url = `${baseUrl}?${query}`
+    const url = `${config.API_ENDPOINT}/places/?${query}`
         
     fetch(url)
       .then(res => {
@@ -126,7 +126,7 @@ export default class App extends Component {
                 path={'/login'} 
                 component={props =>
                 <ErrorBoundary>
-                  <LoginPage  loggedIn={this.state.loggedIn} onLogin={this.handleLogin} {...props}/>
+                  <LoginPage loggedIn={this.state.loggedIn} onLogin={this.handleLogin} {...props}/>
                 </ErrorBoundary>
               }/>  
               <PublicOnlyRoute path={'/signup'} component={props =>
@@ -146,8 +146,9 @@ export default class App extends Component {
               }/>  
               <PrivateRoute 
                 path={'/places/:placeId/reviews'} 
-                component={ReviewPage}/>
-              <Route path={'/image-upload'} render={props =>
+                component={ReviewPage}
+              />
+              <Route path={'/images/upload'} render={props =>
                 <ErrorBoundary>
                   <PhotoUploadPage {...props}/>
                 </ErrorBoundary>

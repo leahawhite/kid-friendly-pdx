@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export default props => 
   <div className='buttons fadein'>
     <div className='button'>
-      <label className="upload-btn" htmlFor='multi'>
-        <FontAwesomeIcon icon='camera' size='10x' />
-        <span>Browse Files</span>
+      <label className="upload-btn" htmlFor='file'>
+        <FontAwesomeIcon className={props.iconClass} icon='camera' size='10x' />
+        <span className="upload-btn-text">{props.uploadSpan}</span>
       </label>
-      <input type='file' id='multi' onChange={props.onChange} multiple />
+      <input type='file' name='file' id='file' onChange={props.onChange} multiple />
     </div>
   </div>

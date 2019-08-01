@@ -28,7 +28,6 @@ export default class Review extends Component {
         <button className="read-btn" onClick={this.handleExpandText}>Read more</button>
         </>
       )
-      
     } else {
       return (
         <>
@@ -49,15 +48,14 @@ export default class Review extends Component {
   }
 
   render() {
-    const { review, users } = this.props
-    const userId = review.user_id
-    const username = users.length && users.find(user => user.id === userId).display_name
+    const { review } = this.props
+    const userId = review.author
       return (
         <li className="places-item-review" key={review.id}>
-          <p className="username">{username}</p>
+          <p className="username">{userId}</p>
           <div className="places-item-review-star-rating">
             <div className="star-rating">
-            <StarRating rating={review.star_rating} />
+            <StarRating rating={review.rating} />
             </div>
             <span>{moment(review.date_created).format('MM/DD/YYYY')}</span>
           </div>
