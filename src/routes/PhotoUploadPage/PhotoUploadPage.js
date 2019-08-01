@@ -13,7 +13,6 @@ export default class UploadPhotosPage extends Component {
     selectedFile: null,
     images: [],
     error: null,
-    captions: []
   }
 
   handleCancel = () => {
@@ -22,20 +21,14 @@ export default class UploadPhotosPage extends Component {
   }
 
   onChange = e => {
-    this.setState({
-      selectedFile: e.target.files
-    })
-  }
-
-  onSubmit = e => {
     e.preventDefault()
     this.setState({ uploading: true })
     // this might be screwing up multer
     // const files = Array.from(e.target.files)
     
     const formData = new FormData()
-    for (let i = 0; i < this.state.selectedFile.length; i++) {
-      formData.append('file', this.state.selectedFile[i])
+    for (let i = 0; i < e.target.files.length; i++) {
+      formData.append('file', e.target.files[i])
     }
     
     fetch(`${config.API_ENDPOINT}/images/upload`, {
@@ -48,7 +41,6 @@ export default class UploadPhotosPage extends Component {
         : res.json()
     )
     .then(images => {
-      console.log('images', images)
       this.setState({ 
         uploading: false,
         images
@@ -69,38 +61,32 @@ export default class UploadPhotosPage extends Component {
     })
   }
 
-  addCaption = text => {
-    this.setState({
-      captions: [...this.state.captions, text]
-    })
-  }
-
   onError = id => {
     this.setState({ images: this.filter(id) })
   }
 
-  /*submitImagestoDB = (e) => {
+  onSubmit = e => {
     e.preventDefault()
     const { images } = this.state
     const { place } = this.props.location.state
+
     // need to deconstruct the images array to get properties
-    images.map(image => {
-      const newImage = {
-      id: image.public_id,
-      src: image.secure_url,
-      place_id: place.id,
-      // caption: how to get this from array in this.state? 
-      // user_id: TBD
+    const newImages = images.map(image => (
+      {
+        id: image.id,
+        src: image.src,
+        place_id: place.id,
+        // how to add caption? 
       }
-      return newImage
-    })
+    ))
+    
     fetch(`${config.API_URL}/images`, {
       method: 'POST',
       headers: {
         "Authorization": `basic ${TokenService.getAuthToken()}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(newImage)
+      body: JSON.stringify(newImages)
       })
       .then(res =>
         (!res.ok)
@@ -116,7 +102,7 @@ export default class UploadPhotosPage extends Component {
         this.setState({
           fireRedirect: true,
         })
-    }*/
+    }
   
   render() {
     const { uploading, images } = this.state
@@ -141,10 +127,7 @@ export default class UploadPhotosPage extends Component {
                  )
         default:
           return (
-            <>
             <UploadButton iconClass="icon" uploadSpan="Browse Files" onChange={this.onChange} />
-            <Button btnType="submit" btnText="Submit"/>
-            </>
           ) 
       }
     }
