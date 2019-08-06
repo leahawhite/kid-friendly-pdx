@@ -27,12 +27,12 @@ export default class ReviewForm extends Component {
     const newReview = {
       rating: this.state.rating,
       text: e.target.text.value,
-      place_id: place.id,
+      place_id: 1,
     }
-    fetch(`${config.API_URL}/reviews`, {
+    fetch(`${config.API_ENDPOINT}/reviews`, {
       method: 'POST',
       headers: {
-        "Authorization": `basic ${TokenService.getAuthToken()}`,
+        "Authorization": `bearer ${TokenService.getAuthToken()}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newReview)
@@ -118,7 +118,7 @@ export default class ReviewForm extends Component {
         <div className="button-container">
         <button type="submit" className="review-btn" disabled={!this.state.formValid}>Post Review</button>
         <Link to={{
-          pathname: '/image-upload',
+          pathname: '/images/upload',
           state: {
             place: place
           }}}>

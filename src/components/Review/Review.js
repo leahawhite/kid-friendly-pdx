@@ -48,11 +48,10 @@ export default class Review extends Component {
   }
 
   render() {
-    const { review } = this.props
-    const userId = review.author
+    const { review, place } = this.props
       return (
         <li className="places-item-review" key={review.id}>
-          <p className="username">{userId}</p>
+          <p className="username">{review.user_id}</p>
           <div className="places-item-review-star-rating">
             <div className="star-rating">
             <StarRating rating={review.rating} />
@@ -62,11 +61,11 @@ export default class Review extends Component {
           <div className="review-text">
             {this.getReviewContent(review)}
           </div>
-          <div className="review-image-container">
-            {review.images.length ?    
-              <CarouselLB images={review.images} imagesClass='review-image'/>
-            : null}  
-          </div>
+          {/* <div className="review-image-container"> */}
+            {/* {review.images.length ?     */}
+              {/* <CarouselLB images={review.images} imagesClass='review-image'/> */}
+            {/* : null}   */}
+          {/* </div> */}
         </li>
       )
   }

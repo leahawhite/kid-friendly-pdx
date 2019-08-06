@@ -1,0 +1,10 @@
+.Images textarea {
+  border: 1px solid #00b8e6;
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  text-align: left;
+  width: 250px;
+  height: 100px;
+  border-radius: 4px;
+}

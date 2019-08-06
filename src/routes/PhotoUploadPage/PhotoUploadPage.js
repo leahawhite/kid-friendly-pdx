@@ -12,6 +12,7 @@ export default class UploadPhotosPage extends Component {
     uploading: false,
     selectedFile: null,
     images: [],
+    captions: [],
     error: null,
   }
 
@@ -23,8 +24,6 @@ export default class UploadPhotosPage extends Component {
   onChange = e => {
     e.preventDefault()
     this.setState({ uploading: true })
-    // this might be screwing up multer
-    // const files = Array.from(e.target.files)
     
     const formData = new FormData()
     for (let i = 0; i < e.target.files.length; i++) {
@@ -57,8 +56,15 @@ export default class UploadPhotosPage extends Component {
 
   removeImage = id => {
     this.setState({
-      images: this.state.images.filter(image => image.public_id !== id)
+      images: this.state.images.filter(image => image.id !== id)
     })
+  }
+
+  addCaption = (e, i) => {
+    this.setState({
+      captions: [...this.state.captions, e.target.value[i]]
+    })
+    console.log('captions', this.state.captions)
   }
 
   onError = id => {
@@ -68,22 +74,25 @@ export default class UploadPhotosPage extends Component {
   onSubmit = e => {
     e.preventDefault()
     const { images } = this.state
-    const { place } = this.props.location.state
+    // const { place } = this.props.location.state
+    // console.log('place', place)
 
     // need to deconstruct the images array to get properties
-    const newImages = images.map(image => (
+    const newImages = images.map((image, index) => (
       {
         id: image.id,
         src: image.src,
-        place_id: place.id,
-        // how to add caption? 
+        // figure out why place isn't getting logged -- because db error?
+        place_id: 1,
+        // title: this.state.captions[index]
       }
     ))
+    console.log('newImages', newImages)
     
-    fetch(`${config.API_URL}/images`, {
+    fetch(`${config.API_ENDPOINT}/images`, {
       method: 'POST',
       headers: {
-        "Authorization": `basic ${TokenService.getAuthToken()}`,
+        "Authorization": `bearer ${TokenService.getAuthToken()}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newImages)
@@ -93,19 +102,13 @@ export default class UploadPhotosPage extends Component {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
-        .then(data => {
-          e.target.text.value = ''
-        })
-        .catch(res => {
-          this.setState({ error: res.error })
-        })
-        this.setState({
-          fireRedirect: true,
-        })
+      this.setState({
+        fireRedirect: true,
+      })
     }
   
   render() {
-    const { uploading, images } = this.state
+    const { uploading, images, captions } = this.state
 
     const content = () => {
       switch(true) {
@@ -119,6 +122,7 @@ export default class UploadPhotosPage extends Component {
                     removeImage={this.removeImage} 
                     addCaption={this.addCaption}
                     onError={this.onError}
+                    captions={captions}
                   />
                   <div className="btn-container">
                     <Button btnType="submit" btnText="Finished" />

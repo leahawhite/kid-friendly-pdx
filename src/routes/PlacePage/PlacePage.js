@@ -23,15 +23,15 @@ export default class PlacePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      place: {},
+      place: this.props.location.state,
       reviews: [],
-      isLoading: true,
+      // isLoading: true,
       error: null,
       fireRedirect: false,
     }
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     const { placeId } = this.props.match.params
     const baseUrl = 'http://localhost:8000'
     Promise.all([
@@ -58,31 +58,36 @@ export default class PlacePage extends Component {
       .catch(error => {
         console.error({error});
       })
-  }
+  }*/
 
   renderReviews() {
-    const { reviews, users } = this.state
+    // const { reviews, users } = this.state
+    const { place } = this.props.location.state
+    const { reviews } = place
     return (
       <ul className="places-item-reviews">
         {reviews.length ? 
           reviews.map(review =>
-            <Review key={review.id} review={review} /*users={users}*/ />)
+            <Review key={review.id} review={review} place={place} /*users={users}*/ />)
           : null}
       </ul>
     )
   }
   
   renderImages() {
-    const { reviews, place } = this.state
+    const { reviews,  } = this.state
+    const { place } = this.props.location.state
     const placeImages = place.images
-    const reviewsImages = reviews.map(review => review.images)
+    /*const reviewsImages = reviews.map(review => review.images)
     if (!placeImages.length && !reviewsImages.length) {
       return null;
     } else if (placeImages.length && !reviewsImages.length) {
       return placeImages;
     } else {
       return [...placeImages, ...reviewsImages[0]];
-    }
+    }*/
+    return placeImages
+
   }
 
   getStdTime(hours) {
@@ -91,7 +96,9 @@ export default class PlacePage extends Component {
 
   render() {
     // need to fix spinner alignment
-    const { isLoading, place } = this.state
+    const { isLoading,  } = this.state
+    const { place } = this.props.location.state
+    console.log('place', place)
     if (isLoading) {
       return <div className="spinner-container"><Spinner /></div>
     } else {
@@ -154,7 +161,7 @@ export default class PlacePage extends Component {
               </div>
               <div className="place-map-content">
                 <div className="place-address">
-                  <p>{place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
+                  <p>{place.address}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
                 </div>
                 <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
                   <div className="place-map-container">   
@@ -206,8 +213,7 @@ export default class PlacePage extends Component {
 }
 
 function PlaceFeatures({place}) {
-  const filteredFeatures = Object.keys(place.features)
-  .filter(feature => place.features[feature] === true);
+  const features = place.features 
   return (
     <div className="place-features">
       <div className="place-features-icon">
@@ -216,7 +222,7 @@ function PlaceFeatures({place}) {
       <div className="place-features-content">
         <h2>Kid-friendly features</h2>
         <div className="features-list">
-          {filteredFeatures.map((feature, index) =>
+          {features.map((feature, index) =>
             <p className="place-feature" key={index}>{feature}</p>
           )}
         </div>

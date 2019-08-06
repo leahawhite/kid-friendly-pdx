@@ -63,7 +63,7 @@ const MapWithMarkers = compose(withScriptjs, withGoogleMap,
                       </div>
                       <span>{readableReviewCount(place.number_of_reviews)}</span>
                       <p className="infowindow-address">
-                        {place.address1}{place.address2}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
+                        {place.address}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
                     </div>
                   </div>
                 </div>

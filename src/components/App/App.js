@@ -15,6 +15,7 @@ import PhotoUploadPage from '../../routes/PhotoUploadPage/PhotoUploadPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import TokenService from '../../services/token-service';
 import { Provider } from '../../contexts/SearchContext';
+import PlacesApiService from '../../services/places-api-service';
 import config from '../../config';
 import './App.css';
 
@@ -60,14 +61,7 @@ export default class App extends Component {
     }
     const query = params.join('&')
     const url = `${config.API_ENDPOINT}/places/?${query}`
-        
-    fetch(url)
-      .then(res => {
-        if(!res.ok) {
-          throw new Error(res.statusText)
-        }
-        return res.json()
-      })
+    PlacesApiService.getPlaces(url)
       .then(data => {
         this.setState({
           places: data,

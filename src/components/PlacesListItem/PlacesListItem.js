@@ -23,7 +23,7 @@ export default class PlacesListItem extends Component {
             {place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
             : null}
           </Link>
-        </div>
+              </div>
         <div className="place-info">
           <h3 className="place-name">
             <Link to={{
