@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StarRating } from '../../components/StarRating/StarRating';
 import Spinner from '../../components/Spinner/Spinner';
 import { readableReviewCount } from '../../helpers/helpers';
+import PlacesApiService from '../../services/places-api-service';
 import moment from 'moment'
 import './PlacePage.css';
 
@@ -25,80 +26,52 @@ export default class PlacePage extends Component {
     this.state = {
       place: this.props.location.state,
       reviews: [],
-      // isLoading: true,
+      isLoading: true,
       error: null,
       fireRedirect: false,
     }
   }
 
-  /*componentDidMount() {
+  componentDidMount() {
     const { placeId } = this.props.match.params
-    const baseUrl = 'http://localhost:8000'
-    Promise.all([
-      fetch(`${baseUrl}/places/${placeId}`),
-      fetch(`${baseUrl}/places/${placeId}/reviews`)
-    ])
-      .then(([placeRes, reviewsRes]) => {
-        if (!placeRes.ok)
-          return placeRes.json().then(e => Promise.reject(e))
-        if (!reviewsRes.ok)
-          return reviewsRes.json().then(e => Promise.reject(e))
-        return Promise.all([placeRes.json(), reviewsRes.json()])  
-      })
-      .then(([place, reviews]) => {
+    PlacesApiService.getReviewsForPlace(placeId)
+     .then(reviews => {
         this.setState({
-          place: place,
-          reviews: reviews[0],
+          reviews: reviews,
           isLoading: false,
           error: false
         })
-        console.log('fetch place', place)
-        console.log('fetch reviews', reviews)
       })
       .catch(error => {
         console.error({error});
       })
-  }*/
+  }
+
+  componentWillUnmount() {
+    this.setState()
+  }
 
   renderReviews() {
-    // const { reviews, users } = this.state
+    const { reviews } = this.state
     const { place } = this.props.location.state
-    const { reviews } = place
     return (
       <ul className="places-item-reviews">
         {reviews.length ? 
           reviews.map(review =>
-            <Review key={review.id} review={review} place={place} /*users={users}*/ />)
+            <Review key={review.id} review={review} place={place} />)
           : null}
       </ul>
     )
   }
   
-  renderImages() {
-    const { reviews,  } = this.state
-    const { place } = this.props.location.state
-    const placeImages = place.images
-    /*const reviewsImages = reviews.map(review => review.images)
-    if (!placeImages.length && !reviewsImages.length) {
-      return null;
-    } else if (placeImages.length && !reviewsImages.length) {
-      return placeImages;
-    } else {
-      return [...placeImages, ...reviewsImages[0]];
-    }*/
-    return placeImages
-
-  }
-
   getStdTime(hours) {
     return moment(hours, 'hh:mm a').format('hh:mm a')
   }
 
   render() {
     // need to fix spinner alignment
-    const { isLoading,  } = this.state
+    const { isLoading } = this.state
     const { place } = this.props.location.state
-    console.log('place', place)
     if (isLoading) {
       return <div className="spinner-container"><Spinner /></div>
     } else {
@@ -106,7 +79,35 @@ export default class PlacePage extends Component {
     const placeArray = [ place ]
     const descriptorsList = place.descriptors.length && place.descriptors.map((descriptor, index) =>
       <p className="place-descriptor" key={index}>{descriptor}</p>)
-    const hoursArr = place.hours.map((item, index) =>
+    
+    const placeHours = place.hours
+    const newPlaceHours = placeHours.map(day => { 
+      let returnValue = {...day}
+      if (day.dayOfWeek === 1) {
+        returnValue.dayOfWeek = "Monday";
+      }
+      if (day.dayOfWeek === 2) {
+        returnValue.dayOfWeek = "Tuesday";
+      }
+      if (day.dayOfWeek === 3) {
+        returnValue.dayOfWeek = "Wednesday";
+      }
+      if (day.dayOfWeek === 4) {
+        returnValue.dayOfWeek = "Thursday";
+      }
+      if (day.dayOfWeek === 5) {
+        returnValue.dayOfWeek = "Friday";
+      }
+      if (day.dayOfWeek === 6) {
+        returnValue.dayOfWeek = "Saturday";
+      }
+      if (day.dayOfWeek === 7) {
+        returnValue.dayOfWeek = "Sunday";
+      }
+      return returnValue
+    })
+   
+    const hoursArr = newPlaceHours.map((item, index) =>
       <table className="place-hours-table" key={index}>
         <tbody>
           <tr className="place-hours-table-row">
@@ -121,7 +122,7 @@ export default class PlacePage extends Component {
         <SearchBar />
         <div className="place-page">
           <section className="place-images-container">
-            <Carousel images={this.renderImages()} imagesClass="image-item" />
+            <Carousel images={place.images} imagesClass="image-item" />
           </section>
           <section className="place-header">
             <div className="place-header-basicinfo">

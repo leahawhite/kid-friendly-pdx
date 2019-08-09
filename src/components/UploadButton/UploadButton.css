@@ -1,3 +1,25 @@
 .icon-none {
   display: none;
 }
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px;
+  color: #00b8e6;
+}
+
+.button {
+  cursor: pointer;
+}
+
+input[type=file] { 
+  visibility: hidden;
+  position: absolute;
+} 
+
+.upload-btn-text {
+  margin-left: 10px;
+}

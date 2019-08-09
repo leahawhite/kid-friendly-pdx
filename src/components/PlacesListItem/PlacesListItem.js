@@ -16,7 +16,7 @@ export default class PlacesListItem extends Component {
     return (
       <div className="place-item">
         <div className="place-image-container">
-          <Link to={{
+          <Link exact to={{
                   pathname: `/places/${place.id}`,
                   state: { place: place }
                 }}>
@@ -25,14 +25,14 @@ export default class PlacesListItem extends Component {
           </Link>
               </div>
         <div className="place-info">
-          <h3 className="place-name">
-            <Link to={{
+           <h3 className="place-name">
+            <Link exact to={{
                 pathname: `/places/${place.id}`,
                 state: { place: place }
               }}>
               {place.name}
             </Link>
-          </h3>
+            </h3>
           <div className="place-info-reviews">
             <div className="star-rating">
               <StarRating rating={place.average_review_rating} />

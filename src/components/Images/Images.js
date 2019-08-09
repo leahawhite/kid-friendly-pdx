@@ -1,7 +1,7 @@
 import React from 'react'
-// import Caption from '../Caption/Caption'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import './Images.css' 
 
 export default function Images(props) {
   
@@ -16,9 +16,8 @@ export default function Images(props) {
         </div>
         <img className="uploaded-images" src={image.src} alt={image.id} />
         <div className="Caption">
-          <textarea placeholder="Add a caption" name="caption" id="caption" value={image.title} onChange={(e, i) => props.addCaption(e, i)}></textarea>
+          <textarea className="caption-text" placeholder="Add a caption" name="caption" id="caption" value={image.title} onChange={(e, i) => props.addCaption(e, i)}></textarea>
         </div>
-        {/* <Caption addCaption={props.addCaption} /> */}
       </div>
     )
   )
