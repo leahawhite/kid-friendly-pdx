@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PlacesListPage component renders UI as expected 1`] = `
+exports[`ReviewPage component renders UI as expected 1`] = `
 <Router
   history={
     Object {
@@ -11,7 +11,7 @@ exports[`PlacesListPage component renders UI as expected 1`] = `
       "entries": Array [
         Object {
           "hash": "",
-          "key": "kbxsdg",
+          "key": "jv4rrg",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -25,7 +25,7 @@ exports[`PlacesListPage component renders UI as expected 1`] = `
       "listen": [Function],
       "location": Object {
         "hash": "",
-        "key": "kbxsdg",
+        "key": "jv4rrg",
         "pathname": "/",
         "search": "",
         "state": undefined,
@@ -35,13 +35,13 @@ exports[`PlacesListPage component renders UI as expected 1`] = `
     }
   }
 >
-  <PlacesListPage
+  <ReviewPage
     location={
       Object {
         "state": Object {},
       }
     }
-    places={Array []}
+    place={Object {}}
   />
 </Router>
 `;

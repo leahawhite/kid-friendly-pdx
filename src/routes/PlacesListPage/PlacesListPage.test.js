@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import PlacesListPage from './PlacesListPage'
@@ -17,7 +17,10 @@ describe('PlacesListPage component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<MemoryRouter><PlacesListPage /></MemoryRouter>)
+    const wrapper = shallow(
+      <MemoryRouter>
+        <PlacesListPage />
+      </MemoryRouter>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

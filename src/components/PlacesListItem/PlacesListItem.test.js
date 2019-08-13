@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import PlacesListItem from './PlacesListItem';
@@ -7,15 +8,12 @@ import PlacesListItem from './PlacesListItem';
 const place = {
   id: 1,
   name: "Atlas Pizza",
-  address1: "6529 SE Foster Rd",
-  address2: "",
+  address: "6529 SE Foster Rd",
   city: "Portland",
   state: "OR",
   zipcode: "97206",
-  coordinates: {
-    lat: 45.489200,
-    lng: -122.595070
-  },
+  lat: 45.489200,
+  lng: -122.595070,
   neighborhood: "SE",
   phone: "503-232-3004",
   website: "http://atlaspizzapdx.com",
@@ -56,7 +54,7 @@ const place = {
       "closes": "11:00 pm",
     },
   ],
-  date_added: "2019-06-13",
+  date_created: "2019-06-13",
   category: ["restaurants",],
   descriptors: [ "pizza", "arcade", "beer" ],
   features: { 
@@ -98,11 +96,17 @@ const place = {
 describe('PlaceListItem component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<PlacesListItem />, div);
+    ReactDOM.render(
+      <MemoryRouter>
+        <PlacesListItem />
+      </MemoryRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<PlacesListItem place={place}/>)
+    const wrapper = shallow(
+      <MemoryRouter>
+        <PlacesListItem place={place}/>
+      </MemoryRouter>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

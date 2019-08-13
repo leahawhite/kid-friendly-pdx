@@ -5,7 +5,7 @@ import './ReviewPage.css';
 
 export default class ReviewPage extends Component {
   static defaultProps = {
-    location: { state: {} },
+    location: { state: {} }
   }
   render() {
     const { place } = this.props.location.state

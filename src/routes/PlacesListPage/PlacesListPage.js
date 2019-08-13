@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import PlacesApiService from '../../services/places-api-service';
+import config from '../../config';
 import './PlacesListPage.css';
 import haversine from 'haversine';
 
@@ -13,7 +15,6 @@ export default class PlacesListPage extends Component {
   
   constructor(props) {
     super(props)
-    this.select = React.createRef()
     this.state = {
       results: [],
       sort: 'rating',
@@ -35,6 +36,37 @@ export default class PlacesListPage extends Component {
         (error) => console.log(error.message),
       )
     }  
+  }
+
+  getPlaces = () => {
+    const { searchTerm, category, neighborhood } = this.context
+    const params = []
+    if (searchTerm) {
+      params.push(`searchTerm=${encodeURI(searchTerm)}`)
+    }
+    if (category) {
+      params.push(`category=${encodeURI(category)}`)
+    }
+    if (neighborhood) {
+      params.push(`neighborhood=${encodeURI(neighborhood)}`)
+    }
+    const query = params.join('&')
+    const url = `${config.API_ENDPOINT}/places/?${query}`
+    PlacesApiService.getPlaces(url)
+      .then(data => {
+        this.setState({
+          places: data,
+          isLoading: false,
+          error: null,
+          fireRedirect: true,
+        })
+      })
+      .catch(err => {
+        // this makes a duplicate of the message I have in renderPlaces
+        this.setState({
+          error: 'Sorry, could not retrieve any results at this time.'
+        })
+      })
   }
 
   sortResults = results => {
@@ -71,11 +103,11 @@ export default class PlacesListPage extends Component {
     
   renderPlaces() {
     const { places } = this.props.location.state
-    const placeResults = places.length 
+    const placeResults = places && places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
       : <p>Sorry, your search returned no results. Please try again.</p>
-    const mapResults = places.length 
+    const mapResults = places && places.length 
       ? <section className="places-map">
           <Map places={places} zoom={11} center={{lat: 45.5155, lng: -122.6793}} infoClass="infowindow" />
         </section> 

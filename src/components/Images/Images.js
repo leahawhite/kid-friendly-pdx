@@ -23,3 +23,9 @@ export default function Images(props) {
   )
 }
 
+Images.defaultProps = {
+  images: [],
+  addCaption: () => {},
+  removeImage: () => {},
+}
+

@@ -2,8 +2,13 @@
 
 exports[`ReviewForm component renders UI as expected 1`] = `
 <Fragment>
+  <div
+    role="alert"
+  />
   <form
     className="review-form"
+    encType="multipart/form-data"
+    method="post"
     onSubmit={[Function]}
   >
     <div
@@ -46,8 +51,22 @@ exports[`ReviewForm component renders UI as expected 1`] = `
       className="text"
     >
       <textarea
+        className="review-text"
         name="text"
         placeholder="Share your experience with others. How kid-friendly is this place?"
+        required={true}
+      />
+    </div>
+    <div
+      className="upload-container"
+    >
+      <_default
+        iconClass="icon"
+        onChange={[Function]}
+        uploadSpan="Upload Photos"
+      />
+      <div
+        className="render-container"
       />
     </div>
     <div
@@ -55,41 +74,10 @@ exports[`ReviewForm component renders UI as expected 1`] = `
     >
       <button
         className="review-btn"
-        disabled={true}
         type="submit"
       >
         Post Review
       </button>
-      <Link
-        to="/image-upload"
-      >
-        <button
-          className="photo-upload-btn"
-          type="button"
-        >
-          <FontAwesomeIcon
-            border={false}
-            className=""
-            fixedWidth={false}
-            flip={null}
-            icon="camera"
-            inverse={false}
-            listItem={false}
-            mask={null}
-            pull={null}
-            pulse={false}
-            rotation={null}
-            size="sm"
-            spin={false}
-            symbol={false}
-            title=""
-            transform={null}
-          />
-          <span>
-            Upload a Photo
-          </span>
-        </button>
-      </Link>
     </div>
   </form>
 </Fragment>

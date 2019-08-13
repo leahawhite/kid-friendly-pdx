@@ -10,8 +10,12 @@ describe('StarRating component', () => {
     ReactDOM.render(<StarRating />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-  it('renders UI as expected', () => {
+  it('renders half-filled stars when rating is fraction', () => {
     const wrapper = shallow(<StarRating rating='4.5'/>)
+    expect(toJson(wrapper)).toMatchSnapshot()
+  });
+  it('renders filled stars when rating is whole number', () => {
+    const wrapper = shallow(<StarRating rating='4.0'/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 });

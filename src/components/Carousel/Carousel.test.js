@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import CarouselLB from './CarouselLB';
+import Carousel from './Carousel';
 
-describe('CarouselLB component', () => {
+describe('Carousel component', () => {
   const images = [
     {
       id: 1,
@@ -23,15 +23,15 @@ describe('CarouselLB component', () => {
   ]
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<CarouselLB />, div);
+    ReactDOM.render(<Carousel />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders empty without props', () => {
-    const wrapper = shallow(<CarouselLB />)
+    const wrapper = shallow(<Carousel />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
   it('renders the images given props', () => {
-    const wrapper = shallow(<CarouselLB {...images} />)
+    const wrapper = shallow(<Carousel images ={images} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 })

@@ -22,7 +22,7 @@ const testReview = {
   ]
 };
 
-describe('Map component', () => {
+describe('Review component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Review />, div);

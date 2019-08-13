@@ -6,27 +6,32 @@ import './PlacesListItem.css';
 
 export default class PlacesListItem extends Component {
   static defaultProps = { place: {} }
-  
+
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
   render() {
     const { place } = this.props
-    const descriptorsList = place.descriptors.map((descriptor, index) =>
+    const descriptorsList = place.descriptors && place.descriptors.map((descriptor, index) =>
       <p className="place-descriptor" key={index}>{descriptor}</p>
     )
     
     return (
       <div className="place-item">
         <div className="place-image-container">
-          <Link exact to={{
+          <Link to={{
                   pathname: `/places/${place.id}`,
                   state: { place: place }
                 }}>
-            {place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
+            {place.images && place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
             : null}
           </Link>
               </div>
         <div className="place-info">
            <h3 className="place-name">
-            <Link exact to={{
+            <Link to={{
                 pathname: `/places/${place.id}`,
                 state: { place: place }
               }}>

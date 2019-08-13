@@ -13,7 +13,6 @@ export default class SignupPage extends Component {
   handleSignUpSuccess = () => {
     const { history } = this.props
     history.push('/login')
-    // push validated email/pass as props to login page for form population (or auto-login?)
   }
 
   render() {

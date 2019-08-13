@@ -24,39 +24,49 @@ export default class PlacePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      place: this.props.location.state,
+      place: {},
       reviews: [],
-      isLoading: true,
+      isLoading: false,
       error: null,
-      fireRedirect: false,
     }
   }
 
   componentDidMount() {
     const { placeId } = this.props.match.params
-    PlacesApiService.getReviewsForPlace(placeId)
-     .then(reviews => {
+    if (!this.props.location.state) {
+      this.setState({isLoading: true})
+      Promise.all([PlacesApiService.getById(placeId), PlacesApiService.getReviewsForPlace(placeId)])
+      .then(([place, reviews]) => {
         this.setState({
+          place: place,
           reviews: reviews,
           isLoading: false,
-          error: false
         })
       })
       .catch(error => {
-        console.error({error});
+        this.setState({ error: error })
       })
-  }
-
-  componentWillUnmount() {
-    this.setState()
+    } else {
+      PlacesApiService.getReviewsForPlace(placeId)
+      .then(reviews => {
+        this.setState({
+          reviews,
+          isLoading: false,
+        })
+      })
+      .catch(error => {
+        this.setState({ error: error })
+      })
+    }
   }
 
   renderReviews() {
+    const { state } = this.props.location
+    const place = state ? state.place : this.state.place
     const { reviews } = this.state
-    const { place } = this.props.location.state
     return (
       <ul className="places-item-reviews">
-        {reviews.length ? 
+        {reviews && reviews.length ? 
           reviews.map(review =>
             <Review key={review.id} review={review} place={place} />)
           : null}
@@ -69,15 +79,18 @@ export default class PlacePage extends Component {
   }
 
   render() {
+    console.log(this.state)
+    const { state } = this.props.location
+    const place = state ? state.place : this.state.place
+    
     // need to fix spinner alignment
     const { isLoading } = this.state
-    const { place } = this.props.location.state
     if (isLoading) {
       return <div className="spinner-container"><Spinner /></div>
     } else {
     // is this allowed? push to new array instead?
     const placeArray = [ place ]
-    const descriptorsList = place.descriptors.length && place.descriptors.map((descriptor, index) =>
+    const descriptorsList = place && place.descriptors.length && place.descriptors.map((descriptor, index) =>
       <p className="place-descriptor" key={index}>{descriptor}</p>)
     
     const placeHours = place.hours

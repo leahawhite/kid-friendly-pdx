@@ -84,7 +84,7 @@ class SearchBar extends Component {
         {context.fireRedirect &&
           <Redirect to={{
             pathname: '/places',
-            state: { searchTerm: context.searchTerm, category: context.category, neighborhood: context.neighborhood, places: context.places }
+            // state: { searchTerm: context.searchTerm, category: context.category, neighborhood: context.neighborhood, places: context.places }
             }}
           />
         }
@@ -93,7 +93,6 @@ class SearchBar extends Component {
       </Consumer>
     )
   }
-  
 } 
 
 export default SearchBar

@@ -3,15 +3,12 @@ const data = {
     {
       id: 1,
       name: "Atlas Pizza",
-      address1: "6529 SE Foster Rd",
-      address2: "",
+      address: "6529 SE Foster Rd",
       city: "Portland",
       state: "OR",
       zipcode: "97206",
-      coordinates: {
-        lat: 45.489200,
-        lng: -122.595070
-      },
+      lat: 45.489200,
+      lng: -122.595070,
       neighborhood: "SE",
       phone: "503-232-3004",
       website: "http://atlaspizzapdx.com",
@@ -52,7 +49,7 @@ const data = {
           "closes": "11:00 pm",
         },
       ],
-      date_added: "2019-06-13",
+      date_created: "2019-06-13",
       category: ["restaurants",],
       descriptors: [ "pizza", "arcade", "beer" ],
       features: { 
@@ -93,15 +90,12 @@ const data = {
     {
       id: 2,
       name: "Grand Central Bakery",
-      address1: "4412 SE Woodstock Blvd",
-      address2: "",
+      address: "4412 SE Woodstock Blvd",
       city: "Portland",
       state: "OR",
       zipcode: "97206",
-      coordinates: {
-        lat: 45.479040,
-        lng: -122.616120
-      },
+      lat: 45.479040,
+      lng: -122.616120,
       neighborhood: "SE",
       phone: "503-953-1250",
       website: "https://www.grandcentralbakery.com/find-us/portland/woodstock/",
@@ -142,7 +136,7 @@ const data = {
           "closes": "6:00 pm",
         },
       ],
-      date_added: "2019-06-13",
+      date_created: "2019-06-13",
       category: ["restaurants",],
       descriptors: [ "cafe", "bakery", "pastries", ],
       features: { 
@@ -183,15 +177,12 @@ const data = {
     {
       id: 3,
       name: "Hopworks Urban Brewery: Powell",
-      address1: "2944 SE Powell Blvd",
-      address2: "",
+      address: "2944 SE Powell Blvd",
       city: "Portland",
       state: "OR",
       zipcode: "97206",
-      coordinates: {
-        lat: 45.497010,
-        lng: -122.635210
-      },
+      lat: 45.497010,
+      lng: -122.635210,
       neighborhood: "SE",
       phone: "503-232-4677",
       website: "https://hopworksbeer.com/eat/powell/",
@@ -232,7 +223,7 @@ const data = {
           "closes": "11:00 pm",
         },
       ],
-      date_added: "2019-06-13",
+      date_created: "2019-06-13",
       category: ["restaurants",],
       descriptors: [ "pizza", "burgers", "beer",],
       features: { 
@@ -273,15 +264,12 @@ const data = {
     {
       id: 4,
       name: "Hammer and Jacks",
-      address1: "6416 SE Foster Rd",
-      address2: "",
+      address: "6416 SE Foster Rd",
       city: "Portland",
       state: "OR",
       zipcode: "97206",
-      coordinates: {
-        lat: 45.497560,
-        lng: -122.611350
-      },
+      lat: 45.497560,
+      lng: -122.611350,
       neighborhood: "SE",
       phone: "503-894-9150",
       website: "https://www.hammerandjacks.com/",
@@ -322,7 +310,7 @@ const data = {
           "closes": "05:00 pm",
         },
       ],
-      date_added: "2019-07-06",
+      date_created: "2019-07-06",
       category: [ "toy stores", "indoor play" ],
       descriptors: [ "toy store", "indoor play", "community space" ],
       features: { 
@@ -368,15 +356,12 @@ const data = {
     {
       id: 5,
       name: "Crystal Springs Rhododendron Garden",
-      address1: "5801 SE 28th Ave",
-      address2: "",
+      address: "5801 SE 28th Ave",
       city: "Portland",
       state: "OR",
       zipcode: "97202",
-      coordinates: {
-        lat: 45.480400,
-        lng: -122.635399
-      },
+      lat: 45.480400,
+      lng: -122.635399,
       neighborhood: "SE",
       phone: "503-771-8386",
       website: "https://www.portlandoregon.gov/parks/finder/index.cfm?action=ViewPark&PropertyID=27",
@@ -417,7 +402,7 @@ const data = {
           "closes": "10:00 pm",
         },
       ],
-      date_added: "2019-07-10",
+      date_created: "2019-07-10",
       category: [ "gardens", "attractions", "parks", ],
       descriptors: [ "garden", "park", "wildlife" ],
       features: { 

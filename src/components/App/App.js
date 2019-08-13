@@ -11,7 +11,6 @@ import SignupPage from '../../routes/SignupPage/SignupPage';
 import PlacesListPage from '../../routes/PlacesListPage/PlacesListPage';
 import PlacePage from '../../routes/PlacePage/PlacePage';
 import ReviewPage from '../../routes/ReviewPage/ReviewPage';
-import PhotoUploadPage from '../../routes/PhotoUploadPage/PhotoUploadPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import TokenService from '../../services/token-service';
 import { Provider } from '../../contexts/SearchContext';
@@ -132,21 +131,16 @@ export default class App extends Component {
                 <ErrorBoundary>
                   <PlacesListPage {...props} />
                 </ErrorBoundary>
-              }/>    
+              }/>   
               <Route exact path={'/places/:placeId'} render={props =>
                 <ErrorBoundary>
                   <PlacePage {...props} />
                 </ErrorBoundary>
-              }/>  
+              }/>
               <PrivateRoute 
                 path={'/places/:placeId/reviews'} 
                 component={ReviewPage}
               />
-              <Route path={'/images/upload'} render={props =>
-                <ErrorBoundary>
-                  <PhotoUploadPage {...props}/>
-                </ErrorBoundary>
-              }/>    
               <Route render={props =>
                 <ErrorBoundary>
                   <NotFoundPage {...props}/>

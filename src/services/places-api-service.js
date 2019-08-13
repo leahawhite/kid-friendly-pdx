@@ -27,6 +27,11 @@ const PlacesApiService = {
       },
       body: JSON.stringify(newReview),
     })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
   },
   postImagesToCloudinary(formData) {
     return fetch(`${config.API_ENDPOINT}/images/upload`, {

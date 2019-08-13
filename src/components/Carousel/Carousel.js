@@ -2,7 +2,7 @@ import React from 'react';
 import InfiniteCarousel from 'react-leaf-carousel';
 // import '../CarouselLB/CarouselLB.css';
  
-export default class Carousel2 extends React.Component {
+export default class Carousel extends React.Component {
   render() {
     const { images } = this.props
     const imageList = images.length && images.map(image =>
@@ -49,6 +49,10 @@ export default class Carousel2 extends React.Component {
       </InfiniteCarousel>  
     )
   }
+}
+
+Carousel.defaultProps = {
+  images: []
 }
 
   

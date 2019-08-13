@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Redirect } from 'react-router-dom';
 import StarRatingComponent from 'react-star-rating-component'
 import UploadButton from '../UploadButton/UploadButton'
 import Images from '../Images/Images'
@@ -23,7 +22,7 @@ export default class ReviewForm extends Component {
       validationMessages: {
         rating: "",
       },
-      fireRedirect: false,
+      fireRedirect: false
     }
   }
 
@@ -51,15 +50,15 @@ export default class ReviewForm extends Component {
     }
 
     PlacesApiService.postImagesToCloudinary(formData)
-    .then(images => {
-      this.setState({ 
-        uploading: false,
-        images
+      .then(images => {
+        this.setState({ 
+          uploading: false,
+          images
+        })
       })
-    })
-    .catch(res => {
-      this.setState({ error: res.error })
-    })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
   }
 
   filter = id => {
@@ -100,6 +99,7 @@ export default class ReviewForm extends Component {
         // title: this.state.captions[index]
       }
     ))
+
     Promise.all([PlacesApiService.postReview(newReview), PlacesApiService.postImages(newImages)])
     .then(([placesRes, imagesRes]) => {
       if(!placesRes.ok)
@@ -110,7 +110,8 @@ export default class ReviewForm extends Component {
     })
     .then(([newReview, newImages]) => {
       // not sure what to do with these
-      e.target.text.value = ''
+      newReview = {}
+      newImages=[]
     })
     .catch(res => {
       this.setState({ error: res.error })
