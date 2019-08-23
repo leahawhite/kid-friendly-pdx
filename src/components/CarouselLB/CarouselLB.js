@@ -3,11 +3,10 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; 
 import './CarouselLB.css';
  
-export default class LightboxExample extends Component {
+export default class CarouselLB extends Component {
   static defaultProps = {
     images: [],
   }
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -24,38 +23,17 @@ export default class LightboxExample extends Component {
   render() {
     const { photoIndex, isOpen } = this.state;
     const { images, imagesClass } = this.props;
-    const imageList1 = images.slice(0, 1).map((image, index) => (
-      <div id='image-1' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
+    const imageList = images.map((image, index) => (
+      <div id='image' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
         <img src={image.src} alt={image.title}/>
         <div className="overlay">{image.title}</div>
       </div>
-    ), this)
-    const imageList2 = images.slice(0, 2).map((image, index) => (
-      <div id='image-2' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
-        <img src={image.src} alt={image.title}/>
-        <div className="overlay">{image.title}</div>
-      </div>
-    ), this)
-    const imageList3 = images.slice(0, 3).map((image, index) => (
-      <div id='image-3' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
-        <img src={image.src} alt={image.title}/>
-        <div className="overlay">{image.title}</div>
-      </div>
-    ), this)
-    const imageList4 = images.slice(0, 4).map((image, index) => (
-      <div id='image-4' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
-        <img src={image.src} alt={image.title}/>
-        <div className="overlay">{image.title}</div>
-      </div>
-    ), this)
+      ), this)
     
     return (
       <div className="image-row">
-        {imageList1}
-        {imageList2}
-        {imageList3}
-        {imageList4}
- 
+        {imageList}
+        
         {isOpen && (
           <Lightbox
             mainSrc={images[photoIndex].src}

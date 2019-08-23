@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import ReviewPage from './ReviewPage'
+import { testPlace } from '../../helpers/helpers';
 
 describe('ReviewPage component', () => {
   it('renders without crashing', () => {
@@ -17,10 +18,7 @@ describe('ReviewPage component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(
-      <MemoryRouter>
-        <ReviewPage />
-      </MemoryRouter>)
+    const wrapper = shallow(<ReviewPage location={{state: {place: testPlace}}}/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

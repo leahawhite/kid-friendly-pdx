@@ -1,44 +1,23 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Consumer } from '../../contexts/SearchContext'
-// import Spinner from '../../components/Spinner/Spinner';
 import './SearchBar.css';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      
-    }
-  }
-
-  showLoader = () => {
-    const { isLoading } = this.props
-    if (isLoading) {
-      return <FontAwesomeIcon icon="spinner" spin/>
-    } else {
-      return <FontAwesomeIcon icon="search"/>
-    } 
-  }
-
+  
   render() {
-    
     return (
-      <Consumer>
-        {context => (
       <section className="searchbar">
-        <form className="search-form" onSubmit={context.handleSubmit}>
+        <form className="search-form" onSubmit={this.props.handleSubmit}>
           <label className="search-label" htmlFor="search"></label>
           <input 
             className="search-input" 
             id="search" 
             type="text" 
             placeholder="Search"
-            value={context.searchTerm}
-            onChange={context.handleUpdateSearch}/>
+            value={this.props.searchTerm}
+            onChange={this.props.handleUpdateSearch}/>
           <button type="submit" className="search-btn">
-            {this.showLoader()}
+            <FontAwesomeIcon icon="search"/>
           </button>
           <fieldset className="filters">
             <div className="filter-category">
@@ -47,8 +26,8 @@ class SearchBar extends Component {
                   className="form-select" 
                   type="text" 
                   id="category"
-                  value={context.category}
-                  onChange={context.handleUpdateCategory}>
+                  value={this.props.category}
+                  onChange={this.props.handleUpdateCategory}>
                     <option value=""></option>
                     <option value="restaurant">restaurant</option>
                     <option value="attraction">attraction</option>
@@ -64,8 +43,8 @@ class SearchBar extends Component {
                 className="form-select" 
                 type="text" 
                 id="neighborhood"
-                value={context.neighborhood}
-                onChange={context.handleUpdateNeighborhood}>
+                value={this.props.neighborhood}
+                onChange={this.props.handleUpdateNeighborhood}>
                   <option value=""></option>
                   <option value="N">N</option>
                   <option value="NE">NE</option>
@@ -81,16 +60,7 @@ class SearchBar extends Component {
             </div>
           </fieldset>
         </form>
-        {context.fireRedirect &&
-          <Redirect to={{
-            pathname: '/places',
-            // state: { searchTerm: context.searchTerm, category: context.category, neighborhood: context.neighborhood, places: context.places }
-            }}
-          />
-        }
       </section>
-        )}
-      </Consumer>
     )
   }
 } 

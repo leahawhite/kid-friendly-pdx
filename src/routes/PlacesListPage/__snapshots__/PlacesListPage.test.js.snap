@@ -1,47 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlacesListPage component renders UI as expected 1`] = `
-<Router
-  history={
-    Object {
-      "action": "POP",
-      "block": [Function],
-      "canGo": [Function],
-      "createHref": [Function],
-      "entries": Array [
-        Object {
-          "hash": "",
-          "key": "kbxsdg",
-          "pathname": "/",
-          "search": "",
-          "state": undefined,
-        },
-      ],
-      "go": [Function],
-      "goBack": [Function],
-      "goForward": [Function],
-      "index": 0,
-      "length": 1,
-      "listen": [Function],
-      "location": Object {
-        "hash": "",
-        "key": "kbxsdg",
-        "pathname": "/",
-        "search": "",
-        "state": undefined,
-      },
-      "push": [Function],
-      "replace": [Function],
-    }
-  }
+<section
+  className="places-list"
 >
-  <PlacesListPage
-    location={
-      Object {
-        "state": Object {},
-      }
-    }
-    places={Array []}
+  <header
+    className="places-header"
+  >
+    <h2>
+      Results
+    </h2>
+    <form
+      className="sort-results-form"
+    >
+      <label
+        className="sort-results"
+        htmlFor="sort-results"
+      >
+        Sort by:
+      </label>
+      <select
+        className="sort-select"
+        id="sort-results"
+        name="sort"
+        onChange={[Function]}
+        type="text"
+      >
+        <option
+          name="sort"
+          value="rating"
+        >
+          rating
+        </option>
+        <option
+          name="sort"
+          value="number of reviews"
+        >
+          number of reviews
+        </option>
+        <option
+          name="sort"
+          value="distance"
+        >
+          distance
+        </option>
+      </select>
+    </form>
+  </header>
+  <div
+    className="Places_error"
   />
-</Router>
+  <p>
+    Sorry, your search returned no results. Please try again.
+  </p>
+</section>
 `;

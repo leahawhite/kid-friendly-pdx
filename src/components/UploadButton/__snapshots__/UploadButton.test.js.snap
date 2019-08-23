@@ -2,14 +2,13 @@
 
 exports[`UploadButton component renders UI as expected 1`] = `
 <div
-  className="buttons fadein"
+  className="upload-btn"
 >
   <div
     className="button"
   >
     <label
-      className="upload-btn"
-      htmlFor="multi"
+      htmlFor="file"
     >
       <FontAwesomeIcon
         border={false}
@@ -23,19 +22,106 @@ exports[`UploadButton component renders UI as expected 1`] = `
         pull={null}
         pulse={false}
         rotation={null}
-        size="10x"
+        size="lg"
         spin={false}
         symbol={false}
         title=""
         transform={null}
       />
-      <span>
+      <span
+        className="upload-btn-text"
+      />
+    </label>
+    <input
+      id="file"
+      multiple={true}
+      name="file"
+      type="file"
+    />
+  </div>
+</div>
+`;
+
+exports[`UploadButton component renders className as expected 1`] = `
+<div
+  className="upload-btn"
+>
+  <div
+    className="button"
+  >
+    <label
+      htmlFor="file"
+    >
+      <FontAwesomeIcon
+        border={false}
+        className="upload"
+        fixedWidth={false}
+        flip={null}
+        icon="camera"
+        inverse={false}
+        listItem={false}
+        mask={null}
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size="lg"
+        spin={false}
+        symbol={false}
+        title=""
+        transform={null}
+      />
+      <span
+        className="upload-btn-text"
+      />
+    </label>
+    <input
+      id="file"
+      multiple={true}
+      name="file"
+      type="file"
+    />
+  </div>
+</div>
+`;
+
+exports[`UploadButton component renders text as expected 1`] = `
+<div
+  className="upload-btn"
+>
+  <div
+    className="button"
+  >
+    <label
+      htmlFor="file"
+    >
+      <FontAwesomeIcon
+        border={false}
+        className=""
+        fixedWidth={false}
+        flip={null}
+        icon="camera"
+        inverse={false}
+        listItem={false}
+        mask={null}
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size="lg"
+        spin={false}
+        symbol={false}
+        title=""
+        transform={null}
+      />
+      <span
+        className="upload-btn-text"
+      >
         Browse Files
       </span>
     </label>
     <input
-      id="multi"
+      id="file"
       multiple={true}
+      name="file"
       type="file"
     />
   </div>

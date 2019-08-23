@@ -71,10 +71,16 @@ export default class ReviewForm extends Component {
     })
   }
 
-  addCaption = (e, i) => {
-    this.setState({
-      captions: [...this.state.captions, e.target.value[i]]
-    })
+  addCaption = e => {
+    let captions = [...this.state.captions]
+    let index = e.target.attributes.getNamedItem('data-index').value
+    this.setState({ captions })
+    console.log('e.target.value',e.target.value, index)
+    console.log('e.target.value[index]', e.target.value[index])
+    // console.log('e.target.index', e.target.index)
+    // this.setState({
+    //   captions: [...this.state.captions, e.target.value[index]]
+    // })
     console.log('captions', this.state.captions)
   }
 
@@ -84,6 +90,9 @@ export default class ReviewForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    console.log('images', this.state.images)
+    console.log('captions', this.state.captions)
+    console.log('e.target', e.target)
     const { place } = this.props
     const { images } = this.state
     const newReview = {
@@ -96,7 +105,7 @@ export default class ReviewForm extends Component {
         id: image.id,
         src: image.src,
         place_id: place.id,
-        // title: this.state.captions[index]
+        title: this.state.captions[index]
       }
     ))
 

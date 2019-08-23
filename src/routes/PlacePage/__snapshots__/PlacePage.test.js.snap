@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlacePage component renders UI as expected 1`] = `
+<div
+  className="place-page"
+>
+  <section
+    className="place-images-container"
+  >
+    <Carousel
+      images={Array []}
+      imagesClass="image-item"
+    />
+  </section>
+  <PlaceHeader
+    place={Object {}}
+  />
+  <PlaceActions
+    place={Object {}}
+  />
+  <section
+    className="place-addl-info"
+  >
+    <PlaceMap
+      place={Object {}}
+    />
+    <PlaceHours
+      place={Object {}}
+    />
+    <PlaceFeatures
+      place={Object {}}
+    />
+    <PlaceReviews
+      place={Object {}}
+      reviews={Array []}
+    />
+  </section>
+</div>
+`;

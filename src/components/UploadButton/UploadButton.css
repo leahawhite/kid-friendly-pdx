@@ -2,7 +2,7 @@
   display: none;
 }
 
-.buttons {
+.upload-btn {
   display: flex;
   align-items: center;
   justify-content: space-around;

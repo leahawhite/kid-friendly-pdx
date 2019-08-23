@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceHours component renders UI as expected with props 1`] = `
+<div
+  className="place-hours"
+>
+  <div
+    className="place-hours-icon"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon="clock"
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size="lg"
+      spin={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+  </div>
+  <div
+    className="place-hours-content"
+  >
+    <table
+      className="place-hours-table"
+      key="0"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Monday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            11:00 pm
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      className="place-hours-table"
+      key="1"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Tuesday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            11:00 pm
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      className="place-hours-table"
+      key="2"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Wednesday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            11:00 pm
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      className="place-hours-table"
+      key="3"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Thursday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            11:00 pm
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      className="place-hours-table"
+      key="4"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Friday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            12:00 am
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      className="place-hours-table"
+      key="5"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Saturday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            12:00 am
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      className="place-hours-table"
+      key="6"
+    >
+      <tbody>
+        <tr
+          className="place-hours-table-row"
+        >
+          <th
+            className="place-hours-table-column-left"
+          >
+            Sunday
+            : 
+          </th>
+          <td
+            className="place-hours-table-column-right"
+          >
+            12:00 pm
+             - 
+            11:00 pm
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

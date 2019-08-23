@@ -13,9 +13,6 @@ import PlacePage from '../../routes/PlacePage/PlacePage';
 import ReviewPage from '../../routes/ReviewPage/ReviewPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import TokenService from '../../services/token-service';
-import { Provider } from '../../contexts/SearchContext';
-import PlacesApiService from '../../services/places-api-service';
-import config from '../../config';
 import './App.css';
 
 export default class App extends Component {
@@ -24,17 +21,12 @@ export default class App extends Component {
     this.state = {
       hasError: false,
       loggedIn: TokenService.getAuthToken(),
-      searchTerm: '',
-      category: '',
-      neighborhood: '',
-      handleSubmit: this.handleSubmit,
-      handleUpdateSearch: this.handleUpdateSearch,
-      handleUpdateCategory: this.handleUpdateCategory,
-      handleUpdateNeighborhood: this.handleUpdateNeighborhood,
-      places: [],
-      error: null,
-      fireRedirect: false,
     }
+  }
+  
+  static getDerivedStateFromError(error) {
+    console.error(error)
+    return { hasError: true }
   }
 
   handleLogin = () => {
@@ -46,65 +38,8 @@ export default class App extends Component {
     this.setState({ loggedIn: false })
   }
 
-  getPlaces = () => {
-    const { searchTerm, category, neighborhood } = this.state
-    const params = []
-    if (searchTerm) {
-      params.push(`searchTerm=${encodeURI(searchTerm)}`)
-    }
-    if (category) {
-      params.push(`category=${encodeURI(category)}`)
-    }
-    if (neighborhood) {
-      params.push(`neighborhood=${encodeURI(neighborhood)}`)
-    }
-    const query = params.join('&')
-    const url = `${config.API_ENDPOINT}/places/?${query}`
-    PlacesApiService.getPlaces(url)
-      .then(data => {
-        this.setState({
-          places: data,
-          isLoading: false,
-          error: null,
-          fireRedirect: true,
-        })
-      })
-      .catch(err => {
-        // this makes a duplicate of the message I have in renderPlaces
-        this.setState({
-          error: 'Sorry, could not retrieve any results at this time.'
-        })
-      })
-  }
-  
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({ isLoading: true })
-    this.getPlaces()
-  }  
-
-  handleUpdateSearch = event => {
-    this.setState({
-      searchTerm: event.target.value
-    })
-  }
-
-  handleUpdateCategory = event => {
-    this.setState({
-      category: event.target.value
-    })
-  }
-
-  handleUpdateNeighborhood = event => {
-    this.setState({
-      neighborhood: event.target.value
-    })
-  }
-  
   render() {
-    
     return (
-      <Provider value={this.state} >
       <div className="App">
         <Header loggedIn={this.state.loggedIn} onLogout={this.handleLogout}/>
           <main className="App__main">
@@ -152,7 +87,6 @@ export default class App extends Component {
           <Footer />
         </footer>
       </div>
-      </Provider>
     )
   }
 }

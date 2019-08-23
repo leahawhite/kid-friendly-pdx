@@ -16,7 +16,15 @@ export default function Images(props) {
         </div>
         <img className="uploaded-images" src={image.src} alt={image.id} />
         <div className="Caption">
-          <textarea className="caption-text" placeholder="Add a caption" name="caption" id="caption" value={image.title} onChange={(e, i) => props.addCaption(e, i)}></textarea>
+          <textarea 
+            className="caption-text" 
+            placeholder="Add a caption" 
+            name="caption" 
+            id="caption" 
+            value={image.title}
+            data-index={i} 
+            onChange={e => props.addCaption(e)}>
+          </textarea>
         </div>
       </div>
     )

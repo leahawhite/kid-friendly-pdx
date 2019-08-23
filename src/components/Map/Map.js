@@ -6,22 +6,7 @@ import { readableReviewCount } from '../../helpers/helpers';
 import config from '../../config';
 import './Map.css'
 
-const MapWithMarkers = compose(withScriptjs, withGoogleMap, 
-  /*lifecycle({
-  componentWillMount() {
-    this.setState({
-      zoomToMarkers: map => {
-        const bounds = new window.google.maps.LatLngBounds();
-        map.props.children.forEach((child) => {
-          if (child.type === Marker) {
-            bounds.extend(new window.google.maps.LatLng(child.props.position.lat, child.props.position.lng));
-          }
-        })
-        map.fitBounds(bounds);
-      }
-    })
-  },
-}),*/)(props => {
+const MapWithMarkers = compose(withScriptjs, withGoogleMap)(props => {
   
   return (
     <GoogleMap ref={props.zoomToMarkers} defaultZoom={props.zoom} center={props.center} >

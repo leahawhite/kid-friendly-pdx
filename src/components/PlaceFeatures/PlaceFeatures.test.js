@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import MapContainer from './MapContainer';
+import PlaceFeatures from './PlaceFeatures';
+import { testPlace } from '../../helpers/helpers';
 
-describe('MapContainer component', () => {
+describe('PlaceFeatures component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<MapContainer />, div);
+    ReactDOM.render(<PlaceFeatures />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-  it('renders UI as expected', () => {
-    const wrapper = shallow(<MapContainer />)
+  it('renders UI as expected with props', () => {
+    const wrapper = shallow(<PlaceFeatures place={testPlace} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })
-  

@@ -17,10 +17,7 @@ describe('PlacesListPage component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(
-      <MemoryRouter>
-        <PlacesListPage />
-      </MemoryRouter>)
+    const wrapper = shallow(<PlacesListPage />)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

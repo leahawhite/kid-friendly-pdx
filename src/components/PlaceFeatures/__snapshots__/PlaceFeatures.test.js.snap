@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceFeatures component renders UI as expected with props 1`] = `
+<div
+  className="place-features"
+>
+  <div
+    className="place-features-icon"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon="child"
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size="lg"
+      spin={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+  </div>
+  <div
+    className="place-features-content"
+  >
+    <h2>
+      Kid-friendly features
+    </h2>
+    <div
+      className="features-list"
+    />
+  </div>
+</div>
+`;

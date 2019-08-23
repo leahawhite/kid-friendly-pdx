@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import InfiniteCarousel from 'react-leaf-carousel';
-// import '../CarouselLB/CarouselLB.css';
+import './Carousel.css';
  
-export default class Carousel extends React.Component {
+export default class Carousel extends Component {
   render() {
     const { images } = this.props
     const imageList = images.length && images.map(image =>
-      <div className="image-item" key={image.id}>
+      <div className="image-item" key={image.id} >
         <img className="place-img" src={image.src} alt={image.title}/>
         <div className="overlay">{image.title}</div>
       </div>

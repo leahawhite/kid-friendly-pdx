@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { shallow } from 'enzyme'
-import toJson from 'enzyme-to-json'
-import PlacePage from './PlacePage'
+import { MemoryRouter } from 'react-router-dom';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import PlacePage from './PlacePage';
+import { testPlace } from '../../helpers/helpers';
 
-describe.skip('PlacePage component', () => {
+
+describe('PlacePage component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <BrowserRouter>
+      <MemoryRouter>
         <PlacePage />
-      </BrowserRouter>, 
+      </MemoryRouter>, 
       div
     );
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<PlacePage />)
+    const wrapper = shallow(<PlacePage place={testPlace} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

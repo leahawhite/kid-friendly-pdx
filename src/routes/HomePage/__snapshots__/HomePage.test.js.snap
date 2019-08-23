@@ -18,6 +18,15 @@ exports[`HomePage component renders UI as expected 1`] = `
       Find the most welcoming spots in town.
     </p>
   </header>
-  <SearchBar />
+  <SearchBar
+    category=""
+    fireRedirect={false}
+    handleSubmit={[Function]}
+    handleUpdateCategory={[Function]}
+    handleUpdateNeighborhood={[Function]}
+    handleUpdateSearch={[Function]}
+    neighborhood=""
+    searchTerm=""
+  />
 </div>
 `;

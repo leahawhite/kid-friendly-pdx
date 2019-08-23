@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import PlacesApiService from '../../services/places-api-service';
 import config from '../../config';
 import './PlacesListPage.css';
@@ -11,18 +10,25 @@ export default class PlacesListPage extends Component {
   static defaultProps = {
     location: { state: {} },
     places: [],
+    searchTerm: "",
+    category: "",
+    neighborhood: ""
   }
   
   constructor(props) {
     super(props)
     this.state = {
+      places: [],
+      isLoading: false,
       results: [],
       sort: 'rating',
     }
   }
 
   componentDidMount() {
+    this.setState({ isLoading: true })
     this.getPosition();
+    this.getPlaces();
   }
 
   getPosition = () => {
@@ -39,7 +45,18 @@ export default class PlacesListPage extends Component {
   }
 
   getPlaces = () => {
-    const { searchTerm, category, neighborhood } = this.context
+    // does this work for what to do if not coming from this route?
+    let searchTerm, category, neighborhood
+    if (this.props.location.state) {
+      searchTerm=this.props.location.state.searchTerm
+      category=this.props.location.state.category
+      neighborhood=this.props.location.state.neighborhood
+    } else {
+      searchTerm=""
+      category=""
+      neighborhood=""
+    }
+    
     const params = []
     if (searchTerm) {
       params.push(`searchTerm=${encodeURI(searchTerm)}`)
@@ -57,15 +74,10 @@ export default class PlacesListPage extends Component {
         this.setState({
           places: data,
           isLoading: false,
-          error: null,
-          fireRedirect: true,
         })
       })
-      .catch(err => {
-        // this makes a duplicate of the message I have in renderPlaces
-        this.setState({
-          error: 'Sorry, could not retrieve any results at this time.'
-        })
+      .catch(error => {
+        this.setState({ error: error })
       })
   }
 
@@ -102,7 +114,7 @@ export default class PlacesListPage extends Component {
   }
     
   renderPlaces() {
-    const { places } = this.props.location.state
+    const { places } = this.state
     const placeResults = places && places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
@@ -129,8 +141,6 @@ export default class PlacesListPage extends Component {
 
   render() {
     return (
-      <>
-      <SearchBar />
       <section className="places-list">
         <header className="places-header">
           <h2>Results</h2>
@@ -151,7 +161,6 @@ export default class PlacesListPage extends Component {
         </header>
         {this.renderPlaces()}
       </section>
-      </>
     )
   }
 }

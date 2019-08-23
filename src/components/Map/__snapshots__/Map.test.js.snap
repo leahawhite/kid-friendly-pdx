@@ -6,7 +6,7 @@ exports[`Map component renders UI as expected 1`] = `
     <div
       style={
         Object {
-          "height": "400px",
+          "height": "250px",
         }
       }
     />
@@ -30,6 +30,8 @@ exports[`Map component renders UI as expected 1`] = `
       }
     />
   }
+  onClick={[Function]}
+  onClickClose={[Function]}
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   selectedPlace={null}

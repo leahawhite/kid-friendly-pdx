@@ -1,0 +1,37 @@
+.place-features {
+  display: flex;
+  margin: 20px 10px 0 0;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+}
+
+.place-features-icon {
+  display: flex;
+  width: 10%;
+  justify-content: center;
+  align-self: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.place-features-content {
+  width: 89%;
+  text-align: left;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.features-list > p {
+  margin: 5px 15px 5px 0;
+  padding: 5px 8px; 
+  border: 1px solid  #00b8e6;
+  background-color:  #00b8e6;
+  color: white;
+  border-radius: 15px;
+}

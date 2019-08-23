@@ -103,10 +103,7 @@ describe('PlaceListItem component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(
-      <MemoryRouter>
-        <PlacesListItem place={place}/>
-      </MemoryRouter>)
+    const wrapper = shallow(<PlacesListItem place={place}/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

@@ -1,0 +1,19 @@
+.place-header-basicinfo {
+  text-align: left;
+  margin: 20px 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.place-header-basicinfo h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.place-header-tags p {
+  margin: 0;
+}
+
+.star-rating {
+  margin-right: 8px;
+}
