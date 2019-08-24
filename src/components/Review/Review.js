@@ -56,7 +56,7 @@ export default class Review extends Component {
             <div className="star-rating">
             <StarRating rating={review.rating} />
             </div>
-            <span>{moment(review.date_created).format('MM/DD/YYYY')}</span>
+            <span>{moment(new Date(review.date_created)).format('MM/DD/YYYY')}</span>
           </div>
           <div className="review-content">
             {this.getReviewContent(review)}

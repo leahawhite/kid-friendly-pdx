@@ -47,11 +47,6 @@ exports[`PlacesListPage component renders UI as expected 1`] = `
       </select>
     </form>
   </header>
-  <div
-    className="Places_error"
-  />
-  <p>
-    Sorry, your search returned no results. Please try again.
-  </p>
+  <Pinwheel />
 </section>
 `;

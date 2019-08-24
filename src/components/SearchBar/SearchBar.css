@@ -22,19 +22,23 @@
   border-radius: 8px 0 0 8px;
   font-weight: bold;
   font-family: 'Source Sans Pro';
+  font-size: 16px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #444;;
+  color: #444;
+  font-size: 16px;
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #444;;
+  color: #444;
+  font-size: 16px;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-  color: #444;;
+  color: #444;
+  font-size: 16px;
 }
 
 .search-btn {
@@ -54,6 +58,11 @@
   border-radius: 8px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+}
+
+.search-btn:hover, .search-btn:focus, .search-btn:active {
+  background-color: #0045e6;
+  border: 3px solid #0045e6;
 }
 
 .filters {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
+import Spinner from '../../components/Spinner/Spinner';
 import PlacesApiService from '../../services/places-api-service';
 import config from '../../config';
 import './PlacesListPage.css';
@@ -45,6 +46,7 @@ export default class PlacesListPage extends Component {
   }
 
   getPlaces = () => {
+    this.setState({ isLoading: true })
     // does this work for what to do if not coming from this route?
     let searchTerm, category, neighborhood
     if (this.props.location.state) {
@@ -114,7 +116,7 @@ export default class PlacesListPage extends Component {
   }
     
   renderPlaces() {
-    const { places } = this.state
+    const { places, isLoading } = this.state
     const placeResults = places && places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
@@ -124,6 +126,8 @@ export default class PlacesListPage extends Component {
           <Map places={places} zoom={11} center={{lat: 45.5155, lng: -122.6793}} infoClass="infowindow" />
         </section> 
       : null
+    if (isLoading)
+      return <Spinner />
     return (
       <>
         <div className="Places_error">{this.state.error}</div>

@@ -61,17 +61,9 @@ export default class PlacePage extends Component {
     const place = state ? state.place : this.state.place
     const placeImages = place && place.images
     const { reviews } = this.state
-    console.log('place', place)
-    console.log('reviews', reviews)
-    // need to fix spinner alignment
     const { isLoading } = this.state
-    if (isLoading) {
-      return (
-        <div className="spinner-container">
-          <Spinner />
-        </div>
-      )
-    } else {
+    if (isLoading) 
+      return <Spinner />
       return (
         <div className="place-page">
           <section className="place-images-container">
@@ -87,7 +79,6 @@ export default class PlacePage extends Component {
           </section>
         </div>
       )
-    }
   }
 }
 

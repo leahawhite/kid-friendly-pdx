@@ -53,6 +53,7 @@ Array [
     >
       <textarea
         className="caption-text"
+        data-index={0}
         id="caption"
         name="caption"
         onChange={[Function]}
@@ -110,6 +111,7 @@ Array [
     >
       <textarea
         className="caption-text"
+        data-index={1}
         id="caption"
         name="caption"
         onChange={[Function]}

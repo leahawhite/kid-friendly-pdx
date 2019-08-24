@@ -16,7 +16,10 @@ export default function PlaceMap(props) {
         <div className="place-address">
           <p>{place.address}<br/>{place.city}{', '}{place.state}{' '}{place.zipcode}</p>
         </div>
-        <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address1},${place.city},${place.state} ${place.zipcode}`)}`}>
+        <a 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(`${place.address},${place.city},${place.state} ${place.zipcode}`)}`}>
           <div className="place-map-container">   
             <Map 
               places={placeArray} 

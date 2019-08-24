@@ -43,7 +43,7 @@ exports[`PlaceMap component renders UI as expected with props 1`] = `
       </p>
     </div>
     <a
-      href="https://www.google.com/maps/dir/?api=1&destination=undefined,Portland,OR%2097206"
+      href="https://www.google.com/maps/dir/?api=1&destination=6529%20SE%20Foster%20Rd,Portland,OR%2097206"
       rel="noopener noreferrer"
       target="_blank"
     >

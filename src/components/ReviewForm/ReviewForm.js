@@ -74,27 +74,19 @@ export default class ReviewForm extends Component {
   addCaption = e => {
     let captions = [...this.state.captions]
     let index = e.target.attributes.getNamedItem('data-index').value
+    captions[index] = e.target.value
     this.setState({ captions })
-    console.log('e.target.value',e.target.value, index)
-    console.log('e.target.value[index]', e.target.value[index])
-    // console.log('e.target.index', e.target.index)
-    // this.setState({
-    //   captions: [...this.state.captions, e.target.value[index]]
-    // })
-    console.log('captions', this.state.captions)
   }
 
   onError = id => {
     this.setState({ images: this.filter(id) })
   }
 
+  // sequence should be loading when submit, then post reviews, get review.id (still loading), post images, fire redirect
   handleSubmit = e => {
     e.preventDefault()
-    console.log('images', this.state.images)
-    console.log('captions', this.state.captions)
-    console.log('e.target', e.target)
     const { place } = this.props
-    const { images } = this.state
+    const { images, captions } = this.state
     const newReview = {
       rating: this.state.rating,
       text: e.target.text.value,
@@ -105,7 +97,7 @@ export default class ReviewForm extends Component {
         id: image.id,
         src: image.src,
         place_id: place.id,
-        title: this.state.captions[index]
+        title: captions[index]
       }
     ))
 

@@ -1,6 +1,8 @@
 .place-page {
   width: 100%;
   margin: 0 auto;
+  min-height: 80vh;
+  position: relative;
 }
 
 .place-images-container {

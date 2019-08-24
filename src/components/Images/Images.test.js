@@ -34,10 +34,4 @@ describe('Images component', () => {
     const wrapper = shallow(<Images images={images} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
-  it('removes image when delete button is clicked', () => {
-    const mockCallBack = jest.fn();
-    const button = shallow((<Images removeImage={mockCallBack}>Ok!</Images>));
-      button.find('.delete').simulate('click');
-      expect(mockCallBack.mock.calls.length).toEqual(1);
-  })
 })

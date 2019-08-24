@@ -28,6 +28,7 @@
 a {
   text-decoration: none;
   cursor: pointer;
+  color: #0045e6;
 }
 
 nav {
@@ -40,6 +41,14 @@ nav a {
 
 .navlink-right {
   margin-right: 10px;
+  background-color: #0045e6;
+  color: #fff;
+  padding: 8px;
+}
+
+.navlink-right:hover, .navlink-right:active, .navlink-right:focus {
+  background-color: #fff;
+  color: #0045e6;
 }
 
 @media only screen and (min-width: 720px) {
