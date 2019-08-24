@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignupPage component renders UI as expected 1`] = `
+<section
+  className="SignupPage"
+>
+  <div
+    className="SignupPage-container"
+  >
+    <h2>
+      Sign Up
+    </h2>
+    <SignupForm
+      onSignUpSuccess={[Function]}
+    />
+    <div
+      className="signup-reminder"
+    >
+      Already have an account?
+       
+      <Link
+        to="/login"
+      >
+        Log in.
+      </Link>
+    </div>
+  </div>
+</section>
+`;

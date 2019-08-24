@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Action component renders empty without props 1`] = `
+<a
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div
+    className="place-undefined"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon={null}
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size="lg"
+      spin={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+    <p />
+  </div>
+</a>
+`;
+
+exports[`Action component renders the UI given props 1`] = `
+<a
+  href="tel:+1-555-2222"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div
+    className="place-phone"
+  >
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon="phone"
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size="lg"
+      spin={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+    <p>
+      Call
+    </p>
+  </div>
+</a>
+`;

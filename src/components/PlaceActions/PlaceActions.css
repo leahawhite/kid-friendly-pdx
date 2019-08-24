@@ -1,0 +1,8 @@
+.place-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid gray;
+  margin: 20px 10px;
+  padding-bottom: 20px;
+}

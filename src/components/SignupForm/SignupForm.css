@@ -1,0 +1,40 @@
+.signup-form {
+  padding: 10px 0;
+  text-align: left;
+  font-size: 16px;
+}
+
+.signup-form input {
+  border: 1px solid #aaa;
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.password input {
+  margin-bottom: 5px;
+}
+
+.signup-btn {
+  border: 1px solid #aaa;
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 30px auto 10px auto;
+  display: block;
+}
+
+.signup-btn:hover, .signup-btn:focus, .signup-btn:active {
+  background-color: #0045e6;
+  border: 1px solid #0045e6;
+  color: white;
+  font-weight: bold;
+}
+
+input[defaultValue] {
+  color: gray;
+}
+

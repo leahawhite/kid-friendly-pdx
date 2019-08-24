@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map component renders UI as expected 1`] = `
+<withScriptjs(withGoogleMap(Component))
+  containerElement={
+    <div
+      style={
+        Object {
+          "height": "250px",
+        }
+      }
+    />
+  }
+  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsdDZ5P1zY_soUX1qBLCTrVuN7HENqhjs&libraries=places"
+  loadingElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+  mapElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+  onClick={[Function]}
+  onClickClose={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  selectedPlace={null}
+/>
+`;

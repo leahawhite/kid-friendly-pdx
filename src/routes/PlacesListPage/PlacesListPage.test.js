@@ -1,0 +1,23 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { MemoryRouter } from 'react-router-dom';
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import PlacesListPage from './PlacesListPage'
+
+describe('PlacesListPage component', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MemoryRouter>
+        <PlacesListPage />
+      </MemoryRouter>, 
+      div
+    );
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('renders UI as expected', () => {
+    const wrapper = shallow(<PlacesListPage />)
+    expect(toJson(wrapper)).toMatchSnapshot()
+  });
+})

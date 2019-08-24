@@ -1,0 +1,33 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  margin: 0 auto;
+  height: 79vh;
+  background-color: #b3f0ff;
+}
+
+p {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 32px;
+  padding: 0;
+  margin: 0;
+  font-family: 'Fredoka One', cursive;
+}
+
+.places-list {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+@media only screen and (min-width: 500px) {
+  h1 {
+    font-size: 40px;
+  }
+}

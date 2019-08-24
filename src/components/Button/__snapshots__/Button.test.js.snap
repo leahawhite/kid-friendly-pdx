@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component renders empty without props 1`] = `
+<button
+  className="form-button"
+>
+  <span />
+</button>
+`;
+
+exports[`Button component renders type and text given props 1`] = `
+<button
+  className="form-button"
+  type="submit"
+>
+  <span>
+    Submit
+  </span>
+</button>
+`;

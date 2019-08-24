@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlacesListPage component renders UI as expected 1`] = `
+<section
+  className="places-list"
+>
+  <header
+    className="places-header"
+  >
+    <h2>
+      Results
+    </h2>
+    <form
+      className="sort-results-form"
+    >
+      <label
+        className="sort-results"
+        htmlFor="sort-results"
+      >
+        Sort by:
+      </label>
+      <select
+        className="sort-select"
+        id="sort-results"
+        name="sort"
+        onChange={[Function]}
+        type="text"
+      >
+        <option
+          name="sort"
+          value="rating"
+        >
+          rating
+        </option>
+        <option
+          name="sort"
+          value="number of reviews"
+        >
+          number of reviews
+        </option>
+        <option
+          name="sort"
+          value="distance"
+        >
+          distance
+        </option>
+      </select>
+    </form>
+  </header>
+  <Pinwheel />
+</section>
+`;

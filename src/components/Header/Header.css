@@ -1,0 +1,69 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  margin: 0;
+  background-color: #00b8e6;
+  font-family: 'Fredoka One', cursive;
+}
+
+.hidden {
+  visibility: hidden;  
+}
+
+.show {
+  display: inline;
+}
+
+.Header h1 {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.Header span {
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #0045e6;
+}
+
+nav {
+  font-size: 14px;
+}
+
+nav a {
+  margin-left: 10px;
+}
+
+.navlink-right {
+  margin-right: 10px;
+  background-color: #0045e6;
+  color: #fff;
+  padding: 8px;
+}
+
+.navlink-right:hover, .navlink-right:active, .navlink-right:focus {
+  background-color: #fff;
+  color: #0045e6;
+}
+
+@media only screen and (min-width: 720px) {
+  .Header h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .Header a {
+    margin: 0 20px;
+  }
+
+  nav {
+    font-size: 18px;
+  }
+  
+}
+

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders UI as expected 1`] = `
+<header
+  className="Header"
+  role="banner"
+>
+  <h1
+    className="Header__title"
+  >
+    <NavLink
+      activeClassName="hidden"
+      exact={true}
+      to="/"
+    >
+      <span>
+        KID-FRIENDLY PDX
+      </span>
+      <FontAwesomeIcon
+        border={false}
+        className=""
+        fixedWidth={false}
+        flip={null}
+        icon="search"
+        inverse={false}
+        listItem={false}
+        mask={null}
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        title=""
+        transform={null}
+      />
+    </NavLink>
+  </h1>
+  <nav
+    className="Header__nav-not-logged-in"
+    role="navigation"
+  >
+    <div
+      className="Header__nav-not-logged-in-links"
+    >
+      <Link
+        to="/login"
+      >
+        LOG IN
+      </Link>
+      <Link
+        className="navlink-right"
+        to="/signup"
+      >
+        SIGN UP
+      </Link>
+    </div>
+  </nav>
+</header>
+`;

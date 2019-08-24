@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselLB component renders empty without props 1`] = `
+<div
+  className="image-row"
+/>
+`;
+
+exports[`CarouselLB component renders the images given props 1`] = `
+<div
+  className="image-row"
+/>
+`;

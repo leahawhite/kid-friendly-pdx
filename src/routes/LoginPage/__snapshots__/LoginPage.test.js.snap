@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage component renders UI as expected 1`] = `
+<section
+  className="LoginPage"
+>
+  <div
+    className="LoginPage-container"
+  >
+    <h2>
+      Log In
+    </h2>
+    <LoginForm
+      onLoginSuccess={[Function]}
+    />
+    <div
+      className="login-reminder"
+    >
+      New around here?
+       
+      <Link
+        to="/signup"
+      >
+        Sign up.
+      </Link>
+    </div>
+  </div>
+</section>
+`;

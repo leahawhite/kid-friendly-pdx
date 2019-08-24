@@ -1,0 +1,31 @@
+.SignupPage {
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 5%;
+}
+
+.SignupPage h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.SignupPage-container {
+  margin: 0 auto;
+  padding: 5%;
+  max-width: 500px;
+  background-color: white;
+  border: 3px solid #00b8e6;
+  border-radius: 8px;
+}
+
+.signup-reminder {
+  text-align: center;
+}
+
+@media only screen and (min-width: 950px) {
+  .SignupPage {
+    width: 80%;
+  }
+}

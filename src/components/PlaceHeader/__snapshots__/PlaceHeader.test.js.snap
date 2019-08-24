@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceHeader component renders UI as expected with props 1`] = `
+<section
+  className="place-header"
+>
+  <div
+    className="place-header-basicinfo"
+  >
+    <h2
+      className="place-header-name"
+    >
+      Atlas Pizza
+    </h2>
+    <div
+      className="place-header-rating"
+    >
+      <div
+        className="star-rating"
+      >
+        <StarRating
+          rating={4.5}
+        />
+      </div>
+      <span>
+        2 reviews
+      </span>
+    </div>
+    <div
+      className="place-header-tags"
+    >
+      <p
+        className="place-descriptor"
+        key="0"
+      >
+        pizza
+      </p>
+      <p
+        className="place-descriptor"
+        key="1"
+      >
+        arcade
+      </p>
+      <p
+        className="place-descriptor"
+        key="2"
+      >
+        beer
+      </p>
+    </div>
+  </div>
+</section>
+`;

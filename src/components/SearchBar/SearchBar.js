@@ -1,0 +1,68 @@
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './SearchBar.css';
+
+class SearchBar extends Component {
+  
+  render() {
+    return (
+      <section className="searchbar">
+        <form className="search-form" onSubmit={this.props.handleSubmit}>
+          <label className="search-label" htmlFor="search"></label>
+          <input 
+            className="search-input" 
+            id="search" 
+            type="text" 
+            placeholder="Search"
+            value={this.props.searchTerm}
+            onChange={this.props.handleUpdateSearch}/>
+          <button type="submit" className="search-btn">
+            <FontAwesomeIcon icon="search"/>
+          </button>
+          <fieldset className="filters">
+            <div className="filter-category">
+              <label className="form-label" htmlFor="category">Category:</label>
+              <select 
+                  className="form-select" 
+                  type="text" 
+                  id="category"
+                  value={this.props.category}
+                  onChange={this.props.handleUpdateCategory}>
+                    <option value=""></option>
+                    <option value="restaurant">restaurant</option>
+                    <option value="attraction">attraction</option>
+                    <option value="museum">museum</option>
+                    <option value="park">park</option>
+                    <option value="indoor play">indoor play</option>
+                    <option value="toy store">toy store</option>
+                </select>
+              </div>
+            <div className="filter-neighborhood">
+              <label className="form-label" htmlFor="neighborhood">Neighborhood:</label>
+              <select 
+                className="form-select" 
+                type="text" 
+                id="neighborhood"
+                value={this.props.neighborhood}
+                onChange={this.props.handleUpdateNeighborhood}>
+                  <option value=""></option>
+                  <option value="N">N</option>
+                  <option value="NE">NE</option>
+                  <option value="NW">NW</option>
+                  <option value="Downtown">Downtown</option>
+                  <option value="SW">SW</option>
+                  <option value="SE">SE</option>
+                  <option value="Beaverton">Beaverton</option>
+                  <option value="Vancouver">Vancouver</option>
+                  <option value="Clackamas">Clackamas</option>
+                  <option value="Milwaukie">Milwaukie</option>
+              </select>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    )
+  }
+} 
+
+export default SearchBar

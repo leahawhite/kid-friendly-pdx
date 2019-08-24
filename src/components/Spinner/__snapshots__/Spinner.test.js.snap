@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component renders UI as expected 1`] = `
+<div
+  className="spinner"
+>
+  <img
+    alt="pinwheel spinner"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "pinwheel.svg",
+      }
+    }
+  />
+</div>
+`;

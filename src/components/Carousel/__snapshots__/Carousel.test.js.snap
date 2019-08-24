@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel component renders empty without props 1`] = `
+<t
+  animationDuration={500}
+  arrows={true}
+  autoCycle={false}
+  breakpoints={
+    Array [
+      Object {
+        "breakpoint": 500,
+        "settings": Object {
+          "slidesToScroll": 1,
+          "slidesToShow": 1,
+        },
+      },
+      Object {
+        "breakpoint": 768,
+        "settings": Object {
+          "slidesToScroll": 2,
+          "slidesToShow": 2,
+        },
+      },
+      Object {
+        "breakpoint": 1040,
+        "settings": Object {
+          "slidesToScroll": 3,
+          "slidesToShow": 3,
+        },
+      },
+    ]
+  }
+  cycleInterval={5000}
+  dots={true}
+  draggable={false}
+  incrementalSides={false}
+  lazyLoad={false}
+  nextArrow={null}
+  paging={false}
+  pagingSeparator="/"
+  pauseOnHover={true}
+  placeholderImageSrc=""
+  prevArrow={null}
+  responsive={true}
+  scrollOnDevice={true}
+  showSides={true}
+  sideSize={0.1}
+  sidesOpacity={0.5}
+  slidesSpacing={0.5}
+  slidesToScroll={4}
+  slidesToShow={4}
+  swipe={true}
+>
+  0
+</t>
+`;
+
+exports[`Carousel component renders the images given props 1`] = `
+<t
+  animationDuration={500}
+  arrows={true}
+  autoCycle={false}
+  breakpoints={
+    Array [
+      Object {
+        "breakpoint": 500,
+        "settings": Object {
+          "slidesToScroll": 1,
+          "slidesToShow": 1,
+        },
+      },
+      Object {
+        "breakpoint": 768,
+        "settings": Object {
+          "slidesToScroll": 2,
+          "slidesToShow": 2,
+        },
+      },
+      Object {
+        "breakpoint": 1040,
+        "settings": Object {
+          "slidesToScroll": 3,
+          "slidesToShow": 3,
+        },
+      },
+    ]
+  }
+  cycleInterval={5000}
+  dots={true}
+  draggable={false}
+  incrementalSides={false}
+  lazyLoad={false}
+  nextArrow={null}
+  paging={false}
+  pagingSeparator="/"
+  pauseOnHover={true}
+  placeholderImageSrc=""
+  prevArrow={null}
+  responsive={true}
+  scrollOnDevice={true}
+  showSides={true}
+  sideSize={0.1}
+  sidesOpacity={0.5}
+  slidesSpacing={0.5}
+  slidesToScroll={4}
+  slidesToShow={4}
+  swipe={true}
+>
+  <div
+    className="image-item"
+    key="1"
+  >
+    <img
+      alt="Atlas Pizza's 'Jalapeno Popper' pie"
+      className="place-img"
+      src="https://lh3.googleusercontent.com/ir83SjI1lJpHK4E5vQFwD7LfyE__eKaIvBtmFf1nV5wyfq-z5LVe4u7PuQvQ7ycqsFlGMe5vw3UNRB86G3SjLckIZKHgFSkz0-oQdLAAP2UxlUwq-HqDA116RjcI3iG-lA1ftsYr9S4=w2400"
+    />
+    <div
+      className="overlay"
+    >
+      Atlas Pizza's 'Jalapeno Popper' pie
+    </div>
+  </div>
+  <div
+    className="image-item"
+    key="2"
+  >
+    <img
+      alt="A rainbow over Foster Blvd"
+      className="place-img"
+      src="https://lh3.googleusercontent.com/CjUvS4WgCiSRTsUUAryiPcczqAdyaSDhDg1ZTT6OrdgjfdNiTE5Q14pwI-C2m49tSjQHMnBxDgpiZyYZkxEDE3KzI3DWLsT631ROrF1zTuJcBqEXcRN8PP5U3EcG-bmMclE_uKmWh2E=w2400"
+    />
+    <div
+      className="overlay"
+    >
+      A rainbow over Foster Blvd
+    </div>
+  </div>
+</t>
+`;

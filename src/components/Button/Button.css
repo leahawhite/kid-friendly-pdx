@@ -1,0 +1,15 @@
+.form-button {
+  border: 1px solid #00b8e6;
+  background-color: #00b8e6;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px 12px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  margin: 10px auto;
+  align-self: center;
+}

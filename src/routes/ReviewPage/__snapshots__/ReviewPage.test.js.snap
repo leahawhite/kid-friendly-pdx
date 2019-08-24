@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewPage component renders UI as expected 1`] = `
+<div
+  className="ReviewPage"
+>
+  <h2
+    className="ReviewPage-header"
+  >
+    Write a Review of
+     
+    <Link
+      to={
+        Object {
+          "pathname": "/places/1",
+          "state": Object {
+            "place": Object {
+              "address": "6529 SE Foster Rd",
+              "average_review_rating": 4.5,
+              "category": Array [
+                "restaurants",
+              ],
+              "city": "Portland",
+              "date_created": "2019-06-13",
+              "descriptors": Array [
+                "pizza",
+                "arcade",
+                "beer",
+              ],
+              "features": Object {
+                "all ages": true,
+                "arcade": true,
+                "changing station": false,
+                "comfortable seating": true,
+                "flexible": true,
+                "friendly staff": true,
+                "highchairs/boosters": false,
+                "kids menu": false,
+                "patio/sidewalk": true,
+                "play area": true,
+                "quick service": true,
+                "toys": true,
+              },
+              "hours": Array [
+                Object {
+                  "closes": "11:00 pm",
+                  "dayOfWeek": "Monday",
+                  "opens": "12:00 pm",
+                },
+                Object {
+                  "closes": "11:00 pm",
+                  "dayOfWeek": "Tuesday",
+                  "opens": "12:00 pm",
+                },
+                Object {
+                  "closes": "11:00 pm",
+                  "dayOfWeek": "Wednesday",
+                  "opens": "12:00 pm",
+                },
+                Object {
+                  "closes": "11:00 pm",
+                  "dayOfWeek": "Thursday",
+                  "opens": "12:00 pm",
+                },
+                Object {
+                  "closes": "12:00 am",
+                  "dayOfWeek": "Friday",
+                  "opens": "12:00 pm",
+                },
+                Object {
+                  "closes": "12:00 am",
+                  "dayOfWeek": "Saturday",
+                  "opens": "12:00 pm",
+                },
+                Object {
+                  "closes": "11:00 pm",
+                  "dayOfWeek": "Sunday",
+                  "opens": "12:00 pm",
+                },
+              ],
+              "id": 1,
+              "images": Array [
+                Object {
+                  "id": 1,
+                  "place_id": 1,
+                  "review_id": 1,
+                  "src": "https://lh3.googleusercontent.com/ir83SjI1lJpHK4E5vQFwD7LfyE__eKaIvBtmFf1nV5wyfq-z5LVe4u7PuQvQ7ycqsFlGMe5vw3UNRB86G3SjLckIZKHgFSkz0-oQdLAAP2UxlUwq-HqDA116RjcI3iG-lA1ftsYr9S4=w2400",
+                  "title": "Atlas Pizza's 'Jalapeno Popper' pie",
+                  "user_id": 2,
+                },
+                Object {
+                  "id": 2,
+                  "place_id": 1,
+                  "review_id": 2,
+                  "src": "https://lh3.googleusercontent.com/CjUvS4WgCiSRTsUUAryiPcczqAdyaSDhDg1ZTT6OrdgjfdNiTE5Q14pwI-C2m49tSjQHMnBxDgpiZyYZkxEDE3KzI3DWLsT631ROrF1zTuJcBqEXcRN8PP5U3EcG-bmMclE_uKmWh2E=w2400",
+                  "title": "A rainbow over Foster Blvd",
+                  "user_id": 1,
+                },
+              ],
+              "lat": 45.4892,
+              "lng": -122.59507,
+              "name": "Atlas Pizza",
+              "neighborhood": "SE",
+              "number_of_reviews": 2,
+              "phone": "503-232-3004",
+              "state": "OR",
+              "website": "http://atlaspizzapdx.com",
+              "zipcode": "97206",
+            },
+          },
+        }
+      }
+    >
+      Atlas Pizza
+    </Link>
+  </h2>
+  <ReviewForm
+    place={
+      Object {
+        "address": "6529 SE Foster Rd",
+        "average_review_rating": 4.5,
+        "category": Array [
+          "restaurants",
+        ],
+        "city": "Portland",
+        "date_created": "2019-06-13",
+        "descriptors": Array [
+          "pizza",
+          "arcade",
+          "beer",
+        ],
+        "features": Object {
+          "all ages": true,
+          "arcade": true,
+          "changing station": false,
+          "comfortable seating": true,
+          "flexible": true,
+          "friendly staff": true,
+          "highchairs/boosters": false,
+          "kids menu": false,
+          "patio/sidewalk": true,
+          "play area": true,
+          "quick service": true,
+          "toys": true,
+        },
+        "hours": Array [
+          Object {
+            "closes": "11:00 pm",
+            "dayOfWeek": "Monday",
+            "opens": "12:00 pm",
+          },
+          Object {
+            "closes": "11:00 pm",
+            "dayOfWeek": "Tuesday",
+            "opens": "12:00 pm",
+          },
+          Object {
+            "closes": "11:00 pm",
+            "dayOfWeek": "Wednesday",
+            "opens": "12:00 pm",
+          },
+          Object {
+            "closes": "11:00 pm",
+            "dayOfWeek": "Thursday",
+            "opens": "12:00 pm",
+          },
+          Object {
+            "closes": "12:00 am",
+            "dayOfWeek": "Friday",
+            "opens": "12:00 pm",
+          },
+          Object {
+            "closes": "12:00 am",
+            "dayOfWeek": "Saturday",
+            "opens": "12:00 pm",
+          },
+          Object {
+            "closes": "11:00 pm",
+            "dayOfWeek": "Sunday",
+            "opens": "12:00 pm",
+          },
+        ],
+        "id": 1,
+        "images": Array [
+          Object {
+            "id": 1,
+            "place_id": 1,
+            "review_id": 1,
+            "src": "https://lh3.googleusercontent.com/ir83SjI1lJpHK4E5vQFwD7LfyE__eKaIvBtmFf1nV5wyfq-z5LVe4u7PuQvQ7ycqsFlGMe5vw3UNRB86G3SjLckIZKHgFSkz0-oQdLAAP2UxlUwq-HqDA116RjcI3iG-lA1ftsYr9S4=w2400",
+            "title": "Atlas Pizza's 'Jalapeno Popper' pie",
+            "user_id": 2,
+          },
+          Object {
+            "id": 2,
+            "place_id": 1,
+            "review_id": 2,
+            "src": "https://lh3.googleusercontent.com/CjUvS4WgCiSRTsUUAryiPcczqAdyaSDhDg1ZTT6OrdgjfdNiTE5Q14pwI-C2m49tSjQHMnBxDgpiZyYZkxEDE3KzI3DWLsT631ROrF1zTuJcBqEXcRN8PP5U3EcG-bmMclE_uKmWh2E=w2400",
+            "title": "A rainbow over Foster Blvd",
+            "user_id": 1,
+          },
+        ],
+        "lat": 45.4892,
+        "lng": -122.59507,
+        "name": "Atlas Pizza",
+        "neighborhood": "SE",
+        "number_of_reviews": 2,
+        "phone": "503-232-3004",
+        "state": "OR",
+        "website": "http://atlaspizzapdx.com",
+        "zipcode": "97206",
+      }
+    }
+  />
+</div>
+`;
