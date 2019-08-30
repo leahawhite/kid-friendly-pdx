@@ -14,29 +14,29 @@ export default class PlaceHours extends Component {
 
   render() {
     const { place } = this.props || {}
-    // converting dayOfWeek value to text equivalent
+    // converting day_id value to text equivalent
     const newPlaceHours = place && place.hours && place.hours.length && place.hours.map(day => { 
       let returnValue = {...day}
-      if (day.dayOfWeek === 1) {
-        returnValue.dayOfWeek = "Monday";
+      if (day.day_id === 1) {
+        returnValue.day_id = "Monday";
       }
-      if (day.dayOfWeek === 2) {
-        returnValue.dayOfWeek = "Tuesday";
+      if (day.day_id === 2) {
+        returnValue.day_id = "Tuesday";
       }
-      if (day.dayOfWeek === 3) {
-        returnValue.dayOfWeek = "Wednesday";
+      if (day.day_id === 3) {
+        returnValue.day_id = "Wednesday";
       }
-      if (day.dayOfWeek === 4) {
-        returnValue.dayOfWeek = "Thursday";
+      if (day.day_id === 4) {
+        returnValue.day_id = "Thursday";
       }
-      if (day.dayOfWeek === 5) {
-        returnValue.dayOfWeek = "Friday";
+      if (day.day_id === 5) {
+        returnValue.day_id = "Friday";
       }
-      if (day.dayOfWeek === 6) {
-        returnValue.dayOfWeek = "Saturday";
+      if (day.day_id === 6) {
+        returnValue.day_id = "Saturday";
       }
-      if (day.dayOfWeek === 7) {
-        returnValue.dayOfWeek = "Sunday";
+      if (day.day_id === 7) {
+        returnValue.day_id = "Sunday";
       }
       return returnValue
     })
@@ -45,7 +45,7 @@ export default class PlaceHours extends Component {
       <table className="place-hours-table" key={index}>
         <tbody>
           <tr className="place-hours-table-row">
-            <th className="place-hours-table-column-left">{item.dayOfWeek}{': '}</th>
+            <th className="place-hours-table-column-left">{item.day_id}{': '}</th>
             <td className="place-hours-table-column-right">{this.getStdTime(item.opens)}{' - '}{this.getStdTime(item.closes)}</td>
           </tr>
         </tbody>
