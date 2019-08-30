@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Kid-Friendly-PDX
 
-## Available Scripts
+The Kid-Friendly PDX app is a review and recommendation guide for kid-friendly places in Portland, Oregon. Users can search places by keyword and filter by category and neighborhood. Users can also contribute reviews of existing places, including text, rating, and photos. 
 
-In the project directory, you can run:
+## Motivation
 
-### `npm start`
+As a parent of a toddler, I am always looking for places I can take my kid where I won't offend anyone with his sudden tantrums or general unpredictability. Lists of kid-friendly places are posted on various parent guides and to some extent on Yelp and Google, but I wanted to make a centralized guide where the reviews are focused on the kid-friendliness, not just the places themselves. Does the restaurant have a play area and/or toys? How are the restrooms, seating, wait time and parking? For a museum, what age ranges would be appropriate? For parks, are there playground features for all ages? The Kid-Friendly PDX app attempts to answer all of these questions and more.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How It Works
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+From the landing page, users can use the search form to start searching places and/or filtering by category or neighborhood. No initial signup or login is necessary for searching. From the results list view, users can select an individual place to see more details about it. From the details page, they can click on the Review or Write a Review buttons, but they must first log in to proceed. Users can sign up with an account or use the demo@demo.com/demo123 account to log in. At that point, they can write a review and post images.
 
-### `npm test`
+## Link to App
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[https://kid-friendly-pdx.now.sh/](https://kid-friendly-pdx.now.sh/)
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Landing Page
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![Landing Page](/screenshots/LandingPage.jpg "Landing Page")
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Places List Page
 
-### `npm run eject`
+![Places List Page](/screenshots/PlacesListPage.jpg "Places List Page")
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Place Page
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Place Page](/screenshots/PlacePage.jpg "Place Page")
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Login Page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Login Page](/screenshots/LoginPage.jpg "Login Page")
 
-## Learn More
+Review Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Review Page](/screenshots/ReviewPage.jpg "Review Page")
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Upload Photos
 
-### Code Splitting
+![Upload Photos](/screenshots/UploadPhotos.jpg "Upload Photos")
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Security
 
-### Analyzing the Bundle Size
+This application utilizes JWT authentication.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Technology Used
+- HTML
+- CSS
+- JavaScript
+- React
+- Cloudinary API
+- Jest
+- Enzyme
