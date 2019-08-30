@@ -40,7 +40,7 @@ export default class PlaceHours extends Component {
       }
       return returnValue
     })
-   
+
     const hoursArr = newPlaceHours && newPlaceHours.length && newPlaceHours.map((item, index) =>
       <table className="place-hours-table" key={index}>
         <tbody>

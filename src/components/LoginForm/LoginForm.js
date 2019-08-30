@@ -47,6 +47,7 @@ export default class LoginForm extends Component {
             type="text"
             aria-label="email address"
             aria-required="true"
+            placeholder="demo@demo.com"
             required
             id="email" />
         </div>
@@ -59,6 +60,7 @@ export default class LoginForm extends Component {
             type="password"
             aria-label="password"
             aria-required="true"
+            placeholder="demo123"
             required
             id="password" />
         </div>
