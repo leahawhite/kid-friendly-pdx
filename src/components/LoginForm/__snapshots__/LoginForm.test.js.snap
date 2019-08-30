@@ -18,6 +18,7 @@ exports[`LoginForm component renders UI as expected 1`] = `
       aria-required="true"
       id="email"
       name="email"
+      placeholder="demo@demo.com"
       required={true}
       type="text"
     />
@@ -35,6 +36,7 @@ exports[`LoginForm component renders UI as expected 1`] = `
       aria-required="true"
       id="password"
       name="password"
+      placeholder="demo123"
       required={true}
       type="password"
     />

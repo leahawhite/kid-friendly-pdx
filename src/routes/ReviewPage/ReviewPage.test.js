@@ -11,7 +11,7 @@ describe('ReviewPage component', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <ReviewPage />
+        <ReviewPage location={{state: {place: testPlace}}}/>
       </MemoryRouter>, 
       div
     );

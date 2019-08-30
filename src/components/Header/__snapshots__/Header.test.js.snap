@@ -44,6 +44,7 @@ exports[`Header component renders UI as expected 1`] = `
       className="Header__nav-not-logged-in-links"
     >
       <Link
+        className="navlink-left"
         to="/login"
       >
         LOG IN

@@ -17,15 +17,15 @@ export default function PlaceActions(props) {
         text="Directions"
       />
       <Action name="website" link={place.website} icon="globe" text="Website" />
-      <div className="place-write-review">
-        <Link to={{
-            pathname: `/places/${place.id}/reviews`,
-            state: { place: place }
-            }}>
-            <FontAwesomeIcon icon="star" size="lg"/> 
-            <p>Review</p>
-        </Link>
-      </div>
+      <Link to={{
+        pathname: `/places/${place.id}/reviews`,
+        state: { place: place }
+        }}>
+        <div className="place-write-review">
+          <FontAwesomeIcon icon="star" size="lg"/> 
+          <p>Review</p>
+        </div>
+      </Link>
     </section>
   )
 }

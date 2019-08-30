@@ -6,3 +6,7 @@
   margin: 20px 10px;
   padding-bottom: 20px;
 }
+
+.place-actions a:hover, .place-actions a:focus, .place-actions a:active {
+  border-bottom: 3px solid #0045e6;
+}

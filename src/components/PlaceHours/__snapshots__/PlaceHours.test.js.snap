@@ -40,15 +40,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Monday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            11:00 pm
+            12:00 pm - 11:00 pm
           </td>
         </tr>
       </tbody>
@@ -64,15 +61,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Tuesday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            11:00 pm
+            12:00 pm - 11:00 pm
           </td>
         </tr>
       </tbody>
@@ -88,15 +82,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Wednesday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            11:00 pm
+            12:00 pm - 11:00 pm
           </td>
         </tr>
       </tbody>
@@ -112,15 +103,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Thursday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            11:00 pm
+            12:00 pm - 11:00 pm
           </td>
         </tr>
       </tbody>
@@ -136,15 +124,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Friday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            12:00 am
+            12:00 pm - 12:00 am
           </td>
         </tr>
       </tbody>
@@ -160,15 +145,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Saturday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            12:00 am
+            12:00 pm - 12:00 am
           </td>
         </tr>
       </tbody>
@@ -184,15 +166,12 @@ exports[`PlaceHours component renders UI as expected with props 1`] = `
           <th
             className="place-hours-table-column-left"
           >
-            Sunday
             : 
           </th>
           <td
             className="place-hours-table-column-right"
           >
-            12:00 pm
-             - 
-            11:00 pm
+            12:00 pm - 11:00 pm
           </td>
         </tr>
       </tbody>

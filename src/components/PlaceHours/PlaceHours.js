@@ -12,6 +12,14 @@ export default class PlaceHours extends Component {
     return moment(hours, 'hh:mm a').format('hh:mm a')
   }
 
+  getOpenHours(opens, closes) {
+    if (opens === 'closed') {
+      return 'Closed'
+    } else {
+      return this.getStdTime(opens)+' - '+this.getStdTime(closes)
+    }
+  }
+
   render() {
     const { place } = this.props || {}
     // converting day_id value to text equivalent
@@ -40,17 +48,18 @@ export default class PlaceHours extends Component {
       }
       return returnValue
     })
-
+    
     const hoursArr = newPlaceHours && newPlaceHours.length && newPlaceHours.map((item, index) =>
       <table className="place-hours-table" key={index}>
         <tbody>
           <tr className="place-hours-table-row">
             <th className="place-hours-table-column-left">{item.day_id}{': '}</th>
-            <td className="place-hours-table-column-right">{this.getStdTime(item.opens)}{' - '}{this.getStdTime(item.closes)}</td>
+            <td className="place-hours-table-column-right">{this.getOpenHours(item.opens, item.closes)}</td>
           </tr>
         </tbody>
       </table>  
-    );
+    )
+    
     return (
       <div className="place-hours">
         <div className="place-hours-icon">

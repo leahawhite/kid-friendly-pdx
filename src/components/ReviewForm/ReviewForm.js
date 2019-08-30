@@ -124,11 +124,9 @@ export default class ReviewForm extends Component {
   
   updateRating = (rating) => {
     this.setState({rating}, () => {this.validateRating(rating)})
-    console.log(rating)
   }
 
   validateRating(fieldValue) {
-    console.log('validate rating has run')
     const fieldErrors = {...this.state.validationMessages}
     let hasError = false;
     if(fieldValue.length === 0) {

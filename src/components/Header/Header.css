@@ -39,6 +39,10 @@ nav a {
   margin-left: 10px;
 }
 
+.navlink-left:hover, .navlink-left:active, .navlink-left:focus {
+  border-bottom: 3px solid #0045e6;
+}
+
 .navlink-right {
   margin-right: 10px;
   background-color: #0045e6;

@@ -23,7 +23,7 @@ export default class Header extends Component {
     return (
       <nav className="Header__nav-not-logged-in" role="navigation">
         <div className="Header__nav-not-logged-in-links">
-          <Link to='/login'>
+          <Link className="navlink-left" to='/login'>
             LOG IN
           </Link>
           <Link className="navlink-right" to='/signup'>
