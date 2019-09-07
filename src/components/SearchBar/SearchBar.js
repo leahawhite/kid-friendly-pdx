@@ -5,17 +5,25 @@ import './SearchBar.css';
 class SearchBar extends Component {
   
   render() {
+    const { 
+      searchTerm, 
+      category, 
+      neighborhood, 
+      handleUpdateSearch, 
+      handleUpdateCategory, 
+      handleUpdateNeighborhood, 
+      handleSubmit } = this.props
     return (
       <section className="searchbar">
-        <form className="search-form" onSubmit={this.props.handleSubmit}>
+        <form className="search-form" onSubmit={handleSubmit}>
           <label className="search-label" htmlFor="search"></label>
           <input 
             className="search-input" 
             id="search" 
             type="text" 
-            placeholder="Search"
-            value={this.props.searchTerm}
-            onChange={this.props.handleUpdateSearch}/>
+            placeholder="Search: pizza, cafe, playground"
+            value={searchTerm}
+            onChange={handleUpdateSearch}/>
           <button type="submit" className="search-btn">
             <FontAwesomeIcon icon="search"/>
           </button>
@@ -26,8 +34,8 @@ class SearchBar extends Component {
                   className="form-select" 
                   type="text" 
                   id="category"
-                  value={this.props.category}
-                  onChange={this.props.handleUpdateCategory}>
+                  value={category}
+                  onChange={handleUpdateCategory}>
                     <option value=""></option>
                     <option value="restaurant">restaurant</option>
                     <option value="attraction">attraction</option>
@@ -43,8 +51,8 @@ class SearchBar extends Component {
                 className="form-select" 
                 type="text" 
                 id="neighborhood"
-                value={this.props.neighborhood}
-                onChange={this.props.handleUpdateNeighborhood}>
+                value={neighborhood}
+                onChange={handleUpdateNeighborhood}>
                   <option value=""></option>
                   <option value="N">N</option>
                   <option value="NE">NE</option>
@@ -58,7 +66,7 @@ class SearchBar extends Component {
                   <option value="Milwaukie">Milwaukie</option>
               </select>
             </div>
-          </fieldset>
+          </fieldset> 
         </form>
       </section>
     )

@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
 import Map from '../../components/Map/Map';
 import Spinner from '../../components/Spinner/Spinner';
-import PlacesApiService from '../../services/places-api-service';
-import config from '../../config';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import './PlacesListPage.css';
 import haversine from 'haversine';
 
 export default class PlacesListPage extends Component {
   static defaultProps = {
     location: { state: {} },
-    places: [],
     searchTerm: "",
     category: "",
     neighborhood: ""
@@ -19,15 +17,9 @@ export default class PlacesListPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      places: [],
-      isLoading: false,
       results: [],
       sort: 'rating',
     }
-  }
-
-  componentDidMount() {
-    this.getPlaces();
   }
 
   getPosition = () => {
@@ -41,43 +33,6 @@ export default class PlacesListPage extends Component {
         (error) => console.log(error.message),
       )
     }  
-  }
-
-  getPlaces = () => {
-    this.setState({ isLoading: true })
-    let searchTerm, category, neighborhood
-    if (this.props.location.state) {
-      searchTerm=this.props.location.state.searchTerm
-      category=this.props.location.state.category
-      neighborhood=this.props.location.state.neighborhood
-    } else {
-      searchTerm=""
-      category=""
-      neighborhood=""
-    }
-    
-    const params = []
-    if (searchTerm) {
-      params.push(`searchTerm=${encodeURI(searchTerm)}`)
-    }
-    if (category) {
-      params.push(`category=${encodeURI(category)}`)
-    }
-    if (neighborhood) {
-      params.push(`neighborhood=${encodeURI(neighborhood)}`)
-    }
-    const query = params.join('&')
-    const url = `${config.API_ENDPOINT}/places/?${query}`
-    PlacesApiService.getPlaces(url)
-      .then(data => {
-        this.setState({
-          places: data,
-          isLoading: false,
-        })
-      })
-      .catch(error => {
-        this.setState({ error: error })
-      })
   }
 
   sortResults = results => {
@@ -113,7 +68,7 @@ export default class PlacesListPage extends Component {
   }
     
   renderPlaces() {
-    const { places, isLoading } = this.state
+    const { isLoading, places } = this.props
     const placeResults = places && places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
@@ -142,7 +97,24 @@ export default class PlacesListPage extends Component {
   }
 
   render() {
+    const { 
+      searchTerm, 
+      category, 
+      neighborhood, 
+      handleUpdateSearch, 
+      handleUpdateCategory, 
+      handleUpdateNeighborhood, 
+      handleSubmit } = this.props
     return (
+      <>
+      <SearchBar 
+        searchTerm={searchTerm}
+        category={category}
+        neighborhood={neighborhood}
+        handleUpdateSearch={handleUpdateSearch}
+        handleUpdateCategory={handleUpdateCategory}
+        handleUpdateNeighborhood={handleUpdateNeighborhood}
+        handleSubmit={handleSubmit}/>
       <section className="places-list">
         <header className="places-header">
           <h2>Results</h2>
@@ -163,6 +135,7 @@ export default class PlacesListPage extends Component {
         </header>
         {this.renderPlaces()}
       </section>
+      </>
     )
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Header.css';
 
 export default class Header extends Component {
@@ -41,7 +40,6 @@ export default class Header extends Component {
         <h1 className="Header__title">
           <NavLink exact to='/' activeClassName="hidden">
             <span>KID-FRIENDLY PDX</span>
-            <FontAwesomeIcon icon="search"/>
           </NavLink>
         </h1>
         {loggedIn
