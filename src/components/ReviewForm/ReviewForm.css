@@ -37,6 +37,7 @@
   border-radius: 8px;
   padding: 8px 12px;
   width: 200px;
+  margin: 10px 0;
 }
 
 .review-btn:hover, .review-btn:active, .review-btn:focus, 
@@ -50,13 +51,13 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 20px;
+  /* margin: 20px; */
 }
 
 .upload-btn {
   display: flex;
   flex-direction: row; 
-  margin: 0 auto;
+  margin: 20px auto 10px auto;
 }
 
 .button-container {

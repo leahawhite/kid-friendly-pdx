@@ -13,7 +13,6 @@ export default class ReviewForm extends Component {
     super(props)
     this.state = {
       uploading: null,
-      reviews: this.props.reviews,
       images: [],
       captions: [],
       error: null,
@@ -22,18 +21,12 @@ export default class ReviewForm extends Component {
       ratingValid: false,
       validationMessages: {
         rating: "",
-      },
-      fireRedirect: false
+      }
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ fireRedirect: false })
   }
 
   onChange = e => {
     e.preventDefault()
-    // how to clear error message other than setstate?
     this.setState({ uploading: true, error: null })
 
     // this doesn't stop images from being sent to server
@@ -83,12 +76,6 @@ export default class ReviewForm extends Component {
     this.setState({ captions })
   }
 
-  addReview = newReview => {
-    this.setState({
-      reviews: [...this.state.reviews, newReview]
-    })
-  }
-
   onError = id => {
     this.setState({ images: this.filter(id) })
   }
@@ -110,23 +97,7 @@ export default class ReviewForm extends Component {
         title: captions[index]
       }
     ))
-    Promise.all([PlacesApiService.postReview(newReview), PlacesApiService.postImages(newImages)])
-    .then(([placesRes, imagesRes]) => {
-      if(!placesRes.ok)
-        return placesRes.json().then(e => Promise.reject(e))
-      if(!imagesRes.ok)
-        return imagesRes.json().then(e => Promise.reject(e))
-        return Promise.all([placesRes.json(), imagesRes.json()])
-    })
-    .then(([newReview, newImages]) => {
-      this.addReview(newReview)
-    })
-    .catch(res => {
-      this.setState({ error: res.error })
-    })
-    this.setState({
-      fireRedirect: true,
-    })
+    this.props.insertReviewsAndImages(newReview, newImages)
   }
   
   updateRating = (rating) => {
@@ -208,8 +179,8 @@ export default class ReviewForm extends Component {
           <div className="text">
             <textarea className="review-text" required placeholder="Share your experience with others. How kid-friendly is this place?" name="text"></textarea>
           </div>
+          <UploadButton iconClass="icon" uploadSpan="Upload Photos" onChange={this.onChange} />
           <div className='upload-container'>
-            <UploadButton iconClass="icon" uploadSpan="Upload Photos" onChange={this.onChange} />
             <div className="render-container">
               {this.renderImages()}
             </div>

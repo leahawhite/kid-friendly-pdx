@@ -6,8 +6,7 @@ import './PlaceReviews.css'
 
 export default class PlaceReviews extends Component {
   render() {
-  const { reviews } = this.props
-  const { place } = this.props
+  const { place, reviews } = this.props
     
     return (
       <>
@@ -26,7 +25,7 @@ export default class PlaceReviews extends Component {
           <button className="write-review-btn">
             <Link to={{
               pathname: `/places/${place.id}/reviews`,
-              state: { place: place, reviews: reviews }
+              state: { place: place }
             }}>
               <FontAwesomeIcon icon="pen" size="sm" />
               <span>Write a review</span>
