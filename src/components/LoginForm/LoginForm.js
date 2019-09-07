@@ -36,8 +36,12 @@ export default class LoginForm extends Component {
   }
 
   render() {
+    const { error } = this.state
     return (
       <form className="login-form" onSubmit={this.handleSubmit}>
+        <div role='alert'>
+          {error && <p className='red'>{error}</p>}
+        </div>
         <div className="email">
           <label htmlFor="email">
             Email address
@@ -47,7 +51,6 @@ export default class LoginForm extends Component {
             type="text"
             aria-label="email address"
             aria-required="true"
-            placeholder="demo@demo.com"
             required
             id="email"
             autoComplete="off" />
@@ -61,7 +64,6 @@ export default class LoginForm extends Component {
             type="password"
             aria-label="password"
             aria-required="true"
-            placeholder="demo123"
             required
             id="password"
             autoComplete="off" />
@@ -69,6 +71,8 @@ export default class LoginForm extends Component {
         <button type="submit" className="login-btn">
           Log In
         </button>
+          <p>Demo email: demo@demo.com</p>
+          <p>Demo password: demo123</p>
       </form>
     )
   }

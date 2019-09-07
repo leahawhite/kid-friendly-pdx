@@ -46,7 +46,7 @@ export default class SignupForm extends Component {
         <div className="display_name">
           <label htmlFor="display_name">
             Display name 
-            <span className="signup-rule"></span>
+            <span className="signup-rule"> -- between 3 and 20 characters</span>
           </label>
           <input
             name="display_name"
@@ -54,7 +54,6 @@ export default class SignupForm extends Component {
             id="display_name"
             aria-label="display name"
             aria-required="true"
-            placeholder="between 3 and 20 characters"
             required
             minLength="3"
             maxLength="20"
@@ -78,13 +77,12 @@ export default class SignupForm extends Component {
         <div className="password">
           <label htmlFor="password">
             Password 
-            <span className="signup-rule"></span>
+            <span className="signup-rule"> -- at least 6 characters, one number</span>
           </label>
           <input
             name="password"
             type="password"
             id="password"
-            placeholder="at least 6 characters, one number"
             aria-label="password"
             aria-required="true"
             minLength="6"

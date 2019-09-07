@@ -19,6 +19,10 @@
   border-radius: 8px;
 }
 
+.LoginPage a:hover, .LoginPage a:active, .LoginPage a:focus  {
+  text-decoration: underline;
+}
+
 .login-reminder {
   text-align: center;
 }

@@ -20,6 +20,10 @@
   border-radius: 8px;
 }
 
+.SignupPage a:hover, .SignupPage a:active, .SignupPage a:focus  {
+  text-decoration: underline;
+}
+
 .signup-reminder {
   text-align: center;
 }
