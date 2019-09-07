@@ -11,6 +11,10 @@ export default function PlacesListItem(props) {
   )
   
   return (
+    <Link to={{
+      pathname: `/places/${place.id}`,
+      state: { place: place }
+    }}>
     <div className="place-item">
       <div className="place-image-container">
         <Link to={{
@@ -38,7 +42,9 @@ export default function PlacesListItem(props) {
         </div>
         {descriptorsList}
       </div>
+      
     </div>
+    </Link>
   )
 }
 
