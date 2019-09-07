@@ -27,8 +27,6 @@ export default class PlacesListPage extends Component {
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true })
-    this.getPosition();
     this.getPlaces();
   }
 
@@ -47,7 +45,6 @@ export default class PlacesListPage extends Component {
 
   getPlaces = () => {
     this.setState({ isLoading: true })
-    // does this work for what to do if not coming from this route?
     let searchTerm, category, neighborhood
     if (this.props.location.state) {
       searchTerm=this.props.location.state.searchTerm
@@ -138,6 +135,7 @@ export default class PlacesListPage extends Component {
   }
 
   handleUpdateSort = e => {
+    this.getPosition()
     this.setState({
       sort: e.target.value
     })

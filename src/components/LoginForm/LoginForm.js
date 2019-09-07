@@ -49,7 +49,8 @@ export default class LoginForm extends Component {
             aria-required="true"
             placeholder="demo@demo.com"
             required
-            id="email" />
+            id="email"
+            autoComplete="off" />
         </div>
         <div className="password">
           <label htmlFor="password">
@@ -62,7 +63,8 @@ export default class LoginForm extends Component {
             aria-required="true"
             placeholder="demo123"
             required
-            id="password" />
+            id="password"
+            autoComplete="off" />
         </div>
         <button type="submit" className="login-btn">
           Log In

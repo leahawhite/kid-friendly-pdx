@@ -19,7 +19,7 @@ export default function PlaceActions(props) {
       <Action name="website" link={place.website} icon="globe" text="Website" />
       <Link to={{
         pathname: `/places/${place.id}/reviews`,
-        state: { place: place }
+        state: { place: place, reviews: props.reviews }
         }}>
         <div className="place-write-review">
           <FontAwesomeIcon icon="star" size="lg"/> 
@@ -31,5 +31,6 @@ export default function PlaceActions(props) {
 }
 
 PlaceActions.defaultProps = {
-  place: {}
+  place: {},
+  reviews: []
 }

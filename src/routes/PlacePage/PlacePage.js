@@ -55,6 +55,10 @@ export default class PlacePage extends Component {
       })
     }
   }
+
+  componentWillUnmount = () => {
+    
+  }
   
   render() {
     const { state } = this.props.location
@@ -70,7 +74,7 @@ export default class PlacePage extends Component {
             <Carousel images={placeImages} imagesClass="image-item" />
           </section>
           <PlaceHeader place={place} />
-          <PlaceActions place={place} />
+          <PlaceActions place={place} reviews={reviews} />
           <section className="place-addl-info">
             <PlaceMap place={place} />
             <PlaceHours place={place} />

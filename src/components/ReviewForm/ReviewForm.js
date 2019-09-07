@@ -13,6 +13,7 @@ export default class ReviewForm extends Component {
     super(props)
     this.state = {
       uploading: null,
+      reviews: this.props.reviews,
       images: [],
       captions: [],
       error: null,
@@ -24,6 +25,10 @@ export default class ReviewForm extends Component {
       },
       fireRedirect: false
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ fireRedirect: false })
   }
 
   onChange = e => {
@@ -78,11 +83,16 @@ export default class ReviewForm extends Component {
     this.setState({ captions })
   }
 
+  addReview = newReview => {
+    this.setState({
+      reviews: [...this.state.reviews, newReview]
+    })
+  }
+
   onError = id => {
     this.setState({ images: this.filter(id) })
   }
 
-  // sequence should be loading when submit, then post reviews, get review.id (still loading), post images, fire redirect
   handleSubmit = e => {
     e.preventDefault()
     const { place } = this.props
@@ -100,7 +110,6 @@ export default class ReviewForm extends Component {
         title: captions[index]
       }
     ))
-
     Promise.all([PlacesApiService.postReview(newReview), PlacesApiService.postImages(newImages)])
     .then(([placesRes, imagesRes]) => {
       if(!placesRes.ok)
@@ -110,9 +119,7 @@ export default class ReviewForm extends Component {
         return Promise.all([placesRes.json(), imagesRes.json()])
     })
     .then(([newReview, newImages]) => {
-      // not sure what to do with these
-      newReview = {}
-      newImages=[]
+      this.addReview(newReview)
     })
     .catch(res => {
       this.setState({ error: res.error })

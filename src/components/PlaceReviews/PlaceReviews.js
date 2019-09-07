@@ -26,7 +26,7 @@ export default class PlaceReviews extends Component {
           <button className="write-review-btn">
             <Link to={{
               pathname: `/places/${place.id}/reviews`,
-              state: { place: place }
+              state: { place: place, reviews: reviews }
             }}>
               <FontAwesomeIcon icon="pen" size="sm" />
               <span>Write a review</span>

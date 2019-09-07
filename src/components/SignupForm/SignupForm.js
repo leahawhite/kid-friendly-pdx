@@ -57,6 +57,8 @@ export default class SignupForm extends Component {
             placeholder="between 3 and 20 characters"
             required
             minLength="3"
+            maxLength="20"
+            autoComplete="off"
           />
         </div>
         <div className="email">
@@ -70,6 +72,7 @@ export default class SignupForm extends Component {
             aria-label="email address"
             aria-required="true" 
             required
+            autoComplete="off"
           />
         </div>
         <div className="password">
@@ -88,6 +91,7 @@ export default class SignupForm extends Component {
             maxLength="36"
             pattern=".*[0-9].*" 
             required
+            autoComplete="off"
           />
         </div>
         <button type="submit" className="signup-btn" >

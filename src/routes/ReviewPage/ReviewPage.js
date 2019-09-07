@@ -8,7 +8,7 @@ export default class ReviewPage extends Component {
     location: { state: {} }
   }
   render() {
-    const { place } = this.props.location.state
+    const { place, reviews } = this.props.location.state
     return (
       <div className="ReviewPage">
         <h2 className="ReviewPage-header">Write a Review of{' '}
@@ -19,7 +19,7 @@ export default class ReviewPage extends Component {
             {place.name}
           </Link>
         </h2>
-        <ReviewForm place={place} />
+        <ReviewForm place={place} reviews={reviews} />
       </div>
     )
   }
