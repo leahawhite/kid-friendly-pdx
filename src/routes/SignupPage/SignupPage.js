@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import SignupForm from '../../components/SignupForm/SignupForm';
-import './SignupPage.css';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import SignupForm from '../../components/SignupForm/SignupForm'
+import './SignupPage.css'
 
 export default class SignupPage extends Component {
   static defaultProps = {

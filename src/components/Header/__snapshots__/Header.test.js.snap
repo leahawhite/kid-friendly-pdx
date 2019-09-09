@@ -16,24 +16,6 @@ exports[`Header component renders UI as expected 1`] = `
       <span>
         KID-FRIENDLY PDX
       </span>
-      <FontAwesomeIcon
-        border={false}
-        className=""
-        fixedWidth={false}
-        flip={null}
-        icon="search"
-        inverse={false}
-        listItem={false}
-        mask={null}
-        pull={null}
-        pulse={false}
-        rotation={null}
-        size={null}
-        spin={false}
-        symbol={false}
-        title=""
-        transform={null}
-      />
     </NavLink>
   </h1>
   <nav

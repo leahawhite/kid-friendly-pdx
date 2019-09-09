@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { StarRating } from '../StarRating/StarRating';
-import { readableReviewCount } from '../../helpers/helpers';
-import './PlacesListItem.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { StarRating } from '../StarRating/StarRating'
+import { readableReviewCount } from '../../helpers/helpers'
+import './PlacesListItem.css'
 
 export default function PlacesListItem(props) {
   const place = props.place
@@ -17,22 +17,12 @@ export default function PlacesListItem(props) {
     }}>
     <div className="place-item">
       <div className="place-image-container">
-        <Link to={{
-                pathname: `/places/${place.id}`,
-                state: { place: place }
-              }}>
-          {place.images && place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
-          : null}
-        </Link>
-            </div>
+        {place.images && place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
+        : null}
+      </div>
       <div className="place-info">
           <h3 className="place-name">
-          <Link to={{
-              pathname: `/places/${place.id}`,
-              state: { place: place }
-            }}>
-            {place.name}
-          </Link>
+           {place.name}
           </h3>
         <div className="place-info-reviews">
           <div className="star-rating">

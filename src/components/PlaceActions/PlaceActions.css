@@ -9,4 +9,5 @@
 
 .place-actions a:hover, .place-actions a:focus, .place-actions a:active {
   border-bottom: 3px solid #0045e6;
+  transition: all 0.3s;
 }

@@ -251,6 +251,7 @@ exports[`PlaceReviews component renders UI as expected with props 1`] = `
     className="write-review-btn-container"
   >
     <button
+      aria-label="write-review"
       className="write-review-btn"
     >
       <Link

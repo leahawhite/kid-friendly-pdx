@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { StarRating } from '../../components/StarRating/StarRating';
-import CarouselLB from '../../components/CarouselLB/CarouselLB';
-import moment from 'moment';
-import './Review.css';
+import React, { Component } from 'react'
+import { StarRating } from '../../components/StarRating/StarRating'
+import CarouselLB from '../../components/CarouselLB/CarouselLB'
+import moment from 'moment'
+import './Review.css'
 
 export default class Review extends Component {
   static defaultProps = { review: {}, users: [] }
@@ -25,14 +25,14 @@ export default class Review extends Component {
       return (
         <>
         {words.slice(0, 25).join(' ') + ' ...'}
-        <button className="read-btn" onClick={this.handleExpandText}>Read more</button>
+        <button className="read-btn" onClick={this.handleExpandText} aria-label="read more">Read more</button>
         </>
       )
     } else {
       return (
         <>
         {review.text}
-        <button className="read-btn" onClick={this.handleExpandText}>Read less</button>
+        <button className="read-btn" onClick={this.handleExpandText} aria-label="read less">Read less</button>
         </>
       )
     }

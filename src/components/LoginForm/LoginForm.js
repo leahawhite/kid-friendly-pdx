@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import TokenService from '../../services/token-service';
+import React, { Component } from 'react'
+import TokenService from '../../services/token-service'
 import AuthApiService from '../../services/auth-api-service'
-import './LoginForm.css';
+import './LoginForm.css'
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -68,7 +68,7 @@ export default class LoginForm extends Component {
             id="password"
             autoComplete="off" />
         </div>
-        <button type="submit" className="login-btn">
+        <button type="submit" className="login-btn" aria-label="submit">
           Log In
         </button>
           <p>Demo email: demo@demo.com</p>

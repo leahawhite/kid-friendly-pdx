@@ -27,3 +27,13 @@ code {
   color: #ffbf00;
 }
 
+input {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}
+
+
+

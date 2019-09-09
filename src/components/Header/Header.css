@@ -37,10 +37,12 @@ nav {
 
 nav a {
   margin-left: 10px;
+  transition: all 0.3s;
 }
 
 .navlink-left:hover, .navlink-left:active, .navlink-left:focus {
   border-bottom: 3px solid #0045e6;
+  transition: all 0.3s;
 }
 
 .navlink-right {

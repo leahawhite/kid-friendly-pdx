@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { compose } from "recompose"
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
-import { StarRating } from '../StarRating/StarRating';
-import { readableReviewCount } from '../../helpers/helpers';
-import config from '../../config';
+import { StarRating } from '../StarRating/StarRating'
+import { readableReviewCount } from '../../helpers/helpers'
+import config from '../../config'
 import './Map.css'
 
 const MapWithMarkers = compose(withScriptjs, withGoogleMap)(props => {

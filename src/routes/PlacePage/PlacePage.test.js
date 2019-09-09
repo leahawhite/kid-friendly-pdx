@@ -8,18 +8,19 @@ import { testPlace } from '../../helpers/helpers';
 
 
 describe('PlacePage component', () => {
+  const getPlaceReviews = jest.fn()
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <PlacePage />
+        <PlacePage getPlaceReviews={getPlaceReviews} match={{params: {placeId: 1}}}  />
       </MemoryRouter>, 
       div
     );
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<PlacePage place={testPlace} />)
+    const wrapper = shallow(<PlacePage getPlaceReviews={getPlaceReviews} place={testPlace} match={{params: {placeId: 1}}}  />)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

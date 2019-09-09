@@ -17,15 +17,20 @@ exports[`MapContainer component renders UI as expected 1`] = `
       Display name
       <span
         className="signup-rule"
-      />
+        id="signup-rule"
+      >
+         -- between 3 and 20 characters
+      </span>
     </label>
     <input
+      aria-describedby="signup-rule"
       aria-label="display name"
       aria-required="true"
+      autoComplete="off"
       id="display_name"
+      maxLength="20"
       minLength="3"
       name="display_name"
-      placeholder="between 3 and 20 characters"
       required={true}
       type="text"
     />
@@ -41,6 +46,7 @@ exports[`MapContainer component renders UI as expected 1`] = `
     <input
       aria-label="email address"
       aria-required="true"
+      autoComplete="off"
       id="email"
       name="email"
       required={true}
@@ -56,22 +62,27 @@ exports[`MapContainer component renders UI as expected 1`] = `
       Password
       <span
         className="signup-rule"
-      />
+        id="signup-rule"
+      >
+         -- at least 6 characters, one number
+      </span>
     </label>
     <input
+      aria-describedby="signup-rule"
       aria-label="password"
       aria-required="true"
+      autoComplete="off"
       id="password"
       maxLength="36"
       minLength="6"
       name="password"
       pattern=".*[0-9].*"
-      placeholder="at least 6 characters, one number"
       required={true}
       type="password"
     />
   </div>
   <button
+    aria-label="sign up"
     className="signup-btn"
     type="submit"
   >

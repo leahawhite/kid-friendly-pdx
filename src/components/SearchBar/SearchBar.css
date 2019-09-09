@@ -63,6 +63,7 @@
 .search-btn:hover, .search-btn:focus, .search-btn:active {
   background-color: #0045e6;
   border: 3px solid #0045e6;
+  transition: all 0.3s;
 }
 
 .filters {

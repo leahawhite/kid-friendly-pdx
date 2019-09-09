@@ -1,6 +1,5 @@
-import React from 'react';
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './Action.css';
 
 export default function Action(props) {
     const { name, link, icon, text} = props

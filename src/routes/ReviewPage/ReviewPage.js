@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PlacesApiService from '../../services/places-api-service'
 import Spinner from '../../components/Spinner/Spinner'
-import ValidationError from '../../components/ValidationError/ValidationError';
+import ValidationError from '../../components/ValidationError/ValidationError'
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
-import './ReviewPage.css';
+import './ReviewPage.css'
 
 export default class ReviewPage extends Component {
   static defaultProps = {

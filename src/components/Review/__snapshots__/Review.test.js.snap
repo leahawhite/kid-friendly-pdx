@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review component renders UI as expected with props 1`] = `
+<li
+  className="places-item-review"
+  key="1"
+>
+  <p
+    className="username"
+  >
+    User
+  </p>
+  <div
+    className="places-item-review-star-rating"
+  >
+    <div
+      className="star-rating"
+    >
+      <StarRating />
+    </div>
+    <span>
+      06/12/2019
+    </span>
+  </div>
+  <div
+    className="review-content"
+  >
+    Atlas is our new favorite spot for a quick, painless dinner with our toddler. It's super casual -- order slices or pies at the counter, ...
+    <button
+      aria-label="read more"
+      className="read-btn"
+      onClick={[Function]}
+    >
+      Read more
+    </button>
+  </div>
+  <div
+    className="review-image-container"
+  >
+    <CarouselLB
+      images={
+        Array [
+          Object {
+            "id": 1,
+            "place_id": 1,
+            "src": "https://lh3.googleusercontent.com/QDwk6G6ZCwYzVH-yJHQ824GZ1wKW2XXus8hxxdH-4AAHz-FejC-UVydyE5le1ZvPTIo1cXw1G25qhljwS8dgyIedCCFtIxBonznVQ4LfaPDEZVWmqKS1vFqVUFFNmMmMlKQ5eCpfhNI=w2400",
+            "title": "Atlas Pizza's play area",
+            "user_id": 5,
+          },
+        ]
+      }
+      imagesClass="review-image"
+    />
+  </div>
+</li>
+`;

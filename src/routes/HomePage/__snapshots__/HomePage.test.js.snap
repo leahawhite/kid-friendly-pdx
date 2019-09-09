@@ -7,7 +7,9 @@ exports[`HomePage component renders UI as expected 1`] = `
   <header
     role="banner"
   >
-    <h1>
+    <h1
+      className="app-title"
+    >
       <Link
         to="/"
       >
@@ -18,15 +20,6 @@ exports[`HomePage component renders UI as expected 1`] = `
       Find the most welcoming spots in town.
     </p>
   </header>
-  <SearchBar
-    category=""
-    fireRedirect={false}
-    handleSubmit={[Function]}
-    handleUpdateCategory={[Function]}
-    handleUpdateNeighborhood={[Function]}
-    handleUpdateSearch={[Function]}
-    neighborhood=""
-    searchTerm=""
-  />
+  <SearchBar />
 </div>
 `;

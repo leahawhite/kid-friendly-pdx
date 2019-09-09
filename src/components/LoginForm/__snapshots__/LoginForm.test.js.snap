@@ -6,6 +6,9 @@ exports[`LoginForm component renders UI as expected 1`] = `
   onSubmit={[Function]}
 >
   <div
+    role="alert"
+  />
+  <div
     className="email"
   >
     <label
@@ -16,9 +19,9 @@ exports[`LoginForm component renders UI as expected 1`] = `
     <input
       aria-label="email address"
       aria-required="true"
+      autoComplete="off"
       id="email"
       name="email"
-      placeholder="demo@demo.com"
       required={true}
       type="text"
     />
@@ -34,18 +37,25 @@ exports[`LoginForm component renders UI as expected 1`] = `
     <input
       aria-label="password"
       aria-required="true"
+      autoComplete="off"
       id="password"
       name="password"
-      placeholder="demo123"
       required={true}
       type="password"
     />
   </div>
   <button
+    aria-label="submit"
     className="login-btn"
     type="submit"
   >
     Log In
   </button>
+  <p>
+    Demo email: demo@demo.com
+  </p>
+  <p>
+    Demo password: demo123
+  </p>
 </form>
 `;

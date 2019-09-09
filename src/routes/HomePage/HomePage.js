@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import './HomePage.css';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import './HomePage.css'
 
 export default class HomePage extends Component {
   
@@ -17,7 +17,7 @@ export default class HomePage extends Component {
     return (
         <div className="hero">
           <header role="banner">
-            <h1><Link to='/'>Kid-Friendly PDX</Link></h1>
+            <h1 className="app-title"><Link to='/'>Kid-Friendly PDX</Link></h1>
             <p>Find the most welcoming spots in town.</p>
           </header>
           <SearchBar 

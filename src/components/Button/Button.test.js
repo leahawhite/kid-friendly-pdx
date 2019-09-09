@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import Button from './Button';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import Button from './Button'
 
 describe.only('Button component', () => {
   

@@ -21,6 +21,7 @@ export default function Images(props) {
             placeholder="Add a caption" 
             name="caption" 
             id="caption" 
+            aria-label="image caption"
             value={image.title}
             data-index={i} 
             onChange={e => props.addCaption(e)}>

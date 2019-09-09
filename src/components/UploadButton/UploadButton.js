@@ -9,6 +9,6 @@ export default props =>
         <FontAwesomeIcon className={props.iconClass} icon='camera' size='lg' />
         <span className="upload-btn-text">{props.uploadSpan}</span>
       </label>
-      <input type='file' name='file' id='file' onChange={props.onChange} multiple />
+      <input type='file' name='file' id='file' aria-label="select-files" onChange={props.onChange} multiple />
     </div>
   </div>

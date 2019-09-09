@@ -11,14 +11,14 @@ describe('ReviewPage component', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <ReviewPage location={{state: {place: testPlace}}}/>
+        <ReviewPage match={{params: {placeId: 1}}} location={{state: {place: testPlace}}}/>
       </MemoryRouter>, 
       div
     );
     ReactDOM.unmountComponentAtNode(div);
   });
   it('renders UI as expected', () => {
-    const wrapper = shallow(<ReviewPage location={{state: {place: testPlace}}}/>)
+    const wrapper = shallow(<ReviewPage match={{params: {placeId: 1}}} location={{state: {place: testPlace}}}/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   });
 })

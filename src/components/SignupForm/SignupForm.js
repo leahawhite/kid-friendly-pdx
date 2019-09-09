@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import AuthApiService from '../../services/auth-api-service'
-import './SignupForm.css';
+import './SignupForm.css'
 
 export default class SignupForm extends Component {
   static defaultProps = {
@@ -36,17 +36,16 @@ export default class SignupForm extends Component {
     
   render() {
     const { error } = this.state
-    const hasError = error && <p className='red'>{error}</p>
-
+    
     return (
       <form className="signup-form" onSubmit={this.handleSubmit}>
-        <div role="alert">
-          {hasError}
+        <div role='alert'>
+          {error && <p className='red'>{error}</p>}
         </div>
         <div className="display_name">
           <label htmlFor="display_name">
             Display name 
-            <span className="signup-rule"> -- between 3 and 20 characters</span>
+            <span className="signup-rule" id="signup-rule"> -- between 3 and 20 characters</span>
           </label>
           <input
             name="display_name"
@@ -54,6 +53,7 @@ export default class SignupForm extends Component {
             id="display_name"
             aria-label="display name"
             aria-required="true"
+            aria-describedby="signup-rule"
             required
             minLength="3"
             maxLength="20"
@@ -77,7 +77,7 @@ export default class SignupForm extends Component {
         <div className="password">
           <label htmlFor="password">
             Password 
-            <span className="signup-rule"> -- at least 6 characters, one number</span>
+            <span className="signup-rule" id="signup-rule"> -- at least 6 characters, one number</span>
           </label>
           <input
             name="password"
@@ -85,6 +85,7 @@ export default class SignupForm extends Component {
             id="password"
             aria-label="password"
             aria-required="true"
+            aria-describedby="signup-rule"
             minLength="6"
             maxLength="36"
             pattern=".*[0-9].*" 
@@ -92,7 +93,7 @@ export default class SignupForm extends Component {
             autoComplete="off"
           />
         </div>
-        <button type="submit" className="signup-btn" >
+        <button type="submit" className="signup-btn" aria-label="sign up">
           Sign Up
         </button>
       </form>

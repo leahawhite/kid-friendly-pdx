@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import StarRatingComponent from 'react-star-rating-component'
 import UploadButton from '../UploadButton/UploadButton'
 import Images from '../Images/Images'
 import Spinner from '../Spinner/Spinner'
 import PlacesApiService from '../../services/places-api-service'
 import ValidationError from '../ValidationError/ValidationError'
-import './ReviewForm.css';
+import './ReviewForm.css'
 
 export default class ReviewForm extends Component {
   constructor(props) {
@@ -29,7 +29,6 @@ export default class ReviewForm extends Component {
     e.preventDefault()
     this.setState({ uploading: true, error: null })
 
-    // this doesn't stop images from being sent to server
     if (e.target.files.length > 3) {
       this.setState({
         error: 'Only 3 images can be uploaded at a time'
@@ -104,24 +103,19 @@ export default class ReviewForm extends Component {
     this.setState({rating}, () => {this.validateRating(rating)})
   }
 
-  validateRating(fieldValue) {
+  validateRating(rating) {
     const fieldErrors = {...this.state.validationMessages}
     let hasError = false;
-    if(fieldValue.length === 0) {
+    if (rating.length === 0) {
       fieldErrors.rating = 'Star rating is required.';
       hasError = true;
     } else {
-      if(fieldValue.length < 1 || fieldValue.length > 5) {
-        fieldErrors.rating = 'Please enter a star rating between 1 and 5';
-        hasError = true; 
-      } else {
-        fieldErrors.rating = Number(fieldValue);
+        fieldErrors.rating = '';
         hasError = false;
-      }
     }
     this.setState({
       validationMessages: fieldErrors,
-      rating: Number(fieldValue),
+      rating: Number(rating),
       ratingValid: !hasError
     }, this.formValid);
   }
@@ -164,7 +158,7 @@ export default class ReviewForm extends Component {
         <div role="alert">
           {error && <p className="error">{error}</p>}
         </div>
-        <form className="review-form" onSubmit={this.handleSubmit} method="post" encType="multipart/form-data">
+        <form className="review-form" onSubmit={e => this.handleSubmit(e)} method="post" encType="multipart/form-data">
           <div className="star-rating-select">
             <label htmlFor="rating">Your rating: </label>
             <div className="star-container" style={starStyle}>
@@ -177,7 +171,15 @@ export default class ReviewForm extends Component {
           </div>
           <ValidationError hasError={!this.state.ratingValid} message={this.state.validationMessages.rating}/>
           <div className="text">
-            <textarea className="review-text" required placeholder="Share your experience with others. How kid-friendly is this place?" name="text"></textarea>
+            <textarea 
+              className="review-text" 
+              aria-label="review-text"
+              aria-required="true"
+              required 
+              placeholder="Share your experience with others. How kid-friendly is this place?" 
+              name="text"
+            >
+            </textarea>
           </div>
           <UploadButton iconClass="icon" uploadSpan="Upload Photos" onChange={this.onChange} />
           <div className='upload-container'>
@@ -186,7 +188,7 @@ export default class ReviewForm extends Component {
             </div>
           </div>
           <div className="button-container">
-            <button type="submit" className="review-btn" /*disabled={!this.state.formValid}*/>Post Review</button>
+            <button type="submit" className="review-btn" aria-label="submit review">Post Review</button>
           </div>
         </form>
         {this.state.fireRedirect && (

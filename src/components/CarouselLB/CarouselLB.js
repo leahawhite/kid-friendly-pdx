@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css'; 
-import './CarouselLB.css';
+import React, { Component } from 'react'
+import Lightbox from 'react-image-lightbox'
+import 'react-image-lightbox/style.css' 
+import './CarouselLB.css'
  
 export default class CarouselLB extends Component {
   static defaultProps = {

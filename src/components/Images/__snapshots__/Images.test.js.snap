@@ -52,6 +52,7 @@ Array [
       className="Caption"
     >
       <textarea
+        aria-label="image caption"
         className="caption-text"
         data-index={0}
         id="caption"
@@ -110,6 +111,7 @@ Array [
       className="Caption"
     >
       <textarea
+        aria-label="image caption"
         className="caption-text"
         data-index={1}
         id="caption"

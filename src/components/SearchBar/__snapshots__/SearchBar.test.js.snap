@@ -12,12 +12,14 @@ exports[`MapContainer component renders UI as expected 1`] = `
       htmlFor="search"
     />
     <input
+      aria-label="search"
       className="search-input"
       id="search"
-      placeholder="Search"
+      placeholder="Search:  pizza, cafe, park..."
       type="text"
     />
     <button
+      aria-label="search"
       className="search-btn"
       type="submit"
     >
@@ -53,6 +55,7 @@ exports[`MapContainer component renders UI as expected 1`] = `
           Category:
         </label>
         <select
+          aria-label="category"
           className="form-select"
           id="category"
           type="text"
@@ -102,6 +105,7 @@ exports[`MapContainer component renders UI as expected 1`] = `
           Neighborhood:
         </label>
         <select
+          aria-label="neighborhood"
           className="form-select"
           id="neighborhood"
           type="text"

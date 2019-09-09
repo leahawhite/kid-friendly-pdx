@@ -1,6 +1,6 @@
 import React from 'react'
-import { StarRating } from '../../components/StarRating/StarRating';
-import { readableReviewCount } from '../../helpers/helpers';
+import { StarRating } from '../../components/StarRating/StarRating'
+import { readableReviewCount } from '../../helpers/helpers'
 import './PlaceHeader.css'
 
 export default function PlaceHeader(props) {

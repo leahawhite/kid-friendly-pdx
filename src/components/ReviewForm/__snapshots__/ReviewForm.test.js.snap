@@ -51,20 +51,22 @@ exports[`ReviewForm component renders UI as expected 1`] = `
       className="text"
     >
       <textarea
+        aria-label="review-text"
+        aria-required="true"
         className="review-text"
         name="text"
         placeholder="Share your experience with others. How kid-friendly is this place?"
         required={true}
       />
     </div>
+    <_default
+      iconClass="icon"
+      onChange={[Function]}
+      uploadSpan="Upload Photos"
+    />
     <div
       className="upload-container"
     >
-      <_default
-        iconClass="icon"
-        onChange={[Function]}
-        uploadSpan="Upload Photos"
-      />
       <div
         className="render-container"
       />
@@ -73,6 +75,7 @@ exports[`ReviewForm component renders UI as expected 1`] = `
       className="button-container"
     >
       <button
+        aria-label="submit review"
         className="review-btn"
         type="submit"
       >

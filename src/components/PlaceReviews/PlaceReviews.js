@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Review from '../../components/Review/Review';
+import Review from '../../components/Review/Review'
 import './PlaceReviews.css'
 
 export default class PlaceReviews extends Component {
@@ -22,7 +22,7 @@ export default class PlaceReviews extends Component {
           </div>
         </div>
         <div className="write-review-btn-container">
-          <button className="write-review-btn">
+          <button className="write-review-btn" aria-label="write-review">
             <Link to={{
               pathname: `/places/${place.id}/reviews`,
               state: { place: place }

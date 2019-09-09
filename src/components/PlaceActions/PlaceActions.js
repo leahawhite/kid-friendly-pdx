@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import Action from '../../components/Action/Action';
+import { Link } from 'react-router-dom'
+import Action from '../../components/Action/Action'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './PlaceActions.css'
 

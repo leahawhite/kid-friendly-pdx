@@ -120,6 +120,7 @@ exports[`PlaceActions component renders UI as expected with props 1`] = `
             "website": "http://atlaspizzapdx.com",
             "zipcode": "97206",
           },
+          "reviews": Array [],
         },
       }
     }

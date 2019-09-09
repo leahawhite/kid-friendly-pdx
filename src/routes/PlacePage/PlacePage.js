@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import Carousel from '../../components/Carousel/Carousel';
-import PlaceHeader from '../../components/PlaceHeader/PlaceHeader';
-import PlaceActions from '../../components/PlaceActions/PlaceActions';
-import PlaceMap from '../../components/PlaceMap/PlaceMap';
-import PlaceHours from '../../components/PlaceHours/PlaceHours';
-import PlaceFeatures from '../../components/PlaceFeatures/PlaceFeatures';
-import PlaceReviews from '../../components/PlaceReviews/PlaceReviews';
-import Spinner from '../../components/Spinner/Spinner';
-import './PlacePage.css';
+import React, { Component } from 'react'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import Carousel from '../../components/Carousel/Carousel'
+import PlaceHeader from '../../components/PlaceHeader/PlaceHeader'
+import PlaceActions from '../../components/PlaceActions/PlaceActions'
+import PlaceMap from '../../components/PlaceMap/PlaceMap'
+import PlaceHours from '../../components/PlaceHours/PlaceHours'
+import PlaceFeatures from '../../components/PlaceFeatures/PlaceFeatures'
+import PlaceReviews from '../../components/PlaceReviews/PlaceReviews'
+import Spinner from '../../components/Spinner/Spinner'
+import './PlacePage.css'
 
 export default class PlacePage extends Component {
   static defaultProps = {
-    location: { state: {} },
     match: { params: {} },
     place: {},
     reviews: [],
   }
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  }
-
+  
   componentDidMount() {
     const { placeId } = this.props.match.params
     this.props.getPlaceReviews(placeId)
@@ -41,12 +35,7 @@ export default class PlacePage extends Component {
       place,
       reviews,
       error } = this.props
-    // const { state } = this.props.location
-    // const place = state ? state.place : this.state.place
-    // const place = this.state.place
     const placeImages = place && place.images
-    // const { reviews } = this.state
-    // const { isLoading } = this.state
     if (isLoading) {
       return <Spinner />
     } 
@@ -60,6 +49,9 @@ export default class PlacePage extends Component {
           handleUpdateCategory={handleUpdateCategory}
           handleUpdateNeighborhood={handleUpdateNeighborhood}
           handleSubmit={handleSubmit}/>
+        <div role="alert">
+          {error && <p className="error">{error}</p>}
+        </div>
         <div className="place-page">
           <section className="place-images-container">
             <Carousel images={placeImages} imagesClass="image-item" />

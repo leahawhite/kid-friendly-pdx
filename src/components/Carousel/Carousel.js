@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import InfiniteCarousel from 'react-leaf-carousel';
-import './Carousel.css';
+import React, { Component } from 'react'
+import InfiniteCarousel from 'react-leaf-carousel'
+import './Carousel.css'
  
 export default class Carousel extends Component {
   render() {

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PlacesListItem from '../../components/PlacesListItem/PlacesListItem';
-import Map from '../../components/Map/Map';
-import Spinner from '../../components/Spinner/Spinner';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import './PlacesListPage.css';
-import haversine from 'haversine';
+import React, { Component } from 'react'
+import PlacesListItem from '../../components/PlacesListItem/PlacesListItem'
+import Map from '../../components/Map/Map'
+import Spinner from '../../components/Spinner/Spinner'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import './PlacesListPage.css'
+import haversine from 'haversine'
 
 export default class PlacesListPage extends Component {
   static defaultProps = {
@@ -51,7 +51,7 @@ export default class PlacesListPage extends Component {
 
   sortByDistance = results => {
     const resultsDistances = results.map(result => {
-      // Haversine formula
+      // Haversine formula to get distance from each result to current location
       const start = {
         latitude: this.state.userLat,
         longitude: this.state.userLng
@@ -72,7 +72,7 @@ export default class PlacesListPage extends Component {
     const placeResults = places && places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
-      : <p>Sorry, your search returned no results. Please try again.</p>
+      : <p className="no-results">Sorry, your search returned no results. Please try again.</p>
     const mapResults = places && places.length 
       ? <section className="places-map">
           <Map places={places} zoom={11} center={{lat: 45.5155, lng: -122.6793}} infoClass="infowindow" />
@@ -82,7 +82,7 @@ export default class PlacesListPage extends Component {
       return <Spinner />
     return (
       <>
-        <div className="Places_error">{this.state.error}</div>
+        <div className="error">{this.state.error}</div>
         {placeResults}
         {mapResults}
       </>
@@ -125,11 +125,12 @@ export default class PlacesListPage extends Component {
               type="text" 
               id="sort-results"
               name="sort" 
+              aria-label="sort results"
               value={this.state.value}
               onChange={e => this.handleUpdateSort(e)}>
-                <option name="sort" value="rating">rating</option>
-                <option name="sort" value="number of reviews">number of reviews</option>
-                <option name="sort" value="distance">distance</option>
+                <option name="sort" value="rating" aria-label="rating">rating</option>
+                <option name="sort" value="number of reviews" aria-label="number of reviews">number of reviews</option>
+                <option name="sort" value="distance" aria-label="distance">distance</option>
             </select>
           </form>
         </header>

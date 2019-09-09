@@ -27,6 +27,7 @@
   border: 1px solid #0045e6;
   color: white;
   font-weight: bold;
+  transition: all 0.3s;
 }
 
 h2 {

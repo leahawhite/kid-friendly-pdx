@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './SearchBar.css';
+import './SearchBar.css'
 
 class SearchBar extends Component {
   
@@ -21,10 +21,11 @@ class SearchBar extends Component {
             className="search-input" 
             id="search" 
             type="text" 
-            placeholder="Search: pizza, cafe, playground"
+            placeholder="Search:  pizza, cafe, park..."
             value={searchTerm}
+            aria-label="search"
             onChange={handleUpdateSearch}/>
-          <button type="submit" className="search-btn">
+          <button type="submit" className="search-btn" aria-label="search">
             <FontAwesomeIcon icon="search"/>
           </button>
           <fieldset className="filters">
@@ -35,6 +36,7 @@ class SearchBar extends Component {
                   type="text" 
                   id="category"
                   value={category}
+                  aria-label="category"
                   onChange={handleUpdateCategory}>
                     <option value=""></option>
                     <option value="restaurant">restaurant</option>
@@ -52,6 +54,7 @@ class SearchBar extends Component {
                 type="text" 
                 id="neighborhood"
                 value={neighborhood}
+                aria-label="neighborhood"
                 onChange={handleUpdateNeighborhood}>
                   <option value=""></option>
                   <option value="N">N</option>
