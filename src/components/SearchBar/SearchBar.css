@@ -5,6 +5,7 @@
   padding: 30px 10px;
   background-color: #b3f0ff;
   margin: 0 auto;
+  font-family: 'Source Sans Pro';
 }
 
 .search-form, .filter-form {
@@ -14,19 +15,20 @@
 .search-form input {
   float: left;
   display: block;
+  font-family: 'Source Sans Pro';
   margin-bottom: 10px;
   padding: 5px 8px;
   text-align: left;
   width: 90%;
   border: 3px solid #00b8e6;
   border-radius: 8px 0 0 8px;
-  font-weight: bold;
-  font-family: 'Source Sans Pro';
   font-size: 16px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #444;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
   font-size: 16px;
   opacity: 1; /* Firefox */
 }
@@ -34,20 +36,23 @@
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #444;
   font-size: 16px;
+  font-family: 'Source Sans Pro';
+  font-weight: bold;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #444;
   font-size: 16px;
+  font-family: 'Source Sans Pro';
+  font-weight: bold;
 }
 
 .search-btn {
-  font-weight: bold;
-  font-family: "Source Sans Pro";
   color: white;
+  font-weight: 700;
   float: left;
   width: 10%;
-  padding: 5px;
+  padding: 6px 5px 5px 5px;
   background-color: #00b8e6;
   border: 3px solid #00b8e6;
   border-left: none;
@@ -66,32 +71,24 @@
   transition: all 0.3s;
 }
 
-.filters {
-  border: none;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.form-label, .form-select {
-  padding: 5px 8px;
-  border: 3px solid #00b8e6;
-  background-color: white;
-  font-size: 16px;
-}
-
 .form-label {
-  display: inline-block;
-  text-align: left;
-  border-right: none;
-  line-height: normal;
-  font-weight: bold;
+  display: none;
 }
 
 .form-select {
-  border-left: none;
-  color: #444;
   font-family: 'Source Sans Pro';
+  font-size: 16px;
+  font-weight: 700;
+  background-color: white;
+  width: 100%;
+  color: #444;
+  padding: 5px 8px;
+  border: 3px solid #00b8e6;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
   -moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -103,42 +100,24 @@
 	background-size: .65em auto, 100%;
 }
 
-.filter-category {
+.category {
   margin-bottom: 10px;
-}
-
-.filter-category label, .filter-neighborhood label {
-  border-radius: 8px 0 0 8px;
-  padding: 5px 8px;
-}
-
-.filter-category select, .filter-neighborhood select {
-  border-radius: 0 8px 8px 0;
-}
-
-.filter-category label {
-  width: 85px;
-}
-
-.filter-category select {
-  -webkit-appearance: none;
-  width: calc(100% - 85px);
-  padding: 5px 8px;
-}
-
-.filter-neighborhood label {
-  width: 125px;
-}
-
-.filter-neighborhood select {
-  -webkit-appearance: none;
-  width: calc(100% - 125px);
-  padding: 5px 8px;
+  margin-right: 4%;
 }
 
 input, option, button {
   cursor: pointer;
   font-size: 16px;
+}
+
+@media only screen and (min-width: 560px) {
+  .form-select {
+    width: 48%;
+  }
+
+  .category {
+    margin-right: 4%;
+  }
 }
 
 @media only screen and (min-width: 950px) {

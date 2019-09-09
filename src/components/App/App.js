@@ -45,43 +45,43 @@ class App extends Component {
     }
   }
 
-  handleLogin=() => {
+  handleLogin = () => {
     this.setState({
       loggedIn: true
     })
   }
 
-  handleLogout=() => {
+  handleLogout = () => {
     TokenService.clearAuthToken()
     this.setState({
       loggedIn: false
     })
   }
 
-  handleUpdateSearch=event => {
+  handleUpdateSearch = event => {
     this.setState({
       searchTerm: event.target.value
     })
   }
 
-  handleUpdateCategory=event => {
+  handleUpdateCategory = event => {
     this.setState({
       category: event.target.value
     })
   }
 
-  handleUpdateNeighborhood=event => {
+  handleUpdateNeighborhood = event => {
     this.setState({
       neighborhood: event.target.value
     })
   }
 
-  handleSubmit=event => {
+  handleSubmit = event => {
     event.preventDefault();
     this.getPlaces();
   }
 
-  getPlaces=() => {
+  getPlaces = () => {
     this.setState({
       isLoading: true
     })
