@@ -1,11 +1,17 @@
-.Header {
+.header-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 8vh;
   margin: 0;
   background-color: #00b8e6;
   font-family: 'Fredoka One';
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hidden {
@@ -69,6 +75,11 @@ nav a {
   nav {
     font-size: 18px;
   }
-  
+}
+
+@media only screen and (min-width: 950px) {
+  .Header {
+    width: 70%;
+  }
 }
 
