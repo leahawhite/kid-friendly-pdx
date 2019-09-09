@@ -24,7 +24,7 @@ export default class CarouselLB extends Component {
     const { photoIndex, isOpen } = this.state;
     const { images, imagesClass } = this.props;
     const imageList = images.map((image, index) => (
-      <div id='image' className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
+      <div className={imagesClass} key={index} onClick={this.handleImageClick.bind(this, index)}>
         <img src={image.src} alt={image.title}/>
         <div className="image-overlay">{image.title}</div>
       </div>

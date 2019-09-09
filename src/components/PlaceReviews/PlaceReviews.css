@@ -23,8 +23,8 @@
 }
 
 .write-review-btn {
-  border: 1px solid #00b8e6;
-  background-color:  #00b8e6;
+  border: 1px solid #0045e6;
+  background-color:  #0045e6;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -45,9 +45,8 @@
   margin-left: 10px;
 }
 
-.write-review-btn:hover, .write-review-btn:focus, .write-review-btn:active {
-  background-color: #0045e6;
-  border: 1px solid #0045e6;
+.write-review-btn:hover, .write-review-btn:focus, .write-review-btn:active, .write-review-btn a:hover, .write-review-btn a:focus, .write-review-btn a:active {
+  background-color: #002885;
   transition: all 0.3s;
 }
 

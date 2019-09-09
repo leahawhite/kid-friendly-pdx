@@ -30,8 +30,8 @@
 .features-list > p {
   margin: 5px 15px 5px 0;
   padding: 5px 8px; 
-  border: 1px solid  #00b8e6;
-  background-color:  #00b8e6;
-  color: white;
+  border: 1px solid  #444;
+  color:  #444;
+  background-color: #b3f0ff;
   border-radius: 15px;
 }
