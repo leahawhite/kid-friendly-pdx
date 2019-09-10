@@ -1,43 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component renders UI as expected 1`] = `
-<header
-  className="Header"
-  role="banner"
+<div
+  className="header-container"
 >
-  <h1
-    className="Header__title"
+  <header
+    className="Header"
+    role="banner"
   >
-    <NavLink
-      activeClassName="hidden"
-      exact={true}
-      to="/"
+    <h1
+      className="Header__title"
     >
-      <span>
-        KID-FRIENDLY PDX
-      </span>
-    </NavLink>
-  </h1>
-  <nav
-    className="Header__nav-not-logged-in"
-    role="navigation"
-  >
-    <div
-      className="Header__nav-not-logged-in-links"
+      <NavLink
+        activeClassName="hidden"
+        exact={true}
+        to="/"
+      >
+        <span>
+          KID-FRIENDLY PDX
+        </span>
+      </NavLink>
+    </h1>
+    <nav
+      className="Header__nav-not-logged-in"
+      role="navigation"
     >
-      <Link
-        className="navlink-left"
-        to="/login"
+      <div
+        className="Header__nav-not-logged-in-links"
       >
-        LOG IN
-      </Link>
-      <Link
-        className="navlink-right"
-        to="/signup"
-      >
-        SIGN UP
-      </Link>
-    </div>
-  </nav>
-</header>
+        <Link
+          className="navlink-left"
+          to="/login"
+        >
+          LOG IN
+        </Link>
+        <Link
+          className="navlink-right"
+          to="/signup"
+        >
+          SIGN UP
+        </Link>
+      </div>
+    </nav>
+  </header>
+</div>
 `;
