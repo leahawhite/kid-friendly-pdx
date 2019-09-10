@@ -36,18 +36,16 @@ export default class Header extends Component {
   render() {
     const { loggedIn } = this.props
     return (
-      <div className="header-container">
-        <header className="Header" role="banner">
-          <h1 className="Header__title">
-            <NavLink exact to='/' activeClassName="hidden">
-              <span>KID-FRIENDLY PDX</span>
-            </NavLink>
-          </h1>
-          {loggedIn
-            ? this.renderLogoutLink()
-            : this.renderLoginLink()}
-        </header>  
-      </div>  
+      <header className="Header" role="banner">
+        <h1 className="Header__title">
+          <NavLink exact to='/' activeClassName="hidden">
+            <span>KID-FRIENDLY PDX</span>
+          </NavLink>
+        </h1>
+        {loggedIn
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
+      </header>  
     )
   }
 }
