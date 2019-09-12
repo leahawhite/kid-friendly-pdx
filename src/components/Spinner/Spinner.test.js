@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Spinner from './Spinner';
 
-describe.only('Button component', () => {
+describe.only('Spinner component', () => {
   
   it('renders without crashing', () => {
     const div = document.createElement('div');

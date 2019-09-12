@@ -11,6 +11,7 @@ exports[`LoginPage component renders UI as expected 1`] = `
       Log In
     </h2>
     <LoginForm
+      onLogin={[Function]}
       onLoginSuccess={[Function]}
     />
     <div

@@ -5,9 +5,9 @@ import './LoginPage.css'
 
 export default class LoginPage extends Component {
   static defaultProps = {
-    location: {},
+    onLogin: () => {},
     history: {
-      push: () => {},
+      goBack: () => {},
     },
   }
 

@@ -85,8 +85,8 @@ class App extends Component {
     this.setState({
       isLoading: true
     })
-    const { searchTerm, category, neighborhood }=this.state
-    const params=[]
+    const { searchTerm, category, neighborhood } = this.state
+    const params = []
     if (searchTerm) {
       params.push(`searchTerm=${encodeURI(searchTerm)}`)
     }
@@ -96,8 +96,8 @@ class App extends Component {
     if (neighborhood) {
       params.push(`neighborhood=${encodeURI(neighborhood)}`)
     }
-    const query=params.join('&')
-    const url=`${config.API_ENDPOINT}/places/?${query}`
+    const query = params.join('&')
+    const url = `${config.API_ENDPOINT}/places/?${query}`
     PlacesApiService.getPlaces(url)
       .then(data => {
         this.setState({
@@ -201,7 +201,7 @@ class App extends Component {
                 /> 
               </ErrorBoundary>
             }/>  
-            <PublicOnlyRoute path={'/login'} component={props => 
+            <PublicOnlyRoute path={'/login'} render={props => 
               <ErrorBoundary>
                 <LoginPage 
                   loggedIn={this.state.loggedIn}
@@ -210,7 +210,7 @@ class App extends Component {
                 /> 
               </ErrorBoundary>
             }/>   
-            <PublicOnlyRoute path={'/signup'} component={props =>
+            <PublicOnlyRoute path={'/signup'} render={props =>
               <ErrorBoundary>
                 <SignupPage {...props} /> 
               </ErrorBoundary>
@@ -252,7 +252,7 @@ class App extends Component {
                 /> 
               </ErrorBoundary>
             }/> 
-            <PrivateRoute path={'/places/:placeId/reviews'} component={props =>
+            <PrivateRoute path={'/places/:placeId/reviews'} render={props =>
               <ReviewPage 
                 {...props}
                 place={place}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import Select from 'react-select'
 import './SearchBar.css'
 
 class SearchBar extends Component {
@@ -15,32 +14,6 @@ class SearchBar extends Component {
       handleUpdateNeighborhood, 
       handleSubmit } = this.props
     
-      // const options = [
-      //   {label: 'restaurant', value: 'restaurant'},
-      //   {label: 'attraction', value: 'attraction'},
-      //   {label: 'museum', value: 'museum'},
-      //   {label: 'park', value: 'park'},
-      //   {label: 'indoor play', value: 'indoor play'},
-      //   {label: 'toy store', value: 'toy store'}
-      // ]
-      // const customStyles = {
-      //   option: (provided, state) => ({
-      //     ...provided,
-      //     border: '3px solid blue', 
-      //     padding: 5,
-      //   }),
-      //   control: () => ({
-      //     width: 200,
-      //   }),
-      //   singleValue: (provided, state) => {
-      //     const opacity = state.isDisabled ? 0.5 : 1;
-      //     const transition = 'opacity 300ms';
-      
-      //     return { ...provided, opacity, transition };
-      //   }
-      // }
-     
-      
     return (
       <section className="searchbar">
         <form className="search-form" onSubmit={handleSubmit}>
@@ -58,16 +31,6 @@ class SearchBar extends Component {
           </button>
           <div className="filters">
             <label className="form-label" htmlFor="category"></label>
-            {/* <Select 
-              // className="form-select category" 
-              id="category" 
-              value={category} 
-              aria-label="category"
-              placeholder="Category" 
-              options={options} 
-              classNamePrefix="category"
-              onChange={e => this.props.handleUpdateCategory(e.value)} 
-            /> */}
             <select 
                 className="form-select category" 
                 type="text" 

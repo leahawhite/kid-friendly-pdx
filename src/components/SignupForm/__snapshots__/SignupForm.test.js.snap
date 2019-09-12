@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MapContainer component renders UI as expected 1`] = `
+exports[`SignupForm component renders UI as expected 1`] = `
 <form
   className="signup-form"
   onSubmit={[Function]}

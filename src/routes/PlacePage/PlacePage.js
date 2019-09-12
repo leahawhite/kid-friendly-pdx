@@ -26,7 +26,7 @@ export default class PlacePage extends Component {
     const { 
       searchTerm, 
       category, 
-      neighborhood, 
+      neighborhood,
       handleUpdateSearch, 
       handleUpdateCategory, 
       handleUpdateNeighborhood, 
@@ -37,7 +37,11 @@ export default class PlacePage extends Component {
       error } = this.props
     const placeImages = place && place.images
     if (isLoading) {
-      return <Spinner />
+      return (
+        <div className="place-page">
+          <Spinner />
+        </div>
+      )
     } 
       return (
         <>

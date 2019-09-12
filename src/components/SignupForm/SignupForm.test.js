@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SignupForm from './SignupForm';
 
-describe('MapContainer component', () => {
+describe('SignupForm component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<SignupForm />, div);

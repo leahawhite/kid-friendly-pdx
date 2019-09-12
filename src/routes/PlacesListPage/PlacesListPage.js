@@ -8,10 +8,13 @@ import haversine from 'haversine'
 
 export default class PlacesListPage extends Component {
   static defaultProps = {
-    location: { state: {} },
     searchTerm: "",
     category: "",
-    neighborhood: ""
+    neighborhood: "",
+    handleUpdateSearch: () => {}, 
+    handleUpdateCategory: () => {}, 
+    handleUpdateNeighborhood: () => {}, 
+    handleSubmit: () => {}
   }
   
   constructor(props) {

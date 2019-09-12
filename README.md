@@ -12,7 +12,7 @@ From the landing page, users can use the search form to start searching places a
 
 ## Link to App
 
-[https://kid-friendly-pdx.now.sh/](https://kid-friendly-pdx.now.sh/)
+[https://kid-friendly-pdx.leahawhite.now.sh/](https://kid-friendly-pdx.leahawhite.now.sh/)
 
 ## Screenshots
 

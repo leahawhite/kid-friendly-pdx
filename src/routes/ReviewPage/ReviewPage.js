@@ -8,6 +8,7 @@ import './ReviewPage.css'
 
 export default class ReviewPage extends Component {
   static defaultProps = {
+    match: { params: {} },
     place: {},
     insertReviewsAndImages: () => {}
   }

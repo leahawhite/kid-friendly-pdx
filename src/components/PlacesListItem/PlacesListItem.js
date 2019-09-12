@@ -15,25 +15,24 @@ export default function PlacesListItem(props) {
       pathname: `/places/${place.id}`,
       state: { place: place }
     }}>
-    <div className="place-item">
-      <div className="place-image-container">
-        {place.images && place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
-        : null}
-      </div>
-      <div className="place-info">
-          <h3 className="place-name">
-           {place.name}
-          </h3>
-        <div className="place-info-reviews">
-          <div className="star-rating">
-            <StarRating rating={place.average_review_rating} />
-          </div>
-          <span>{readableReviewCount(place.number_of_reviews)}</span>
+      <div className="place-item">
+        <div className="place-image-container">
+          {place.images && place.images.length ? <img className="place-image" src={place.images[0].src} alt={place.images[0].title}></img> 
+          : null}
         </div>
-        {descriptorsList}
+        <div className="place-info">
+            <h3 className="place-name">
+            {place.name}
+            </h3>
+          <div className="place-info-reviews">
+            <div className="star-rating">
+              <StarRating rating={place.average_review_rating} />
+            </div>
+            <span>{readableReviewCount(place.number_of_reviews)}</span>
+          </div>
+          {descriptorsList}
+        </div>
       </div>
-      
-    </div>
     </Link>
   )
 }
