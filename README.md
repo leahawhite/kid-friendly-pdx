@@ -49,6 +49,9 @@ This application utilizes JWT authentication.
 - CSS
 - JavaScript
 - React
+- Node.js
+- PostgreSQL
+- Google Maps API
 - Cloudinary API
 - Jest
 - Enzyme
