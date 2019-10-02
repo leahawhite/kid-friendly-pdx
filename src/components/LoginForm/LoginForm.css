@@ -3,6 +3,11 @@
   text-align: left;
 }
 
+.login-form p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .login-form input {
   border: 1px solid #aaa;
   display: block;

@@ -19,7 +19,7 @@ html, body {
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 79px; 
+  padding-bottom: 72.4px; 
 }
 
 footer {
@@ -32,4 +32,5 @@ footer {
 
 .App__main {
   position: relative;
+  min-height: calc(92vh - 79px);
 }

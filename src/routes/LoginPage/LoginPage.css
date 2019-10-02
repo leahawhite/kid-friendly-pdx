@@ -1,8 +1,13 @@
 .LoginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: left;
   font-weight: bold;
   margin: 0 auto;
   padding: 5%;
+  min-height: calc(92vh - 79px);
 }
 
 .LoginPage h2 {
@@ -25,6 +30,12 @@
 
 .login-reminder {
   text-align: center;
+}
+
+@media only screen and (min-width: 370px) {
+  .LoginPage-container {
+    width: 90%;
+  }
 }
 
 @media only screen and (min-width: 950px) {

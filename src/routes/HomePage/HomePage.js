@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from '../../components/SearchBar/SearchBar'
+import Spinner from '../../components/Spinner/Spinner'
 import './HomePage.css'
 
 export default class HomePage extends Component {
@@ -13,7 +14,12 @@ export default class HomePage extends Component {
       handleUpdateSearch, 
       handleUpdateCategory, 
       handleUpdateNeighborhood, 
-      handleSubmit } = this.props
+      handleSubmit,
+      isLoading } = this.props
+
+    if (isLoading) {
+      return <Spinner />
+    }
     return (
         <div className="hero">
           <header role="banner">

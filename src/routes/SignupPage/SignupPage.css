@@ -1,6 +1,11 @@
 .SignupPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(92vh - 79px);
   text-align: left;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0 auto;
   padding: 5%;
@@ -8,7 +13,7 @@
 
 .SignupPage h2 {
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .SignupPage-container {
@@ -26,6 +31,18 @@
 
 .signup-reminder {
   text-align: center;
+}
+
+@media only screen and (min-width: 370px) {
+  .SignupPage-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .SignupPage h2 {
+    font-size: 24px;
+  }
 }
 
 @media only screen and (min-width: 950px) {

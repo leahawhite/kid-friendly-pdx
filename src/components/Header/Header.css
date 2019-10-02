@@ -17,8 +17,8 @@
 }
 
 .Header h1 {
-  font-size: 18px;
-  margin: 0 10px;
+  font-size: 16px;
+  margin: 0 0 0 10px;
 }
 
 .Header span {
@@ -54,6 +54,13 @@ nav a {
 
 .navlink-right:hover, .navlink-right:active, .navlink-right:focus {
   background-color: #002885;
+}
+
+@media only screen and (min-width: 400px) {
+  .Header h1 {
+    font-size: 18px;
+    margin: 0 10px;
+  }
 }
 
 @media only screen and (min-width: 720px) {
