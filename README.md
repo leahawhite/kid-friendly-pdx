@@ -14,6 +14,10 @@ From the landing page, users can use the search form to start searching places a
 
 [https://kid-friendly-pdx.leahawhite.now.sh/](https://kid-friendly-pdx.leahawhite.now.sh/)
 
+## Link to Server
+
+[https://github.com/leahawhite/kid-friendly-pdx-api](https://github.com/leahawhite/kid-friendly-pdx-api)
+
 ## Screenshots
 
 Landing Page
