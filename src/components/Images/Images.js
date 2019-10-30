@@ -14,7 +14,12 @@ export default function Images(props) {
         >
           <FontAwesomeIcon icon={faTimesCircle} size='2x' />
         </div>
-        <img className="uploaded-images" src={image.src} alt={image.id} />
+        <img 
+          className="uploaded-images" 
+          src={image.src} 
+          alt={image.id}
+          onError={() => props.onError(image.id)} 
+        />
         <div className="Caption">
           <textarea 
             className="caption-text" 

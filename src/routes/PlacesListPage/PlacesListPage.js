@@ -71,7 +71,7 @@ export default class PlacesListPage extends Component {
   }
     
   renderPlaces() {
-    const { isLoading, places } = this.props
+    const { isLoading, places, error } = this.props
     const placeResults = places && places.length 
       ? this.sortResults(places).map(place => 
       <PlacesListItem key={place.id} place={place} />)
@@ -85,7 +85,7 @@ export default class PlacesListPage extends Component {
       return <Spinner />
     return (
       <>
-        <div className="error">{this.state.error}</div>
+        <div className="error">{error}</div>
         {placeResults}
         {mapResults}
       </>
